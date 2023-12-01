@@ -2,8 +2,8 @@ import os
 from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout
 
-class EpanetRtx(ConanFile):
-    name = "epanetrtx"
+class TSFlib(ConanFile):
+    name = "tsflib"
     version = "1.1"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
@@ -54,7 +54,6 @@ class EpanetRtx(ConanFile):
         self.requires("libcurl/7.80.0")
         self.requires("sqlite3/3.43.2")
         self.requires("sqlite_modern_cpp/3.2")
-        self.requires("epanet/2.3")
 
 
     def build_requirements(self):
@@ -77,7 +76,7 @@ class EpanetRtx(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["epanetrtx"]
+        self.cpp_info.libs = ["tsflib"]
 
 
 
