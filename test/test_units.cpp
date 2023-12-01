@@ -3,7 +3,7 @@
 #include "test_main.h"
 #include "Units.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 ////////////////////////
@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(units_strings) {
 BOOST_AUTO_TEST_CASE(units_convert_nan) {
   
   double n_a_n = nan("");
-  double maybe_nan = Units::convertValue(n_a_n, RTX_GALLON_PER_MINUTE, RTX_GALLON_PER_DAY);
+  double maybe_nan = Units::convertValue(n_a_n, TSF_GALLON_PER_MINUTE, TSF_GALLON_PER_DAY);
   BOOST_TEST(isnan(maybe_nan), "not-a-number is a number");
   
 }

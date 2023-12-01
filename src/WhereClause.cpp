@@ -1,6 +1,6 @@
 //
 //  WhereClause.cpp
-//  epanet-rtx static deps
+//  tsflib static deps
 //
 //  Created by Sam Hatchett on 4/14/20.
 //
@@ -8,7 +8,7 @@
 #include "WhereClause.h"
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 bool filterWithComparison(const double &value, const double &reference_value, const WhereClause::clause_t &clause_type);
 bool filterWithComparison(const double &value, const double &reference_value, const WhereClause::clause_t &clause_type) {

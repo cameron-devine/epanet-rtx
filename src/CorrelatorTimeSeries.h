@@ -1,20 +1,20 @@
 //
 //  CorrelatorTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Open Water Analytics [wateranalytics.org]
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__CorrelatorTimeSeries__
-#define __epanet_rtx__CorrelatorTimeSeries__
+#ifndef __tsflib__CorrelatorTimeSeries__
+#define __tsflib__CorrelatorTimeSeries__
 
 #include "TimeSeriesFilterSecondary.h"
 
 #include <iostream>
 
 
-namespace RTX {
+namespace TSF {
   
   
   //! The correlator will resample the secondary "correlatorTimeSeries" at the time values of its source, if needed.
@@ -23,7 +23,7 @@ namespace RTX {
   class CorrelatorTimeSeries : public TimeSeriesFilterSecondary
   {
   public:
-    RTX_BASE_PROPS(CorrelatorTimeSeries);
+    TSF_BASE_PROPS(CorrelatorTimeSeries);
     CorrelatorTimeSeries();
     
     Clock::_sp correlationWindow();
@@ -58,4 +58,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__CorrelatorTimeSeries__) */
+#endif /* defined(__tsflib__CorrelatorTimeSeries__) */

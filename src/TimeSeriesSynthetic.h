@@ -1,20 +1,20 @@
 //
 //  TimeSeriesSynthetic.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 1/19/15.
 //
 //
 
-#ifndef __epanet_rtx__TimeSeriesSynthetic__
-#define __epanet_rtx__TimeSeriesSynthetic__
+#ifndef __tsflib__TimeSeriesSynthetic__
+#define __tsflib__TimeSeriesSynthetic__
 
 #include <stdio.h>
 
 #include "TimeSeries.h"
 #include "Clock.h"
 
-namespace RTX {
+namespace TSF {
   class TimeSeriesSynthetic : public TimeSeries {
   public:
     TimeSeriesSynthetic();
@@ -37,4 +37,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__TimeSeriesSynthetic__) */
+#endif /* defined(__tsflib__TimeSeriesSynthetic__) */

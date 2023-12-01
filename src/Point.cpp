@@ -1,6 +1,6 @@
 //
 //  Point.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -12,7 +12,7 @@
 
 using std::cout;
 using std::endl;
-using namespace RTX;
+using namespace TSF;
 
 Point::Point() : time(0),value(0),quality(PointQuality::opc_bad),confidence(0),isValid(false) {
   
@@ -49,7 +49,7 @@ void Point::addQualFlag(PointQuality qual) {
   // funny bitwise math here since the OPC standard is not a straightforward bitmask
   PointQuality override = this->quality;
   override = (PointQuality)(override & (~opc_good)); // remove opc bits
-  override = (PointQuality)(override | opc_rtx_override); // add override mask
+  override = (PointQuality)(override | opc_tsf_override); // add override mask
   override = (PointQuality)(override | qual);
   this->quality = override;
   if (this->hasQual(opc_bad)) {
@@ -100,7 +100,7 @@ Point Point::operator*(const double factor) const {
   confidence = (this->confidence * factor);  // TODO -- figure out confidence intervals.
   time = this->time;
   
-  return Point(time, value, opc_rtx_override, confidence);
+  return Point(time, value, opc_tsf_override, confidence);
 }
 
 Point& Point::operator*=(const double factor) {
@@ -127,7 +127,7 @@ Point Point::operator/(const double factor) const {
   double confidence = factor == 0 ? 0 : (this->confidence / factor);  // TODO -- figure out confidence intervals.
   time_t time = this->time;
   
-  return Point(time, value, opc_rtx_override, confidence);
+  return Point(time, value, opc_tsf_override, confidence);
 }
 
 Point Point::operator/(const Point p) const {
@@ -164,7 +164,7 @@ Point Point::linearInterpolate(const Point& p1, const Point& p2, const time_t& t
     double newValue = p1.value + dv2;
     double newConfidence = (p1.confidence + p2.confidence) / 2; // TODO -- more elegant confidence estimation
     p = Point(t, newValue, (PointQuality)(p1.quality | p2.quality), newConfidence);
-    p.addQualFlag(rtx_interpolated);
+    p.addQualFlag(tsf_interpolated);
   }
   return p;
 }

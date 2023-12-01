@@ -1,18 +1,18 @@
 //
 //  TimeSeriesFilterSinglePoint.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 1/16/15.
 //
 //
 
-#ifndef __epanet_rtx__TimeSeriesFilterSinglePoint__
-#define __epanet_rtx__TimeSeriesFilterSinglePoint__
+#ifndef __tsflib__TimeSeriesFilterSinglePoint__
+#define __tsflib__TimeSeriesFilterSinglePoint__
 
 #include <stdio.h>
 #include "TimeSeriesFilter.h"
 
-namespace RTX {
+namespace TSF {
   class TimeSeriesFilterSinglePoint : public TimeSeriesFilter {
   protected:
     PointCollection filterPointsInRange(TimeRange range); // non-virtual
@@ -20,4 +20,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__TimeSeriesFilterSinglePoint__) */
+#endif /* defined(__tsflib__TimeSeriesFilterSinglePoint__) */

@@ -1,6 +1,6 @@
 //
 //  IntegratorTimeSeries.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 2/13/15.
 //
@@ -9,7 +9,7 @@
 #include "IntegratorTimeSeries.h"
 
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 
@@ -26,7 +26,7 @@ PointCollection IntegratorTimeSeries::filterPointsInRange(TimeRange range) {
 
   vector<Point> outPoints;
   Units fromUnits = this->source()->units();
-  PointCollection data(vector<Point>(), fromUnits * RTX_SECOND);
+  PointCollection data(vector<Point>(), fromUnits * TSF_SECOND);
   
   if (!this->resetClock()) {
     return PointCollection(vector<Point>(), this->units());
@@ -57,7 +57,7 @@ PointCollection IntegratorTimeSeries::filterPointsInRange(TimeRange range) {
     // special edge-case: one point is returned. implicit re-set?
     if (sourceData.count() == 1) {
       Point p(sourceData.points().front().time, 0);
-      p.addQualFlag(Point::rtx_integrated);
+      p.addQualFlag(Point::tsf_integrated);
       outPoints.push_back(p);
     }
     else {
@@ -89,7 +89,7 @@ PointCollection IntegratorTimeSeries::filterPointsInRange(TimeRange range) {
     }
     if (range.contains(cursor->time)) {
       Point p(cursor->time, integratedValue);
-      p.addQualFlag(Point::rtx_integrated);
+      p.addQualFlag(Point::tsf_integrated);
       outPoints.push_back(p);
     }
     ++cursor;
@@ -108,24 +108,24 @@ PointCollection IntegratorTimeSeries::filterPointsInRange(TimeRange range) {
 
 
 bool IntegratorTimeSeries::canSetSource(TimeSeries::_sp ts) {
-  return (!this->source() || this->units().isSameDimensionAs(ts->units() * RTX_SECOND));
+  return (!this->source() || this->units().isSameDimensionAs(ts->units() * TSF_SECOND));
 }
 
 void IntegratorTimeSeries::didSetSource(TimeSeries::_sp ts) {
-  if (this->units().isDimensionless() || !this->units().isSameDimensionAs(ts->units() * RTX_SECOND)) {
-    Units newUnits = ts->units() * RTX_SECOND;
+  if (this->units().isDimensionless() || !this->units().isSameDimensionAs(ts->units() * TSF_SECOND)) {
+    Units newUnits = ts->units() * TSF_SECOND;
     if (newUnits.isDimensionless()) {
-      newUnits = RTX_DIMENSIONLESS;
+      newUnits = TSF_DIMENSIONLESS;
     }
     this->setUnits(newUnits);
   }
 }
 
-bool IntegratorTimeSeries::canChangeToUnits(RTX::Units units) {
+bool IntegratorTimeSeries::canChangeToUnits(TSF::Units units) {
   if (!this->source()) {
     return true;
   }
-  else if (units.isSameDimensionAs(this->source()->units() * RTX_SECOND)) {
+  else if (units.isSameDimensionAs(this->source()->units() * TSF_SECOND)) {
     return true;
   }
   else {

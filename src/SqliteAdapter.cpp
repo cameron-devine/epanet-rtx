@@ -9,7 +9,7 @@
 #include "WhereClause.h"
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 static int sqlitePointRecordCurrentDbVersion = 2;
 typedef const unsigned char* sqltext;
@@ -92,9 +92,9 @@ void SqliteAdapter::setConnectionString(const std::string& con) {
 }
 
 void SqliteAdapter::doConnect() {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
 
-  if (RTX_STRINGS_ARE_EQUAL(_path, "")) {
+  if (TSF_STRINGS_ARE_EQUAL(_path, "")) {
     _errCallback("No File Specified");
     return;
   }
@@ -152,7 +152,7 @@ void SqliteAdapter::doConnect() {
 
 
 IdentifierUnitsList SqliteAdapter::idUnitsList() {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   
   if (_inTransaction) {
     return _idCache;
@@ -163,7 +163,7 @@ IdentifierUnitsList SqliteAdapter::idUnitsList() {
     
   _dbq << _selectNamesStr
   >> [&](int uid, string name, std::unique_ptr<string> unitStr) {
-    Units units(RTX_NO_UNITS);
+    Units units(TSF_NO_UNITS);
     if (unitStr != nullptr) {
       units = Units::unitOfType(*unitStr);
     }
@@ -177,7 +177,7 @@ IdentifierUnitsList SqliteAdapter::idUnitsList() {
 // TRANSACTIONS
 void SqliteAdapter::beginTransaction() {
   if (!_inTransaction) {
-    _RTX_DB_SCOPED_LOCK;
+    _TSF_DB_SCOPED_LOCK;
     _dbq << "begin;";
     _inTransaction = true;
   }
@@ -193,7 +193,7 @@ void SqliteAdapter::endTransaction() {
 std::vector<Point> SqliteAdapter::selectRange(const std::string& id, TimeRange range) {
   vector<Point> points;
   
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   _dbq << _selectRangeStr << id << (int)range.start << (int)range.end
   >> [&](int t, double v, int q, double c) {
     points.push_back(Point((time_t)t, v, Point::PointQuality( q ), c));
@@ -204,7 +204,7 @@ std::vector<Point> SqliteAdapter::selectRange(const std::string& id, TimeRange r
 
 Point SqliteAdapter::selectNext(const std::string& id, time_t time, WhereClause q) {
   vector<Point> points;
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   
   auto selectStr = (q.clauses.empty()) ? _selectNextStr : _makeSelectStr(_selectNextWhereValueStr, q);
   
@@ -222,7 +222,7 @@ Point SqliteAdapter::selectNext(const std::string& id, time_t time, WhereClause 
 Point SqliteAdapter::selectPrevious(const std::string& id, time_t time, WhereClause q) {
   
   vector<Point> points;
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   
   auto selectStr = (q.clauses.empty()) ? _selectPreviousStr : _makeSelectStr(_selectPreviousWhereValueStr, q);
   
@@ -241,7 +241,7 @@ Point SqliteAdapter::selectPrevious(const std::string& id, time_t time, WhereCla
 bool SqliteAdapter::insertIdentifierAndUnits(const std::string& id, Units units) {
   bool success = false;
   {
-    _RTX_DB_SCOPED_LOCK;
+    _TSF_DB_SCOPED_LOCK;
     try {
       _dbq << "insert or ignore into meta (name,units) values (?,?)"
       << id << units.to_string();
@@ -277,7 +277,7 @@ void SqliteAdapter::insertSingle(const std::string& id, Point point) {
 
 void SqliteAdapter::insertSingleInTransaction(const std::string& id, Point point) {
   
-  _RTX_DB_SCOPED_LOCK; 
+  _TSF_DB_SCOPED_LOCK; 
   int tsUid = _metaCache[id];
   _dbq << _insertSingleStr << (int)point.time << tsUid << point.value << (int)point.quality << point.confidence;
   
@@ -298,7 +298,7 @@ void SqliteAdapter::insertRange(const std::string& id, std::vector<Point> points
 // UPDATE
 bool SqliteAdapter::assignUnitsToRecord(const std::string& name, const Units& units) {
   
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   string q = "update meta set units = ? where name = \'" + name + "\'";
   _dbq << q << units.to_string();
   
@@ -307,12 +307,12 @@ bool SqliteAdapter::assignUnitsToRecord(const std::string& name, const Units& un
 
 // DELETE
 void SqliteAdapter::removeRecord(const std::string& id) {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   _dbq << "delete from points where series_id = (SELECT series_id FROM meta where name = \'" + id + "\');";
   _dbq << "delete from meta where name = \'" + id + "\'";
 }
 void SqliteAdapter::removeAllRecords() {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   _dbq << "delete from points";
 }
 
@@ -379,7 +379,7 @@ void SqliteAdapter::checkTransactions() {
     }
     else {
       // increment the stack count.
-      _RTX_DB_SCOPED_LOCK;
+      _TSF_DB_SCOPED_LOCK;
       ++_transactionStackCount;
     }
   }
@@ -387,7 +387,7 @@ void SqliteAdapter::checkTransactions() {
 
 
 void SqliteAdapter::commit() {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   if (_inTransaction) {
     _dbq << "end;";
     _transactionStackCount = 0;

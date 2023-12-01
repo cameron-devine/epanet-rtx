@@ -2,13 +2,13 @@
 
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 
 IdentifierUnitsList::IdentifierUnitsList() {
   _d.reset(new map<string,pair<Units,string> >);
 }
-bool IdentifierUnitsList::hasIdentifierAndUnits(const std::string &identifier, const RTX::Units &units) {
+bool IdentifierUnitsList::hasIdentifierAndUnits(const std::string &identifier, const TSF::Units &units) {
   auto pr = this->doesHaveIdUnits(identifier, units);
   return pr.first && pr.second;
 }
@@ -29,7 +29,7 @@ pair<bool,bool> IdentifierUnitsList::doesHaveIdUnits(const string& identifier, c
 map<string, pair<Units,string> >* IdentifierUnitsList::get() {
   return _d.get();
 }
-void IdentifierUnitsList::set(const std::string &identifier, const RTX::Units &units) {
+void IdentifierUnitsList::set(const std::string &identifier, const TSF::Units &units) {
   (*_d.get())[identifier] = {units, units.to_string()};
 }
 void IdentifierUnitsList::clear() {

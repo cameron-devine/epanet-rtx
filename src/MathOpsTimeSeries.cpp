@@ -1,7 +1,7 @@
 #include "MathOpsTimeSeries.h"
 #include <cmath>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 MathOpsTimeSeries::MathOpsTimeSeries() {
@@ -142,7 +142,7 @@ Units MathOpsTimeSeries::mathOpsUnits(Units sourceUnits, MathOpsTimeSeriesType t
       if (!sourceUnits.isDimensionless()) {
         cerr << "ERR: Math operation on dimensional series will break Units consistency" << endl;
       }
-      return RTX_DIMENSIONLESS;
+      return TSF_DIMENSIONLESS;
       break;
     case MathOpsTimeSeriesSqrt:
       return sourceUnits^0.5;

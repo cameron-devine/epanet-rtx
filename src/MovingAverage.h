@@ -6,8 +6,8 @@
 //  See README.md and license.txt for more information
 //  
 
-#ifndef rtx_movingaverage_h
-#define rtx_movingaverage_h
+#ifndef tsf_movingaverage_h
+#define tsf_movingaverage_h
 
 #include "TimeSeriesFilter.h"
 
@@ -18,10 +18,10 @@ using std::vector;
  a centered moving average filter, using the "source" timeseries as input.
  */
 
-namespace RTX {
+namespace TSF {
   class MovingAverage : public TimeSeriesFilter {
   public:
-    RTX_BASE_PROPS(MovingAverage);
+    TSF_BASE_PROPS(MovingAverage);
     MovingAverage();
     
     // class-specific properties

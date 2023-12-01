@@ -1,15 +1,15 @@
 //
 //  TimeRange.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 2/25/15.
 //
 //
 
 #include "TimeRange.h"
-#include "rtxMacros.h"
+#include "tsfMacros.h"
 
-using namespace RTX;
+using namespace TSF;
 
 
 TimeRange::TimeRange() {
@@ -122,7 +122,7 @@ TimeRange TimeRange::intersectionOf(TimeRange r1, TimeRange r2) {
     return TimeRange(0,0);
   }
   
-  TimeRange net( RTX_MAX(r1.start,r2.start), RTX_MIN(r1.end, r2.end) );
+  TimeRange net( TSF_MAX(r1.start,r2.start), TSF_MIN(r1.end, r2.end) );
   
   return net;
 }

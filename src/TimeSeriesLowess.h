@@ -5,10 +5,10 @@
 #include "Clock.h"
 #include "BaseStatsTimeSeries.h"
 
-namespace RTX {
+namespace TSF {
   class TimeSeriesLowess : public BaseStatsTimeSeries {
   public:
-    RTX_BASE_PROPS(TimeSeriesLowess);
+    TSF_BASE_PROPS(TimeSeriesLowess);
     TimeSeriesLowess();
     
     void setFraction(double f);

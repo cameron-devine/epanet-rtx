@@ -1,6 +1,6 @@
 //
 //  File.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -10,7 +10,7 @@
 
 #include "Clock.h"
 
-using namespace RTX;
+using namespace TSF;
 
 Clock::Clock(int period, time_t start) : _name("") {
   if (period > 0) {
@@ -32,7 +32,7 @@ bool Clock::isEqual(Clock::_sp other) {
   return (other && _period == other->period() && _start == other->start());
 }
 
-std::ostream& RTX::operator<< (std::ostream &out, Clock &clock) {
+std::ostream& TSF::operator<< (std::ostream &out, Clock &clock) {
   return clock.toStream(out);
 }
 

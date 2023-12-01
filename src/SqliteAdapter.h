@@ -11,7 +11,7 @@
 #include "WhereClause.h"
 
 
-namespace RTX {
+namespace TSF {
   class SqliteAdapter : public DbAdapter {
   public:
     SqliteAdapter( errCallback_t cb );

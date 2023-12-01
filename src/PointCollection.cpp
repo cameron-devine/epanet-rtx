@@ -5,14 +5,14 @@
 #include <boost/accumulators/statistics/tail_quantile.hpp>
 
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 using namespace boost::accumulators;
 using pvIt = PointCollection::pvIt;
 
 
 
-inline void __apply(RTX::PointCollection::pvRange r, function<void(Point&)> fn) {
+inline void __apply(TSF::PointCollection::pvRange r, function<void(Point&)> fn) {
   auto i = r.first;
   while (i != r.second) {
     fn(*i);
@@ -68,7 +68,7 @@ const set<time_t> PointCollection::times() const {
   return t;
 }
 
-bool PointCollection::convertToUnits(RTX::Units u) {
+bool PointCollection::convertToUnits(TSF::Units u) {
   if (!u.isSameDimensionAs(this->units)) {
     return false;
   }

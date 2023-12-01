@@ -1,6 +1,6 @@
 //
 //  DbPointRecord.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Open Water Analytics [wateranalytics.org]
 //  See README.md and license.txt for more information
@@ -19,7 +19,7 @@
 #include "DbPointRecord.h"
 #include "DbAdapter.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 #define _DB_MAX_CONNECT_TRY 5
@@ -33,7 +33,7 @@ DbPointRecord::request_t::request_t(string id, TimeRange r_range) : range(r_rang
 bool DbPointRecord::request_t::contains(std::string id, time_t t) {
   if (this->range.start <= t 
       && t <= this->range.end 
-      && RTX_STRINGS_ARE_EQUAL(id, this->id)) {
+      && TSF_STRINGS_ARE_EQUAL(id, this->id)) {
     return true;
   }
   return false;
@@ -152,7 +152,7 @@ bool DbPointRecord::registerAndGetIdentifierForSeriesWithUnits(string name, Unit
   
   bool nameExists = false;
   bool unitsMatch = false;
-  Units existingUnits = RTX_NO_UNITS;
+  Units existingUnits = TSF_NO_UNITS;
   auto match = this->identifiersAndUnits().doesHaveIdUnits(name,units);
   std::lock_guard lock(_db_readwrite); // get a write lock
   
@@ -190,7 +190,7 @@ bool DbPointRecord::registerAndGetIdentifierForSeriesWithUnits(string name, Unit
   if (nameExists 
       && !unitsMatch 
       && _adapter->options().canAssignUnits 
-      && existingUnits == RTX_NO_UNITS) 
+      && existingUnits == TSF_NO_UNITS) 
   {
     _adapter->assignUnitsToRecord(name, units);
     return DB_PR_SUPER::registerAndGetIdentifierForSeriesWithUnits(name, units);
@@ -255,7 +255,7 @@ void DbPointRecord::endBulkOperation() {
   }
 }
 
-void DbPointRecord::willQuery(RTX::TimeRange range) {
+void DbPointRecord::willQuery(TSF::TimeRange range) {
   if (checkConnected()) {
     // make sure the id list is current:
     _lastIdRequest = 0;
@@ -686,7 +686,7 @@ void DbPointRecord::setOpcFilterType(OpcFilterType type) {
     { OpcWhiteList ,   
       [&](Point p)->Point { 
         if (this->opcFilterList().count(p.quality) > 0) {
-          return Point(p.time, p.value, Point::opc_rtx_override, p.confidence);
+          return Point(p.time, p.value, Point::opc_tsf_override, p.confidence);
         }
         else {
           return Point();
@@ -698,18 +698,18 @@ void DbPointRecord::setOpcFilterType(OpcFilterType type) {
           return Point();
         }
         else {
-          return Point(p.time, p.value, Point::opc_rtx_override, p.confidence);
+          return Point(p.time, p.value, Point::opc_tsf_override, p.confidence);
         }
       }
     },
     { OpcCodesToValues ,
       [&](Point p)->Point {
-        return Point(p.time, (double)p.quality, Point::opc_rtx_override, p.confidence);
+        return Point(p.time, (double)p.quality, Point::opc_tsf_override, p.confidence);
       }
     },
     { OpcCodesToConfidence ,
       [&](Point p)->Point {
-        return Point(p.time, p.value, Point::opc_rtx_override, (double)p.quality);
+        return Point(p.time, p.value, Point::opc_tsf_override, (double)p.quality);
       }
     }
   });

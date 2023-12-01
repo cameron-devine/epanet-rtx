@@ -1,13 +1,13 @@
 //
 //  DbPointRecord.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //  
 
-#ifndef epanet_rtx_DbPointRecord_h
-#define epanet_rtx_DbPointRecord_h
+#ifndef tsflib_DbPointRecord_h
+#define tsflib_DbPointRecord_h
 
 #define DB_PR_SUPER BufferPointRecord
 
@@ -15,11 +15,11 @@
 #include <shared_mutex>
 
 #include "BufferPointRecord.h"
-#include "rtxExceptions.h"
+#include "tsfExceptions.h"
 #include "DbAdapter.h"
 
 
-namespace RTX {
+namespace TSF {
   
   /*! \class DbPointRecord
    \brief A persistence layer for databases
@@ -32,7 +32,7 @@ namespace RTX {
     
   public:
     // base defs
-    RTX_BASE_PROPS(DbPointRecord);
+    TSF_BASE_PROPS(DbPointRecord);
     
     // ctor/dtor
     DbPointRecord();
@@ -96,12 +96,12 @@ namespace RTX {
     void removeOpcFilterCode(unsigned int code);
 
     //exceptions specific to this class family
-    class RtxDbConnectException : public RtxException {
+    class RtxDbConnectException : public TsfException {
     public:
       virtual const char* what() const throw()
       { return "Could not connect to database.\n"; }
     };
-    class RtxDbRetrievalException : public RtxException {
+    class RtxDbRetrievalException : public TsfException {
       virtual const char* what() const throw()
       { return "Could not retrieve data.\n"; }
     };

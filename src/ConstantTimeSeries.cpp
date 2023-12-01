@@ -1,6 +1,6 @@
 #include "ConstantTimeSeries.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 ConstantTimeSeries::ConstantTimeSeries() {
@@ -9,7 +9,7 @@ ConstantTimeSeries::ConstantTimeSeries() {
 
 Point ConstantTimeSeries::syntheticPoint(time_t time)  {
   Point p(time,_value);
-  p.addQualFlag(Point::rtx_constant);
+  p.addQualFlag(Point::tsf_constant);
   return p;
 }
 

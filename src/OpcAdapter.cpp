@@ -2,7 +2,7 @@
 
 #include <open62541.h>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 
@@ -39,7 +39,7 @@ void OpcAdapter::setConnectionString(const std::string &con) {
 }
 
 void OpcAdapter::doConnect() {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   
   if (!_connected) {
     
@@ -85,7 +85,7 @@ void OpcAdapter::doConnect() {
 
 
 IdentifierUnitsList OpcAdapter::idUnitsList() {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   IdentifierUnitsList ids;
   
   
@@ -129,7 +129,7 @@ IdentifierUnitsList OpcAdapter::idUnitsList() {
 }
 
 
-vector<Point> OpcAdapter::selectRange(const std::string &id, RTX::TimeRange range) {
+vector<Point> OpcAdapter::selectRange(const std::string &id, TSF::TimeRange range) {
   Point p;
   UA_NodeId thisNodeId = _nodes.at(id);
   

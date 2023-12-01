@@ -7,10 +7,10 @@
 #include "DbPointRecord.h"
 
 
-namespace RTX {
+namespace TSF {
   class TimeSeriesQuery : public TimeSeries {
   public:
-    RTX_BASE_PROPS(TimeSeriesQuery);
+    TSF_BASE_PROPS(TimeSeriesQuery);
     TimeSeriesQuery();
     
     Point pointBefore(time_t time);

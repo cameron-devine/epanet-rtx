@@ -1,19 +1,19 @@
 //
 //  StatsTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 7/18/14.
 //
 //
 
-#ifndef __epanet_rtx__StatsTimeSeries__
-#define __epanet_rtx__StatsTimeSeries__
+#ifndef __tsflib__StatsTimeSeries__
+#define __tsflib__StatsTimeSeries__
 
 #include <iostream>
 #include "BaseStatsTimeSeries.h"
 #include "Units.h"
 
-namespace RTX {
+namespace TSF {
   
   /*!
    \class StatsTimeSeries
@@ -60,7 +60,7 @@ namespace RTX {
       StatsTimeSeriesPercentile = 11 /*!< Arbitrary percentile */
     } StatsTimeSeriesType;
     
-    RTX_BASE_PROPS(StatsTimeSeries);
+    TSF_BASE_PROPS(StatsTimeSeries);
     StatsTimeSeries();
     
     StatsTimeSeriesType statsType();
@@ -88,4 +88,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__StatsTimeSeries__) */
+#endif /* defined(__tsflib__StatsTimeSeries__) */

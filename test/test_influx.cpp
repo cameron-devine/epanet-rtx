@@ -1,6 +1,6 @@
 //
 //  test_influx.cpp
-//  rtx-tests
+//  tsf-tests
 //
 //  Created by Devine, Cameron - Xylem on 2/22/22.
 //
@@ -20,7 +20,7 @@
 #include "oatpp/web/client/HttpRequestExecutor.hpp"
 
 #include "oatpp-test/web/ClientServerTestRunner.hpp"
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 #include <iostream>

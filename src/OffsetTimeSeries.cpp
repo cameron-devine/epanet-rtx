@@ -3,7 +3,7 @@
 #include "OffsetTimeSeries.h"
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 OffsetTimeSeries::OffsetTimeSeries() {
   setOffset(0.);

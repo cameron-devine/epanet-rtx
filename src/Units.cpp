@@ -1,6 +1,6 @@
 //
 //  Units.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -12,106 +12,106 @@
 #include <vector>
 #include <deque>
 #include "Units.h"
-#include "rtxMacros.h"
+#include "tsfMacros.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 
 const std::map<std::string, Units> Units::unitStrings = {
-  {"dimensionless", RTX_DIMENSIONLESS},
-  {"Hz", RTX_HERTZ},
-  {"rpm", RTX_RPM},
+  {"dimensionless", TSF_DIMENSIONLESS},
+  {"Hz", TSF_HERTZ},
+  {"rpm", TSF_RPM},
   // pressure
-  {"psi", RTX_PSI},
-  {"pa", RTX_PASCAL},
-  {"kpa", RTX_KILOPASCAL},
-  {"bar", RTX_BAR},
+  {"psi", TSF_PSI},
+  {"pa", TSF_PASCAL},
+  {"kpa", TSF_KILOPASCAL},
+  {"bar", TSF_BAR},
   // distance
-  {"ft", RTX_FOOT},
-  {"in", RTX_INCH},
-  {"m", RTX_METER},
-  {"cm", RTX_CENTIMETER},
+  {"ft", TSF_FOOT},
+  {"in", TSF_INCH},
+  {"m", TSF_METER},
+  {"cm", TSF_CENTIMETER},
   // volume
-  {"m³", RTX_CUBIC_METER},
-  {"gal", RTX_GALLON},
-  {"mgal", RTX_MILLION_GALLON},
-  {"liter", RTX_LITER},
-  {"ft³", RTX_CUBIC_FOOT},
+  {"m³", TSF_CUBIC_METER},
+  {"gal", TSF_GALLON},
+  {"mgal", TSF_MILLION_GALLON},
+  {"liter", TSF_LITER},
+  {"ft³", TSF_CUBIC_FOOT},
   // flow
-  {"cms", RTX_CUBIC_METER_PER_SECOND},
-  {"kcmd", RTX_THOUSAND_CUBIC_METER_PER_DAY},
-  {"cfs", RTX_CUBIC_FOOT_PER_SECOND},
-  {"gps", RTX_GALLON_PER_SECOND},
-  {"gpm", RTX_GALLON_PER_MINUTE},
-  {"gpd", RTX_GALLON_PER_DAY},
-  {"mgd", RTX_MILLION_GALLON_PER_DAY},
-  {"lps", RTX_LITER_PER_SECOND},
-  {"lpm", RTX_LITER_PER_MINUTE},
-  {"mld", RTX_MILLION_LITER_PER_DAY},
-  {"m³/hr", RTX_CUBIC_METER_PER_HOUR},
-  {"m³/d", RTX_CUBIC_METER_PER_DAY},
-  {"acre-ft/d", RTX_ACRE_FOOT_PER_DAY},
-  {"imgd", RTX_IMPERIAL_MILLION_GALLON_PER_DAY},
+  {"cms", TSF_CUBIC_METER_PER_SECOND},
+  {"kcmd", TSF_THOUSAND_CUBIC_METER_PER_DAY},
+  {"cfs", TSF_CUBIC_FOOT_PER_SECOND},
+  {"gps", TSF_GALLON_PER_SECOND},
+  {"gpm", TSF_GALLON_PER_MINUTE},
+  {"gpd", TSF_GALLON_PER_DAY},
+  {"mgd", TSF_MILLION_GALLON_PER_DAY},
+  {"lps", TSF_LITER_PER_SECOND},
+  {"lpm", TSF_LITER_PER_MINUTE},
+  {"mld", TSF_MILLION_LITER_PER_DAY},
+  {"m³/hr", TSF_CUBIC_METER_PER_HOUR},
+  {"m³/d", TSF_CUBIC_METER_PER_DAY},
+  {"acre-ft/d", TSF_ACRE_FOOT_PER_DAY},
+  {"imgd", TSF_IMPERIAL_MILLION_GALLON_PER_DAY},
   // time
-  {"s", RTX_SECOND},
-  {"min", RTX_MINUTE},
-  {"hr", RTX_HOUR},
-  {"d", RTX_DAY},
+  {"s", TSF_SECOND},
+  {"min", TSF_MINUTE},
+  {"hr", TSF_HOUR},
+  {"d", TSF_DAY},
   // mass
-  {"μg", RTX_MICROGRAM},
-  {"mg", RTX_MILLIGRAM},
-  {"g", RTX_GRAM},
-  {"kg", RTX_KILOGRAM},
+  {"μg", TSF_MICROGRAM},
+  {"mg", TSF_MILLIGRAM},
+  {"g", TSF_GRAM},
+  {"kg", TSF_KILOGRAM},
   // concentration
-  {"mg/L", RTX_MILLIGRAMS_PER_LITER},
-  {"μg/L", RTX_MICROGRAMS_PER_LITER},
+  {"mg/L", TSF_MILLIGRAMS_PER_LITER},
+  {"μg/L", TSF_MICROGRAMS_PER_LITER},
   // conductance
-  {"us/cm", RTX_MICROSIEMENS_PER_CM},
+  {"us/cm", TSF_MICROSIEMENS_PER_CM},
   // velocity
-  {"m/s", RTX_METER_PER_SECOND},
-  {"fps", RTX_FOOT_PER_SECOND},
-  {"ft/hr", RTX_FOOT_PER_HOUR},
+  {"m/s", TSF_METER_PER_SECOND},
+  {"fps", TSF_FOOT_PER_SECOND},
+  {"ft/hr", TSF_FOOT_PER_HOUR},
   // acceleration
-  {"m/s²", RTX_METER_PER_SECOND_SECOND},
-  {"ft/s²", RTX_FOOT_PER_SECOND_SECOND},
-  {"ft/hr²", RTX_FOOT_PER_HOUR_HOUR},
+  {"m/s²", TSF_METER_PER_SECOND_SECOND},
+  {"ft/s²", TSF_FOOT_PER_SECOND_SECOND},
+  {"ft/hr²", TSF_FOOT_PER_HOUR_HOUR},
   
-  //  {"mgd/s", RTX_MILLION_GALLON_PER_DAY_PER_SECOND},
+  //  {"mgd/s", TSF_MILLION_GALLON_PER_DAY_PER_SECOND},
   
   // temperature
-  {"kelvin", RTX_DEGREE_KELVIN},
-  {"rankine", RTX_DEGREE_RANKINE},
-  {"celsius", RTX_DEGREE_CELSIUS},
-  {"farenheit", RTX_DEGREE_FARENHEIT},
+  {"kelvin", TSF_DEGREE_KELVIN},
+  {"rankine", TSF_DEGREE_RANKINE},
+  {"celsius", TSF_DEGREE_CELSIUS},
+  {"farenheit", TSF_DEGREE_FARENHEIT},
   
-  {"kwh", RTX_KILOWATT_HOUR},
-  {"mj", RTX_MEGAJOULE},
-  {"j", RTX_JOULE},
+  {"kwh", TSF_KILOWATT_HOUR},
+  {"mj", TSF_MEGAJOULE},
+  {"j", TSF_JOULE},
   
   // energy density
-  {"kW-H/m³", RTX_ENERGY_DENSITY},
-  {"kW-H/MG", RTX_ENERGY_DENSITY_MG},
+  {"kW-H/m³", TSF_ENERGY_DENSITY},
+  {"kW-H/MG", TSF_ENERGY_DENSITY_MG},
   
-  {"xx-no-units", RTX_NO_UNITS},
-  {"%", RTX_PERCENT},
+  {"xx-no-units", TSF_NO_UNITS},
+  {"%", TSF_PERCENT},
   
-  {"ft-per-psi", RTX_FOOT * 2.30665873688 / RTX_PSI},
-  {"psi-per-ft", RTX_PSI / (RTX_FOOT * 2.30665873688)},
-  {"W", RTX_WATT},
-  {"kW", RTX_KILOWATT},
+  {"ft-per-psi", TSF_FOOT * 2.30665873688 / TSF_PSI},
+  {"psi-per-ft", TSF_PSI / (TSF_FOOT * 2.30665873688)},
+  {"W", TSF_WATT},
+  {"kW", TSF_KILOWATT},
   
-  {"V", RTX_VOLT},
-  {"A", RTX_AMP},
+  {"V", TSF_VOLT},
+  {"A", TSF_AMP},
   
-  {"ft²", RTX_SQ_FOOT},
-  {"m²", RTX_SQ_METER},
-  {"cm²", RTX_SQ_CENTIMETER},
-  {"in²", RTX_SQ_INCH},
+  {"ft²", TSF_SQ_FOOT},
+  {"m²", TSF_SQ_METER},
+  {"cm²", TSF_SQ_CENTIMETER},
+  {"in²", TSF_SQ_INCH},
 };
 
 
@@ -154,7 +154,7 @@ const double Units::offset() const {
 Units Units::operator*(const Units& unit) const {
   
   if ( this->isInvalid() || unit.isInvalid()) {
-    return RTX_NO_UNITS;
+    return TSF_NO_UNITS;
   }
   
   return Units(_conversion * unit._conversion,
@@ -175,7 +175,7 @@ Units Units::operator*(const double factor) const {
 
 Units Units::operator/(const Units& unit) const {
   if ( this->isInvalid() || unit.isInvalid()) {
-    return RTX_NO_UNITS;
+    return TSF_NO_UNITS;
   }
   return Units(_conversion / unit._conversion,
                _kg - unit._kg,
@@ -200,7 +200,7 @@ Units Units::operator^(const double power) const {
   return Units(pow(_conversion,power), mass, length, time, current, temperature, amount, intensity);
 }
 
-bool Units::operator==(const RTX::Units &unit) const {
+bool Units::operator==(const TSF::Units &unit) const {
   if (_conversion == unit._conversion &&
       _kg         == unit._kg       &&
       _m          == unit._m        &&
@@ -215,7 +215,7 @@ bool Units::operator==(const RTX::Units &unit) const {
   return false;
 }
 
-bool Units::operator!=(const RTX::Units &unit) const {
+bool Units::operator!=(const TSF::Units &unit) const {
   return !(*this == unit);
 }
 
@@ -259,7 +259,7 @@ const bool Units::isDimensionless() const {
 }
 
 
-ostream& RTX::operator<< (ostream &out, Units &unit) {
+ostream& TSF::operator<< (ostream &out, Units &unit) {
   return unit.toStream(out);
 }
 
@@ -328,8 +328,8 @@ double Units::convertValue(double value, const Units& fromUnits, const Units& to
 // factory for string input
 Units Units::unitOfType(const string& unitString) {
   
-  if (RTX_STRINGS_ARE_EQUAL(unitString, "")) {
-    return RTX_NO_UNITS;
+  if (TSF_STRINGS_ARE_EQUAL(unitString, "")) {
+    return TSF_NO_UNITS;
   }
   
   double conversionFactor = 1;
@@ -371,7 +371,7 @@ Units Units::unitOfType(const string& unitString) {
   // if units still not recognized, try case insensitive
   for(auto sup : Units::unitStrings) {
     const string u = sup.first;
-    if (RTX_STRINGS_ARE_EQUAL(u, unitString)) {
+    if (TSF_STRINGS_ARE_EQUAL(u, unitString)) {
       return sup.second;
     }
   }
@@ -384,7 +384,7 @@ Units Units::unitOfType(const string& unitString) {
   
   if (components.size() < 1) {
     cerr << "WARNING: Units not recognized: " << unitString << " - defaulting to NO UNITS." << endl;
-    return RTX_NO_UNITS;
+    return TSF_NO_UNITS;
   }
   
   // first component will be the unit conversion, so cast that into a number.
@@ -393,7 +393,7 @@ Units Units::unitOfType(const string& unitString) {
     conversionFactor = boost::lexical_cast<double>(components.front());
   } catch (...) {
     cerr << "WARNING: Units not recognized: " << unitString << " - defaulting to NO UNITS." << endl;
-    return RTX_NO_UNITS;
+    return TSF_NO_UNITS;
   }
   
   components.pop_front();
@@ -415,21 +415,21 @@ Units Units::unitOfType(const string& unitString) {
     string dim = dimensionPower.back();
     
     // match the SI dimension name
-    if (RTX_STRINGS_ARE_EQUAL(dim, "kilograms")      || RTX_STRINGS_ARE_EQUAL_CS(dim, "kg")) {
+    if (TSF_STRINGS_ARE_EQUAL(dim, "kilograms")      || TSF_STRINGS_ARE_EQUAL_CS(dim, "kg")) {
       mass = power;
-    } else if (RTX_STRINGS_ARE_EQUAL(dim, "meters")  || RTX_STRINGS_ARE_EQUAL_CS(dim, "m")) {
+    } else if (TSF_STRINGS_ARE_EQUAL(dim, "meters")  || TSF_STRINGS_ARE_EQUAL_CS(dim, "m")) {
       length = power;
-    } else if (RTX_STRINGS_ARE_EQUAL(dim, "seconds") || RTX_STRINGS_ARE_EQUAL_CS(dim, "s")) {
+    } else if (TSF_STRINGS_ARE_EQUAL(dim, "seconds") || TSF_STRINGS_ARE_EQUAL_CS(dim, "s")) {
       time = power;
-    } else if (RTX_STRINGS_ARE_EQUAL(dim, "ampere")  || RTX_STRINGS_ARE_EQUAL_CS(dim, "A")) {
+    } else if (TSF_STRINGS_ARE_EQUAL(dim, "ampere")  || TSF_STRINGS_ARE_EQUAL_CS(dim, "A")) {
       current = power;
-    } else if (RTX_STRINGS_ARE_EQUAL(dim, "kelvin")  || RTX_STRINGS_ARE_EQUAL_CS(dim, "K")) {
+    } else if (TSF_STRINGS_ARE_EQUAL(dim, "kelvin")  || TSF_STRINGS_ARE_EQUAL_CS(dim, "K")) {
       temperature = power;
-    } else if (RTX_STRINGS_ARE_EQUAL(dim, "mole")    || RTX_STRINGS_ARE_EQUAL_CS(dim, "mol")) {
+    } else if (TSF_STRINGS_ARE_EQUAL(dim, "mole")    || TSF_STRINGS_ARE_EQUAL_CS(dim, "mol")) {
       amount = power;
-    } else if (RTX_STRINGS_ARE_EQUAL(dim, "candela") || RTX_STRINGS_ARE_EQUAL_CS(dim, "cd")) {
+    } else if (TSF_STRINGS_ARE_EQUAL(dim, "candela") || TSF_STRINGS_ARE_EQUAL_CS(dim, "cd")) {
       intensity = power;
-    } else if (RTX_STRINGS_ARE_EQUAL(dim, "offset")) {
+    } else if (TSF_STRINGS_ARE_EQUAL(dim, "offset")) {
       offset = offsetFromStr;
     }
   }

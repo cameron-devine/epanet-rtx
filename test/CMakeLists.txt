@@ -1,11 +1,11 @@
-add_executable( epanetrtx-test 
+add_executable( tsflib-test 
 	test_main.cpp
 	test_units.cpp
 	test_record.cpp )
 
-set_target_properties(epanetrtx-test PROPERTIES CXX_STANDARD 17)
+set_target_properties(tsflib-test PROPERTIES CXX_STANDARD 17)
 
-target_include_directories(epanetrtx-test PRIVATE ${Boost_INCLUDE_DIRS})
-target_link_libraries(epanetrtx-test ${rtx_lib_deps} epanetrtx ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+target_include_directories(tsflib-test PRIVATE ${Boost_INCLUDE_DIRS})
+target_link_libraries(tsflib-test ${tsf_lib_deps} tsflib ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 
-add_test( NAME epanetrtx-test COMMAND epanetrtx-test )
+add_test( NAME tsflib-test COMMAND tsflib-test )

@@ -18,7 +18,7 @@ Floating point constant should always be written with decimal point and at least
 
 Macros
 ---------------------------
-Macros should be avoided (use const or templates). If needed, macro names must be the same of named constants plus a `RTX_` prefix, such as `RTX_MAX_C_STRING` and `RTX_DO_SOMETHING`.
+Macros should be avoided (use const or templates). If needed, macro names must be the same of named constants plus a `TSF_` prefix, such as `TSF_MAX_C_STRING` and `TSF_DO_SOMETHING`.
 Variables
 Variable names must be in mixed case starting with lower case, such as index, numberOfValues and indexOfNode.
 Variables with a large scope should have long names, variables with a small scope can have short names.
@@ -76,10 +76,10 @@ Special characters like TAB and page break must be avoided.
 
 Header File Guards
 ---------------------------
-Header files must contain an include guard that is composed of the prefix `epanet_rtx_`, the postfix `_h` and the name of the file in lower-case, using underscore to separate words:
+Header files must contain an include guard that is composed of the prefix `tsflib_`, the postfix `_h` and the name of the file in lower-case, using underscore to separate words:
 
-    #ifndef epanet_rtx_Zone_h
-    #define epanet_rtx_Zone_h
+    #ifndef tsflib_Zone_h
+    #define tsflib_Zone_h
     
     // file contents
     

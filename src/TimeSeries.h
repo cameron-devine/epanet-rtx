@@ -1,13 +1,13 @@
 //
 //  TimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //
 
-#ifndef epanet_rtx_timeseries_h
-#define epanet_rtx_timeseries_h
+#ifndef tsflib_timeseries_h
+#define tsflib_timeseries_h
 
 #include <vector>
 #include <set>
@@ -15,7 +15,7 @@
 #include <iostream>
 #include <atomic>
 
-#include "rtxMacros.h"
+#include "tsfMacros.h"
 #include "Point.h"
 #include "PointCollection.h"
 #include "PointRecord.h"
@@ -24,7 +24,7 @@
 #include "TimeRange.h"
 #include "WhereClause.h"
 
-namespace RTX {
+namespace TSF {
   /*!
    \class TimeSeries
    \brief An abstraction of Points ordered in time.
@@ -55,12 +55,12 @@ namespace RTX {
   typedef std::shared_ptr<TimeSeriesFilter> TimeSeriesFilter_sp;
 
 
-  class TimeSeries : public RTX_object {
+  class TimeSeries : public TSF_object {
   public:
-    RTX_BASE_PROPS(TimeSeries);
+    TSF_BASE_PROPS(TimeSeries);
 
     TimeSeries();
-    TimeSeries(const std::string& name, const RTX::Units& units);
+    TimeSeries(const std::string& name, const TSF::Units& units);
     ~TimeSeries();
 
     bool valid(time_t t);

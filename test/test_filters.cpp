@@ -7,7 +7,7 @@
 #include "DbPointRecord.h"
 #include "ConcreteDbRecords.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 ////////////////////////
@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE(complex_resampler) {
   db->setConnectionString("sample_dataset.db");
   Clock::_sp c5m(new Clock(60*5, 0));
   
-  TimeSeries::_sp raw(new TimeSeries("raw", RTX_FOOT));
+  TimeSeries::_sp raw(new TimeSeries("raw", TSF_FOOT));
   raw->setRecord(db);
   raw->insertPoints({ Point(1643616049,14.703218460083008),
                       Point(1643616109,14.708871841430664),
@@ -501,13 +501,13 @@ BOOST_AUTO_TEST_CASE(complex_resampler) {
   });
   
   FailoverTimeSeries::_sp failover(new FailoverTimeSeries());
-  failover->source(raw)->units(RTX_FOOT)->name("failover");
+  failover->source(raw)->units(TSF_FOOT)->name("failover");
   
   ValidRangeTimeSeries::_sp vr(new ValidRangeTimeSeries());
-  vr->range(0, 1500)->mode(RTX::ValidRangeTimeSeries::drop)->source(failover)->units(RTX_FOOT)->name("valid_range");
+  vr->range(0, 1500)->mode(TSF::ValidRangeTimeSeries::drop)->source(failover)->units(TSF_FOOT)->name("valid_range");
   
   TimeSeriesFilter::_sp rs(new TimeSeriesFilter());
-  rs->resample(ResampleModeLinear)->source(vr)->c(c5m)->units(RTX_FOOT)->name("resample");
+  rs->resample(ResampleModeLinear)->source(vr)->c(c5m)->units(TSF_FOOT)->name("resample");
   
   auto points = rs->points(TimeRange(origin, origin+ONE_DAY));
   

@@ -1,24 +1,24 @@
 //
 //  FailoverTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Open Water Analytics [wateranalytics.org]
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__FailoverTimeSeries__
-#define __epanet_rtx__FailoverTimeSeries__
+#ifndef __tsflib__FailoverTimeSeries__
+#define __tsflib__FailoverTimeSeries__
 
 #include "TimeSeriesFilterSecondary.h"
 
 #include <iostream>
 
 
-namespace RTX {
+namespace TSF {
   class FailoverTimeSeries : public TimeSeriesFilterSecondary
   {
   public:
-    RTX_BASE_PROPS(FailoverTimeSeries);
+    TSF_BASE_PROPS(FailoverTimeSeries);
     
     time_t maximumStaleness();
     void setMaximumStaleness(time_t stale);
@@ -48,4 +48,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__FailoverTimeSeries__) */
+#endif /* defined(__tsflib__FailoverTimeSeries__) */

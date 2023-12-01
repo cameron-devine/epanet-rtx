@@ -1,22 +1,22 @@
 //
 //  OffsetTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Open Water Analytics [wateranalytics.org]
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__OffsetTimeSeries__
-#define __epanet_rtx__OffsetTimeSeries__
+#ifndef __tsflib__OffsetTimeSeries__
+#define __tsflib__OffsetTimeSeries__
 
 #include <iostream>
 #include "TimeSeriesFilterSinglePoint.h"
 
-namespace RTX {
+namespace TSF {
   class OffsetTimeSeries : public TimeSeriesFilterSinglePoint {
   
   public:
-    RTX_BASE_PROPS(OffsetTimeSeries);
+    TSF_BASE_PROPS(OffsetTimeSeries);
     OffsetTimeSeries();
     void setOffset(double offset);
     double offset();
@@ -30,4 +30,4 @@ namespace RTX {
     double _offset;
   };
 }
-#endif /* defined(__epanet_rtx__OffsetTimeSeries__) */
+#endif /* defined(__tsflib__OffsetTimeSeries__) */

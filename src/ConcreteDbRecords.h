@@ -1,5 +1,5 @@
-#ifndef __epanet_rtx__ConcreteDbRecords__
-#define __epanet_rtx__ConcreteDbRecords__
+#ifndef __tsflib__ConcreteDbRecords__
+#define __tsflib__ConcreteDbRecords__
 
 #include <iostream>
 #include <list>
@@ -7,11 +7,11 @@
 #include "DbPointRecord.h"
 #include "PointRecordTime.h"
 
-namespace RTX {
+namespace TSF {
   
   class SqlitePointRecord : public DbPointRecord {
   public:
-    RTX_BASE_PROPS(SqlitePointRecord);
+    TSF_BASE_PROPS(SqlitePointRecord);
     SqlitePointRecord();
     virtual ~SqlitePointRecord();
     
@@ -25,7 +25,7 @@ namespace RTX {
   
   class InfluxDbPointRecord : public DbPointRecord {
   public:
-    RTX_BASE_PROPS(InfluxDbPointRecord);
+    TSF_BASE_PROPS(InfluxDbPointRecord);
     InfluxDbPointRecord();
     ~InfluxDbPointRecord();
     bool supportsQualifiedQuery() { return true; };
@@ -35,7 +35,7 @@ namespace RTX {
   
   class InfluxUdpPointRecord : public DbPointRecord {
   public:
-    RTX_BASE_PROPS(InfluxUdpPointRecord);
+    TSF_BASE_PROPS(InfluxUdpPointRecord);
     InfluxUdpPointRecord();
     ~InfluxUdpPointRecord();
     
@@ -44,4 +44,4 @@ namespace RTX {
   
 }
 
-#endif /* defined(__epanet_rtx__ConcreteDbRecords__) */
+#endif /* defined(__tsflib__ConcreteDbRecords__) */

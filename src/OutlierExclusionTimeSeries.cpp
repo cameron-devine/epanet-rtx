@@ -1,6 +1,6 @@
 //
 //  OutlierExclusionTimeSeries.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 7/7/14.
 //
@@ -10,7 +10,7 @@
 #include <boost/foreach.hpp>
 #include <math.h>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 OutlierExclusionTimeSeries::OutlierExclusionTimeSeries() {

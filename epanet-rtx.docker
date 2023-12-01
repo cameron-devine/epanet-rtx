@@ -29,4 +29,4 @@ WORKDIR /opt/src/epanet-rtx
 RUN conan install . --build=missing -s build_type=Release
 RUN conan build . --build=missing -s build_type=Release
 RUN conan export-pkg . -s build_type=Release
-RUN ./build/Release/bin/rtx_test
+RUN ./build/Release/bin/tsf_test

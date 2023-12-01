@@ -1,6 +1,6 @@
 //
 //  CurveFunction.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -10,7 +10,7 @@
 
 #include "CurveFunction.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 CurveFunction::CurveFunction() {
@@ -32,7 +32,7 @@ void CurveFunction::clearCurve() {
   this->setCurve(blank);
 }
 
-PointCollection CurveFunction::filterPointsInRange(RTX::TimeRange range) {
+PointCollection CurveFunction::filterPointsInRange(TSF::TimeRange range) {
   
   if (!_curve || !this->source()) {
     return PointCollection();

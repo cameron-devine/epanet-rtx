@@ -2,7 +2,7 @@
 #include "WhereClause.h"
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 ValidRangeTimeSeries::ValidRangeTimeSeries() {
   _mode = drop;
@@ -95,8 +95,8 @@ PointCollection ValidRangeTimeSeries::filterPointsInRange(TimeRange range) {
       // out of range.
       if (_mode == saturate) {
         // bring pointValue to the nearest max/min value
-        pointValue = RTX_MAX(pointValue, _range.first);
-        pointValue = RTX_MIN(pointValue, _range.second);
+        pointValue = TSF_MAX(pointValue, _range.first);
+        pointValue = TSF_MIN(pointValue, _range.second);
         newP = Point(p.time, pointValue, p.quality, p.confidence);
       }
       else {

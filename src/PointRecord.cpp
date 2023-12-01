@@ -1,6 +1,6 @@
 //
 //  PointRecord.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -10,7 +10,7 @@
 
 #include "PointRecord.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 
@@ -28,7 +28,7 @@ void PointRecord::setName(std::string name) {
 }
 
 
-std::ostream& RTX::operator<< (std::ostream &out, PointRecord &pr) {
+std::ostream& TSF::operator<< (std::ostream &out, PointRecord &pr) {
   return pr.toStream(out);
 }
 
@@ -52,7 +52,7 @@ IdentifierUnitsList PointRecord::identifiersAndUnits() {
   return _idsCache;
 }
 
-bool PointRecord::exists(const std::string &name, const RTX::Units &units) {
+bool PointRecord::exists(const std::string &name, const TSF::Units &units) {
   IdentifierUnitsList avail = this->identifiersAndUnits();
   return avail.hasIdentifierAndUnits(name, units);
 }

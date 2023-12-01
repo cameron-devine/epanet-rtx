@@ -7,7 +7,7 @@
 #include "PointRecordTime.h"
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 using namespace web::http::client;
 using web::http::method;
@@ -141,7 +141,7 @@ std::string PiAdapter::connectionString() {
 }
 
 void PiAdapter::setConnectionString(const std::string& str) {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   
   // split the tokenized string. we're expecting something like "host=127.0.0.1&port=4242"
   
@@ -172,7 +172,7 @@ void PiAdapter::setConnectionString(const std::string& str) {
 }
 
 void PiAdapter::doConnect() {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   _connected = false;
   _conn.dsWebId = "";
   
@@ -233,7 +233,7 @@ void PiAdapter::doConnect() {
 }
 
 IdentifierUnitsList PiAdapter::idUnitsList() {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   
   IdentifierUnitsList ids;
   _webIdLookup.clear();
@@ -256,7 +256,7 @@ IdentifierUnitsList PiAdapter::idUnitsList() {
         string name = i[kName].as_string();
         string webId = i[kWebId].as_string();
         _webIdLookup[name] = webId;
-        ids.set(name, RTX_DIMENSIONLESS);
+        ids.set(name, TSF_DIMENSIONLESS);
       }
     }
   }
@@ -273,7 +273,7 @@ void PiAdapter::endTransaction() {
 
 // READ
 std::vector<Point> PiAdapter::selectRange(const std::string& id, TimeRange range) {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   vector<Point> points;
   
   if (_webIdLookup.count(id) == 0) {

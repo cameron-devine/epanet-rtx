@@ -1,6 +1,6 @@
 //
 //  CorrelatorTimeSeries.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Open Water Analytics [wateranalytics.org]
 //  See README.md and license.txt for more information
@@ -21,7 +21,7 @@
 #include <boost/accumulators/statistics/variates/covariate.hpp>
 
 using namespace boost::accumulators;
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 
@@ -29,7 +29,7 @@ CorrelatorTimeSeries::CorrelatorTimeSeries() {
 //  Clock::_sp c( new Clock(3600) );
 //  _corWindow = c;
   _lagSeconds = 0;
-  this->setUnits(RTX_DIMENSIONLESS);
+  this->setUnits(TSF_DIMENSIONLESS);
 }
 
 bool CorrelatorTimeSeries::canSetSecondary(TimeSeries::_sp secondary) {
@@ -43,10 +43,10 @@ bool CorrelatorTimeSeries::canSetSecondary(TimeSeries::_sp secondary) {
 
 void CorrelatorTimeSeries::didSetSecondary(TimeSeries::_sp secondary) {
   if (this->source() && secondary) {
-    this->setUnits(RTX_DIMENSIONLESS);
+    this->setUnits(TSF_DIMENSIONLESS);
   }
   else {
-    this->setUnits(RTX_NO_UNITS);
+    this->setUnits(TSF_NO_UNITS);
   }
   TimeSeriesFilterSecondary::didSetSecondary(secondary);
 }
@@ -177,12 +177,12 @@ PointCollection CorrelatorTimeSeries::filterPointsInRange(TimeRange range) {
     
     
     if (maxCorrelationAtLaggedTime.first > -MAXFLOAT) {
-      thePoints.push_back(Point(t,maxCorrelationAtLaggedTime.first, Point::opc_rtx_override, (double)(maxCorrelationAtLaggedTime.second)));
+      thePoints.push_back(Point(t,maxCorrelationAtLaggedTime.first, Point::opc_tsf_override, (double)(maxCorrelationAtLaggedTime.second)));
     }
     
   }
   
-  return PointCollection(thePoints, RTX_DIMENSIONLESS);
+  return PointCollection(thePoints, TSF_DIMENSIONLESS);
 }
 
 bool CorrelatorTimeSeries::canSetSource(TimeSeries::_sp ts) {
@@ -195,10 +195,10 @@ bool CorrelatorTimeSeries::canSetSource(TimeSeries::_sp ts) {
 void CorrelatorTimeSeries::didSetSource(TimeSeries::_sp ts) {
   this->invalidate();
   if (this->source() && this->secondary()) {
-    this->setUnits(RTX_DIMENSIONLESS);
+    this->setUnits(TSF_DIMENSIONLESS);
   }
   else {
-    this->setUnits(RTX_NO_UNITS);
+    this->setUnits(TSF_NO_UNITS);
   }
 }
 

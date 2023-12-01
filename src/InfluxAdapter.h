@@ -25,7 +25,7 @@
 #include "DbAdapter.h"
 #include "InfluxClient.hpp"
 
-namespace RTX {
+namespace TSF {
   class InfluxAdapter : public DbAdapter {
   public:
     InfluxAdapter( errCallback_t cb );

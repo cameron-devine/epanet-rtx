@@ -9,7 +9,7 @@
 #include <ua_config_standard.h>
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 
 OpcPointRecord::OpcPointRecord() {
@@ -173,7 +173,7 @@ void _getChildren(OpcUa::Node node, map<string,OpcUa::Node>& nodes, int level) {
 }
 
 
-void OpcPointRecord::dbConnect() throw(RtxException) {
+void OpcPointRecord::dbConnect() throw(TsfException) {
   
   try {
     _client.Connect(_endpoint);
@@ -214,7 +214,7 @@ void OpcPointRecord::refreshIds() {
   _getChildren(objectsNode, _nodes);
   
   for (auto item : _nodes) {
-    ids[item.first] = RTX_NO_UNITS;
+    ids[item.first] = TSF_NO_UNITS;
   }
   
   _identifiersAndUnitsCache = ids;

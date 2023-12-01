@@ -1,22 +1,22 @@
 //
 //  InversionTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Open Water Analytics [wateranalytics.org]
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__InversionTimeSeries__
-#define __epanet_rtx__InversionTimeSeries__
+#ifndef __tsflib__InversionTimeSeries__
+#define __tsflib__InversionTimeSeries__
 
 #include <iostream>
 #include "TimeSeriesFilterSinglePoint.h"
 
-namespace RTX {
+namespace TSF {
   class InversionTimeSeries : public TimeSeriesFilterSinglePoint {
     
   public:
-    RTX_BASE_PROPS(InversionTimeSeries);
+    TSF_BASE_PROPS(InversionTimeSeries);
     
   protected:
     Point filteredWithSourcePoint(Point sourcePoint);
@@ -30,4 +30,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__InversionTimeSeries__) */
+#endif /* defined(__tsflib__InversionTimeSeries__) */

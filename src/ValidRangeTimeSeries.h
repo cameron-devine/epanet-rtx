@@ -1,21 +1,21 @@
 //
 //  ValidRangeTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__ValidRangeTimeSeries__
-#define __epanet_rtx__ValidRangeTimeSeries__
+#ifndef __tsflib__ValidRangeTimeSeries__
+#define __tsflib__ValidRangeTimeSeries__
 
 #include <iostream>
 #include "TimeSeriesFilter.h"
 
-namespace RTX {
+namespace TSF {
   class ValidRangeTimeSeries : public TimeSeriesFilter {
   public:
-    RTX_BASE_PROPS(ValidRangeTimeSeries);
+    TSF_BASE_PROPS(ValidRangeTimeSeries);
     ValidRangeTimeSeries();
     
     void setRange(double min, double max);
@@ -44,4 +44,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__ValidRangeTimeSeries__) */
+#endif /* defined(__tsflib__ValidRangeTimeSeries__) */

@@ -1,18 +1,18 @@
 //
 //  TimeRange.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 2/25/15.
 //
 //
 
-#ifndef __epanet_rtx__TimeRange__
-#define __epanet_rtx__TimeRange__
+#ifndef __tsflib__TimeRange__
+#define __tsflib__TimeRange__
 
 #include <stdio.h>
 #include <time.h>
 
-namespace RTX {
+namespace TSF {
   class TimeRange {
   public:
     enum intersect_type {
@@ -41,4 +41,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__TimeRange__) */
+#endif /* defined(__tsflib__TimeRange__) */

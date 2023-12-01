@@ -1,6 +1,6 @@
 //
 //  BufferPointRecord.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -14,7 +14,7 @@
 
 #include "WhereClause.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 
@@ -24,7 +24,7 @@ BufferPointRecord::BufferPointRecord(int defaultCapacity) {
 }
 
 
-std::ostream& RTX::operator<< (std::ostream &out, BufferPointRecord &pr) {
+std::ostream& TSF::operator<< (std::ostream &out, BufferPointRecord &pr) {
   return pr.toStream(out);
 }
 

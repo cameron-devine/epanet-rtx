@@ -1,12 +1,12 @@
 //
 //  TimeSeriesFilter.cpp
-//  epanet-rtx
+//  tsflib
 //
 
 #include "TimeSeriesFilter.h"
 #include <boost/foreach.hpp>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 // the search stride follows a geometric expansion formula.
@@ -48,7 +48,7 @@ void TimeSeriesFilter::setResampleMode(ResampleMode mode) {
 
 
 // filters can invalidate themselves.
-void TimeSeriesFilter::setUnits(RTX::Units newUnits) {
+void TimeSeriesFilter::setUnits(TSF::Units newUnits) {
   if (! (newUnits == this->units())) {
     //this->invalidate();
     TimeSeries::setUnits(newUnits);
@@ -273,7 +273,7 @@ bool TimeSeriesFilter::willResample() {
 }
 
 
-TimeRange TimeSeriesFilter::expandedRange(RTX::TimeRange r) {
+TimeRange TimeSeriesFilter::expandedRange(TSF::TimeRange r) {
   TimeRange q = r;
   bool canDrop = this->canDropPoints();
   Clock::_sp myClock = this->clock();
@@ -423,7 +423,7 @@ void TimeSeriesFilter::didSetSource(TimeSeries::_sp ts) {
   // expected behavior if this has no units, take on the units of the source.
   // we are guaranteed that the units are compatible (if canChangeToUnits was properly implmented),
   // so no further checking is required.
-  if (this->units() == RTX_NO_UNITS) {
+  if (this->units() == TSF_NO_UNITS) {
     this->setUnits(ts->units());
   }
   

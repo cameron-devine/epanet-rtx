@@ -1,6 +1,6 @@
 //
 //  LagTimeSeries.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 1/20/15.
 //
@@ -10,7 +10,7 @@
 #include <boost/foreach.hpp>
 
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 LagTimeSeries::LagTimeSeries() : _lag(0) {

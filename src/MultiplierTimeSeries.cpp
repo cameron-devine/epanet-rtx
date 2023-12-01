@@ -4,7 +4,7 @@
 #include <boost/foreach.hpp>
 #include <boost/range/adaptors.hpp>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 
@@ -26,7 +26,7 @@ void MultiplierTimeSeries::didSetSecondary(TimeSeries::_sp secondary) {
   this->didSetSource(this->source());
 }
 
-std::set<time_t> MultiplierTimeSeries::timeValuesInRange(RTX::TimeRange range) {
+std::set<time_t> MultiplierTimeSeries::timeValuesInRange(TSF::TimeRange range) {
   std::set<time_t> timeSet;
   if (this->clock()) {
     return this->clock()->timeValuesInRange(range);
@@ -48,7 +48,7 @@ time_t MultiplierTimeSeries::timeBefore(time_t t) {
   // compensate for any zero-values (i.e., not-found)
   t1 = (t1 == 0) ? t2 : t1;
   t2 = (t2 == 0) ? t1 : t2;
-  return RTX_MAX(t1, t2);
+  return TSF_MAX(t1, t2);
 }
 
 time_t MultiplierTimeSeries::timeAfter(time_t t) {
@@ -57,7 +57,7 @@ time_t MultiplierTimeSeries::timeAfter(time_t t) {
   }
   time_t t1 = this->source()->timeAfter(t);
   time_t t2 = this->secondary()->timeAfter(t);
-  return RTX_MIN(t1, t2);
+  return TSF_MIN(t1, t2);
 }
 
 bool MultiplierTimeSeries::willResample() {
@@ -71,7 +71,7 @@ bool MultiplierTimeSeries::willResample() {
   return true; // all other cases.
 }
 
-PointCollection MultiplierTimeSeries::filterPointsInRange(RTX::TimeRange range) {
+PointCollection MultiplierTimeSeries::filterPointsInRange(TSF::TimeRange range) {
   
   if (!this->secondary() || !this->source()) {
     return PointCollection(vector<Point>(), this->units());
@@ -148,10 +148,10 @@ bool MultiplierTimeSeries::canSetSource(TimeSeries::_sp ts) {
 
 
 Units MultiplierTimeSeries::nativeUnits() {
-  Units nativeDerivedUnits = RTX_NO_UNITS;
+  Units nativeDerivedUnits = TSF_NO_UNITS;
   
   if (!this->source() || !this->secondary()) {
-    return RTX_NO_UNITS;
+    return TSF_NO_UNITS;
   }
   
   switch (_mode) {
@@ -171,7 +171,7 @@ Units MultiplierTimeSeries::nativeUnits() {
 void MultiplierTimeSeries::didSetSource(TimeSeries::_sp ts) {
   if (this->source() && this->secondary()) {
     Units nativeDerivedUnits = this->nativeUnits();
-    if (!this->units().isSameDimensionAs(nativeDerivedUnits) || this->units() == RTX_NO_UNITS) {
+    if (!this->units().isSameDimensionAs(nativeDerivedUnits) || this->units() == TSF_NO_UNITS) {
       this->setUnits(nativeDerivedUnits); // will fail if canChangeToUnits is false...
     }
   }

@@ -1,23 +1,23 @@
 //
 //  AggregatorTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //  
 
-#ifndef epanet_rtx_aggregator_timeseries_h
-#define epanet_rtx_aggregator_timeseries_h
+#ifndef tsflib_aggregator_timeseries_h
+#define tsflib_aggregator_timeseries_h
 
 
 #include <vector>
 #include <boost/foreach.hpp>
 
 #include "TimeSeriesFilter.h"
-#include "rtxExceptions.h"
+#include "tsfExceptions.h"
 
 
-namespace RTX {
+namespace TSF {
   
   /*!
    \class AggregatorTimeSeries
@@ -30,7 +30,7 @@ namespace RTX {
   class AggregatorTimeSeries : public TimeSeriesFilter {
   
   public:
-    RTX_BASE_PROPS(AggregatorTimeSeries);
+    TSF_BASE_PROPS(AggregatorTimeSeries);
     
     typedef struct {
       TimeSeries::_sp timeseries;

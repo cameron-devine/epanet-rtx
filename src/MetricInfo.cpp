@@ -5,7 +5,7 @@
 #include <boost/algorithm/string/replace.hpp>
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 // METRIC INFO UTILITY CLASS
 MetricInfo::MetricInfo(const string& name) {

@@ -1,6 +1,6 @@
 //
 //  StatsTimeSeries.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 7/18/14.
 //
@@ -12,7 +12,7 @@
 
 #include <future>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 using PC = PointCollection;
 using ST = StatsTimeSeries;
@@ -131,10 +131,10 @@ PointCollection StatsTimeSeries::filterPointsInRange(TimeRange range) {
   switch (statsType()) {
     case StatsTimeSeriesMean:
     case StatsTimeSeriesMedian:
-      ret.addQualityFlag(Point::rtx_averaged);
+      ret.addQualityFlag(Point::tsf_averaged);
       break;
     default:
-      ret.addQualityFlag(Point::rtx_aggregated);
+      ret.addQualityFlag(Point::tsf_aggregated);
       break;
   }
     
@@ -212,7 +212,7 @@ Units StatsTimeSeries::statsUnits(Units sourceUnits, StatsTimeSeriesType type) {
       return sourceUnits;
       break;
     case StatsTimeSeriesCount:
-      return RTX_DIMENSIONLESS;
+      return TSF_DIMENSIONLESS;
       break;
     case StatsTimeSeriesVar:
       return sourceUnits * sourceUnits;

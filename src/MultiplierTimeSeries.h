@@ -1,18 +1,18 @@
 //
 //  MultiplierTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__MultiplierTimeSeries__
-#define __epanet_rtx__MultiplierTimeSeries__
+#ifndef __tsflib__MultiplierTimeSeries__
+#define __tsflib__MultiplierTimeSeries__
 
 #include <iostream>
 #include "TimeSeriesFilterSecondary.h"
 
-namespace RTX {
+namespace TSF {
   class MultiplierTimeSeries : public TimeSeriesFilterSecondary {
     
   public:
@@ -21,7 +21,7 @@ namespace RTX {
       MultiplierModeDivide =  1
     };
     
-    RTX_BASE_PROPS(MultiplierTimeSeries);
+    TSF_BASE_PROPS(MultiplierTimeSeries);
     MultiplierTimeSeries();
     
     MultiplierMode multiplierMode();
@@ -51,4 +51,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__MultiplierTimeSeries__) */
+#endif /* defined(__tsflib__MultiplierTimeSeries__) */

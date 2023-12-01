@@ -1,21 +1,21 @@
 //
 //  ConstantTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__ConstantTimeSeries__
-#define __epanet_rtx__ConstantTimeSeries__
+#ifndef __tsflib__ConstantTimeSeries__
+#define __tsflib__ConstantTimeSeries__
 
 #include "TimeSeriesSynthetic.h"
 
-namespace RTX {
+namespace TSF {
   
   class ConstantTimeSeries : public TimeSeriesSynthetic {
   public:
-    RTX_BASE_PROPS(ConstantTimeSeries);
+    TSF_BASE_PROPS(ConstantTimeSeries);
     ConstantTimeSeries();
     
     void setValue(double value);
@@ -33,4 +33,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__ConstantTimeSeries__) */
+#endif /* defined(__tsflib__ConstantTimeSeries__) */

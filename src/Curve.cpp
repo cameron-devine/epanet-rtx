@@ -1,7 +1,7 @@
 #include "Curve.h"
 
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 
@@ -58,7 +58,7 @@ PointCollection Curve::convert(const PointCollection &pc, bool saturate) {
       
       op.value = outValue;
       op.quality = p.quality;
-      op.addQualFlag(RTX::Point::rtx_interpolated);
+      op.addQualFlag(TSF::Point::tsf_interpolated);
       outp.push_back(op);
     }
   });

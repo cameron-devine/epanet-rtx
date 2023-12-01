@@ -1,6 +1,6 @@
 //
 //  AggregatorTimeSeries.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -15,7 +15,7 @@
 #include <set>
 #include <future>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 ostream& AggregatorTimeSeries::toStream(ostream &stream) {
@@ -37,7 +37,7 @@ AggregatorTimeSeries::AggregatorTimeSeries() {
 AggregatorTimeSeries::AggregatorMode AggregatorTimeSeries::aggregatorMode() {
   return _mode;
 }
-void AggregatorTimeSeries::setAggregatorMode(RTX::AggregatorTimeSeries::AggregatorMode mode) {
+void AggregatorTimeSeries::setAggregatorMode(TSF::AggregatorTimeSeries::AggregatorMode mode) {
   _mode = mode;
   this->invalidate();
 }
@@ -245,7 +245,7 @@ PointCollection AggregatorTimeSeries::filterPointsInRange(TimeRange range) {
         break;
     }
     
-    p.addQualFlag(Point::rtx_aggregated);
+    p.addQualFlag(Point::tsf_aggregated);
     aggregated.push_back(p);
   }
   

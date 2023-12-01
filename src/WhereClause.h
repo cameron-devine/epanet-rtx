@@ -1,6 +1,6 @@
 //
 //  WhereClause.hpp
-//  epanet-rtx static deps
+//  tsflib static deps
 //
 //  Created by Sam Hatchett on 4/14/20.
 //
@@ -14,7 +14,7 @@
 
 #include "Point.h"
 
-namespace RTX {
+namespace TSF {
 
 class WhereClause {
 public:

@@ -1,19 +1,19 @@
 //
 //  SquareWaveTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 
-#ifndef __epanet_rtx__SquareWaveTimeSeries__
-#define __epanet_rtx__SquareWaveTimeSeries__
+#ifndef __tsflib__SquareWaveTimeSeries__
+#define __tsflib__SquareWaveTimeSeries__
 
 #include "TimeSeriesSynthetic.h"
 
-namespace RTX {
+namespace TSF {
   
   class SquareWaveTimeSeries : public TimeSeriesSynthetic {
     
   public:
-    RTX_BASE_PROPS(SquareWaveTimeSeries);
+    TSF_BASE_PROPS(SquareWaveTimeSeries);
     SquareWaveTimeSeries();
     
     Clock::_sp period();
@@ -33,4 +33,4 @@ namespace RTX {
 }
 
 
-#endif /* defined(__epanet_rtx__SquareWaveTimeSeries__) */
+#endif /* defined(__tsflib__SquareWaveTimeSeries__) */

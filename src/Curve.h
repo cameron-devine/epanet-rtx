@@ -4,15 +4,15 @@
 #include <stdio.h>
 #include <map>
 
-#include "rtxMacros.h"
+#include "tsfMacros.h"
 #include "Units.h"
 #include "Point.h"
 #include "TimeSeries.h"
 
-namespace RTX {
-  class Curve : public RTX_object {
+namespace TSF {
+  class Curve : public TSF_object {
   public:
-    RTX_BASE_PROPS(Curve);
+    TSF_BASE_PROPS(Curve);
     std::string name;
     Units inputUnits;
     Units outputUnits;

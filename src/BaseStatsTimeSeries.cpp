@@ -1,6 +1,6 @@
 //
 //  BaseStatsTimeSeries.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 7/17/14.
 //
@@ -8,7 +8,7 @@
 
 #include "BaseStatsTimeSeries.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 using pvIt = PointCollection::pvIt;
 using pvRange = PointCollection::pvRange;

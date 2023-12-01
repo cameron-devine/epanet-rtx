@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 
-namespace RTX {
+namespace TSF {
   class MetricInfo {
   public:
     MetricInfo(const std::string& name); // ctor from string name

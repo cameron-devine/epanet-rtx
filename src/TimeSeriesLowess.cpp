@@ -1,9 +1,9 @@
 #include "TimeSeriesLowess.h"
 #include "Lowess.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
-using PC = RTX::PointCollection;
+using PC = TSF::PointCollection;
 
 TimeSeriesLowess::TimeSeriesLowess() {
   _fraction = 0.5;
@@ -21,7 +21,7 @@ double TimeSeriesLowess::fraction() {
   return _fraction;
 }
 
-PointCollection TimeSeriesLowess::filterPointsInRange(RTX::TimeRange range) {
+PointCollection TimeSeriesLowess::filterPointsInRange(TSF::TimeRange range) {
   
   TimeRange qRange = range;
   if (this->willResample()) {

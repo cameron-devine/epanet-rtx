@@ -1,6 +1,6 @@
 //
 //  MathOpsTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -8,10 +8,10 @@
 
 #include "TimeSeriesFilterSinglePoint.h"
 
-#ifndef __epanet_rtx__MathOpsTimeSeries__
-#define __epanet_rtx__MathOpsTimeSeries__
+#ifndef __tsflib__MathOpsTimeSeries__
+#define __tsflib__MathOpsTimeSeries__
 
-namespace RTX {
+namespace TSF {
   class MathOpsTimeSeries : public TimeSeriesFilterSinglePoint {
 
   public:
@@ -29,7 +29,7 @@ namespace RTX {
       MathOpsTimeSeriesRound   = 10  /*!< Round to nearest. */
     } MathOpsTimeSeriesType;
     
-    RTX_BASE_PROPS(MathOpsTimeSeries);
+    TSF_BASE_PROPS(MathOpsTimeSeries);
     MathOpsTimeSeries();
     
     MathOpsTimeSeriesType mathOpsType();
@@ -58,4 +58,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__MathOpsTimeSeries__) */
+#endif /* defined(__tsflib__MathOpsTimeSeries__) */

@@ -1,21 +1,21 @@
 //
 //  clock.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //  
 
-#ifndef epanet_rtx_clock_h
-#define epanet_rtx_clock_h
+#ifndef tsflib_clock_h
+#define tsflib_clock_h
 
 #include <time.h>
 #include <vector>
 #include <set>
-#include "rtxMacros.h"
+#include "tsfMacros.h"
 #include "TimeRange.h"
 
-namespace RTX {
+namespace TSF {
   
   
   /*! 
@@ -80,10 +80,10 @@ namespace RTX {
   
   
   
-  class Clock : public RTX_object {
+  class Clock : public TSF_object {
     
   public:
-    RTX_BASE_PROPS(Clock);
+    TSF_BASE_PROPS(Clock);
     Clock(int period = 3600, time_t start = 0);
     virtual ~Clock();
     

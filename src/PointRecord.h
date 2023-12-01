@@ -1,13 +1,13 @@
 //
 //  PointRecord.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //  
 
-#ifndef epanet_rtx_PointRecord_h
-#define epanet_rtx_PointRecord_h
+#ifndef tsflib_PointRecord_h
+#define tsflib_PointRecord_h
 
 // basics
 #include <string>
@@ -19,8 +19,8 @@
 
 #include "Point.h"
 #include "Units.h"
-#include "rtxMacros.h"
-#include "rtxExceptions.h"
+#include "tsfMacros.h"
+#include "tsfExceptions.h"
 #include "TimeRange.h"
 #include "IdentifierUnitsList.h"
 #include "WhereClause.h"
@@ -28,7 +28,7 @@
 
 using std::string;
 
-namespace RTX {
+namespace TSF {
   
   /*! 
    \class PointRecord
@@ -56,10 +56,10 @@ namespace RTX {
    */
   
     
-  class PointRecord : public RTX_object {
+  class PointRecord : public TSF_object {
     
   public:
-    RTX_BASE_PROPS(PointRecord);
+    TSF_BASE_PROPS(PointRecord);
     
     PointRecord();
     virtual ~PointRecord() {};

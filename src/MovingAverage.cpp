@@ -1,6 +1,6 @@
 //
 //  MovingAverage.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -16,7 +16,7 @@
 
 #include <iostream>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 using namespace boost::accumulators;
 
@@ -176,7 +176,7 @@ PointCollection MovingAverage::filterPointsInRange(TimeRange range) {
   
   
   PointCollection outData = PointCollection(filteredPoints, source()->units());
-  outData.addQualityFlag(Point::rtx_averaged);
+  outData.addQualityFlag(Point::tsf_averaged);
   
   bool dataOk = false;
   dataOk = outData.convertToUnits(this->units());

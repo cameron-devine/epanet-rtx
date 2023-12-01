@@ -1,6 +1,6 @@
 //
 //  TimeSeries.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -20,7 +20,7 @@
 #include "TimeSeriesFilter.h"
 
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 #pragma mark - Time Series methods
@@ -30,10 +30,10 @@ TimeSeries::TimeSeries() : _valid(true) {
   _name = "";
   _points.reset( new PointRecord() );
   setName("Time Series");
-  _units = RTX_NO_UNITS;
+  _units = TSF_NO_UNITS;
 }
 
-TimeSeries::TimeSeries(const std::string& name, const RTX::Units& units) {
+TimeSeries::TimeSeries(const std::string& name, const TSF::Units& units) {
   _name = name;
   _units = units;
   _points.reset( new PointRecord() );
@@ -45,7 +45,7 @@ TimeSeries::~TimeSeries() {
   // empty Dtor
 }
 
-std::ostream& RTX::operator<< (std::ostream &out, TimeSeries &ts) {
+std::ostream& TSF::operator<< (std::ostream &out, TimeSeries &ts) {
   return ts.toStream(out);
 }
 
@@ -215,7 +215,7 @@ void TimeSeries::setUnits(Units newUnits) {
     if (! (newUnits == this->units())) {
       // if original units were NONE, then we don't need to invalidate. we are just setting this up for the first time.
       bool shouldInvalidate = true;
-      if (_units == RTX_NO_UNITS || _units == newUnits) {
+      if (_units == TSF_NO_UNITS || _units == newUnits) {
         shouldInvalidate = false;
       }
       _units = newUnits;

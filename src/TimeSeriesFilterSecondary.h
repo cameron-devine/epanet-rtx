@@ -1,6 +1,6 @@
 //
 //  TimeSeriesFilterSecondary.hpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 2/15/16.
 //
@@ -13,10 +13,10 @@
 
 #include "TimeSeriesFilter.h"
 
-namespace RTX {
+namespace TSF {
   class TimeSeriesFilterSecondary : public TimeSeriesFilter {
   public:
-    RTX_BASE_PROPS(TimeSeriesFilterSecondary);
+    TSF_BASE_PROPS(TimeSeriesFilterSecondary);
     TimeSeries::_sp secondary();
     void setSecondary(TimeSeries::_sp secondary);
     virtual bool canSetSecondary(TimeSeries::_sp secondary);

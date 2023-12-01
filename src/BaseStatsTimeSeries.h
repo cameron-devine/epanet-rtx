@@ -1,19 +1,19 @@
 //
 //  BaseStatsTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 7/17/14.
 //
 //
 
-#ifndef __epanet_rtx__BaseStatsTimeSeries__
-#define __epanet_rtx__BaseStatsTimeSeries__
+#ifndef __tsflib__BaseStatsTimeSeries__
+#define __tsflib__BaseStatsTimeSeries__
 
 #include <iostream>
 #include "TimeSeriesFilter.h"
 #include "PointCollection.h"
 
-namespace RTX {
+namespace TSF {
   
   
   /*!
@@ -56,7 +56,7 @@ namespace RTX {
       subrangeMap ranges;
     };
     
-    RTX_BASE_PROPS(BaseStatsTimeSeries);
+    TSF_BASE_PROPS(BaseStatsTimeSeries);
     BaseStatsTimeSeries();
     
     void setWindow(Clock::_sp window);
@@ -85,4 +85,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__QuartileTimeSeries__) */
+#endif /* defined(__tsflib__QuartileTimeSeries__) */

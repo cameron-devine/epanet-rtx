@@ -1,13 +1,13 @@
 //
 //  BufferPointRecord.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__BufferPointRecord__
-#define __epanet_rtx__BufferPointRecord__
+#ifndef __tsflib__BufferPointRecord__
+#define __tsflib__BufferPointRecord__
 
 
 // basics
@@ -17,8 +17,8 @@
 #include <fstream>
 
 #include "Point.h"
-#include "rtxMacros.h"
-#include "rtxExceptions.h"
+#include "tsfMacros.h"
+#include "tsfExceptions.h"
 #include "PointRecord.h"
 
 #include <boost/circular_buffer.hpp>
@@ -28,14 +28,14 @@
 
 using std::string;
 
-namespace RTX {
+namespace TSF {
   
   class BufferPointRecord : public PointRecord {
     
   public:
     
-    RTX_BASE_PROPS(BufferPointRecord);
-    BufferPointRecord(int defaultCapacity = RTX_BUFFER_DEFAULT_CACHESIZE);
+    TSF_BASE_PROPS(BufferPointRecord);
+    BufferPointRecord(int defaultCapacity = TSF_BUFFER_DEFAULT_CACHESIZE);
     virtual ~BufferPointRecord() {};
     
     virtual bool registerAndGetIdentifierForSeriesWithUnits(std::string recordName, Units units);    // registering record names.
@@ -79,4 +79,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__BufferPointRecord__) */
+#endif /* defined(__tsflib__BufferPointRecord__) */

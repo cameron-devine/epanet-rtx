@@ -15,9 +15,9 @@
 // virtual interface for database adapters. includes configuration object which 
 // declares what the implementation supports.
 
-namespace RTX {
+namespace TSF {
   
-#define _RTX_DB_SCOPED_LOCK std::lock_guard<std::mutex> lock(_dbMtx)
+#define _TSF_DB_SCOPED_LOCK std::lock_guard<std::mutex> lock(_dbMtx)
   
   class DbAdapter {
   public:

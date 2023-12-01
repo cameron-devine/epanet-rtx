@@ -14,13 +14,13 @@
 
 #include "TimeSeries.h"
 
-#define RTX_AUTORUNNER_LOGLEVEL_ERROR   0
-#define RTX_AUTORUNNER_LOGLEVEL_WARN    1
-#define RTX_AUTORUNNER_LOGLEVEL_INFO    2
-#define RTX_AUTORUNNER_LOGLEVEL_VERBOSE 3
+#define TSF_AUTORUNNER_LOGLEVEL_ERROR   0
+#define TSF_AUTORUNNER_LOGLEVEL_WARN    1
+#define TSF_AUTORUNNER_LOGLEVEL_INFO    2
+#define TSF_AUTORUNNER_LOGLEVEL_VERBOSE 3
 
 
-namespace RTX {
+namespace TSF {
   class AutoRunner {
   public:
     AutoRunner();

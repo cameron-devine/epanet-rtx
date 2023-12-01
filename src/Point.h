@@ -1,20 +1,20 @@
 //
 //  Point.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //  
 
-#ifndef epanet_rtx_point_h
-#define epanet_rtx_point_h
+#ifndef tsflib_point_h
+#define tsflib_point_h
 
 #include <time.h>
 #include <map>
-#include "rtxMacros.h"
+#include "tsfMacros.h"
 #include "Units.h"
 
-namespace RTX {
+namespace TSF {
     
 //!   A Point Class to store data tuples (date, value, quality, confidence)
 /*!
@@ -31,14 +31,14 @@ namespace RTX {
       opc_good         = 0b11000000,  // 192
       opc_bad          = 0b00000000,  // 0
       opc_uncertain    = 0b01000000,  // 64
-      opc_rtx_override = 0b10000000,  // 128
+      opc_tsf_override = 0b10000000,  // 128
       
-      rtx_constant     = 0b00000001,
-      rtx_interpolated = 0b00000010,
-      rtx_averaged     = 0b00000100,
-      rtx_aggregated   = 0b00001000,
-      rtx_forecasted   = 0b00010000,
-      rtx_integrated   = 0b00100000
+      tsf_constant     = 0b00000001,
+      tsf_interpolated = 0b00000010,
+      tsf_averaged     = 0b00000100,
+      tsf_aggregated   = 0b00001000,
+      tsf_forecasted   = 0b00010000,
+      tsf_integrated   = 0b00100000
       
     };
     
@@ -46,7 +46,7 @@ namespace RTX {
     //! Empty Constructor, equivalent to Point(0,0,Point::missing,0)
     Point();
     //! Full Constructor, for explicitly setting all internal data within the point object.
-    Point(time_t time, double value = 0., PointQuality qual = opc_rtx_override, double confidence = 0.);
+    Point(time_t time, double value = 0., PointQuality qual = opc_tsf_override, double confidence = 0.);
     // dtor
     ~Point();
     

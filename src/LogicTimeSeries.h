@@ -1,19 +1,19 @@
 //
 //  LogicTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 6/12/15.
 //
 //
 
-#ifndef __epanet_rtx__LogicTimeSeries__
-#define __epanet_rtx__LogicTimeSeries__
+#ifndef __tsflib__LogicTimeSeries__
+#define __tsflib__LogicTimeSeries__
 
 #include "TimeSeriesFilterSecondary.h"
 
 #include <iostream>
 
-namespace RTX {
+namespace TSF {
   
   
   //! The logic filter implements common logical operations.
@@ -31,7 +31,7 @@ namespace RTX {
       LogicTimeSeriesFlipFlop = 4
     } LogicType;
     
-    RTX_BASE_PROPS(LogicTimeSeries);
+    TSF_BASE_PROPS(LogicTimeSeries);
     LogicTimeSeries();
     
   protected:
@@ -47,4 +47,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__LogicTimeSeries__) */
+#endif /* defined(__tsflib__LogicTimeSeries__) */

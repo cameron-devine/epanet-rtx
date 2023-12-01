@@ -2,20 +2,20 @@
 #include <boost/foreach.hpp>
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 MetaTimeSeries::MetaTimeSeries() {
-  this->setUnits(RTX_SECOND); // Default time unit
+  this->setUnits(TSF_SECOND); // Default time unit
   _metaMode = MetaModeGap;
 }
 
 
 PointCollection MetaTimeSeries::filterPointsInRange(TimeRange range) {
   
-  PointCollection gaps(vector<Point>(), RTX_DIMENSIONLESS);
+  PointCollection gaps(vector<Point>(), TSF_DIMENSIONLESS);
   
   if (_metaMode == MetaModeGap) {
-    gaps.units = RTX_SECOND;
+    gaps.units = TSF_SECOND;
   }
   
   TimeRange qRange = range;
@@ -62,7 +62,7 @@ PointCollection MetaTimeSeries::filterPointsInRange(TimeRange range) {
         break;
     }
     
-    metaPoint.addQualFlag(Point::rtx_integrated);
+    metaPoint.addQualFlag(Point::tsf_integrated);
     theGaps.push_back(metaPoint);
     
     ++prev;
@@ -89,7 +89,7 @@ void MetaTimeSeries::didSetSource(TimeSeries::_sp ts) {
 
 bool MetaTimeSeries::canChangeToUnits(Units units) {
   if (_metaMode == MetaModeGap) {
-    return (units.isSameDimensionAs(RTX_SECOND));
+    return (units.isSameDimensionAs(TSF_SECOND));
   }
   else if (_metaMode == MetaModeConfidence) {
     return true;
@@ -100,7 +100,7 @@ bool MetaTimeSeries::canChangeToUnits(Units units) {
   return false;
 }
 
-void MetaTimeSeries::setMetaMode(RTX::MetaTimeSeries::MetaMode mode) {
+void MetaTimeSeries::setMetaMode(TSF::MetaTimeSeries::MetaMode mode) {
   if (mode == _metaMode) {
     return;
   }
@@ -109,7 +109,7 @@ void MetaTimeSeries::setMetaMode(RTX::MetaTimeSeries::MetaMode mode) {
   this->invalidate();
   
   if (_metaMode == MetaModeGap) {
-    this->setUnits(RTX_SECOND);
+    this->setUnits(TSF_SECOND);
   }
 }
 

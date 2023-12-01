@@ -1,6 +1,6 @@
 //
 //  GainTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
@@ -8,14 +8,14 @@
 
 #include "TimeSeriesFilterSinglePoint.h"
 
-#ifndef __epanet_rtx__GainTimeSeries__
-#define __epanet_rtx__GainTimeSeries__
+#ifndef __tsflib__GainTimeSeries__
+#define __tsflib__GainTimeSeries__
 
-namespace RTX {
+namespace TSF {
   class GainTimeSeries : public TimeSeriesFilterSinglePoint {
     
   public:
-    RTX_BASE_PROPS(GainTimeSeries);
+    TSF_BASE_PROPS(GainTimeSeries);
     GainTimeSeries();
     
     double gain();
@@ -41,4 +41,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__GainTimeSeries__) */
+#endif /* defined(__tsflib__GainTimeSeries__) */

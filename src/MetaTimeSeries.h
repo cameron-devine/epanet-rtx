@@ -1,13 +1,13 @@
 //
 //  MetaTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 4/14/15.
 //
 //
 
-#ifndef __epanet_rtx__MetaTimeSeries__
-#define __epanet_rtx__MetaTimeSeries__
+#ifndef __tsflib__MetaTimeSeries__
+#define __tsflib__MetaTimeSeries__
 
 #include <stdio.h>
 
@@ -15,13 +15,13 @@
 #include "TimeSeriesFilter.h"
 
 
-namespace RTX {
+namespace TSF {
   //!   A Class to map the input time series into a series whos values are the time gaps between successive points
   
   class MetaTimeSeries : public TimeSeriesFilter {
     
   public:
-    RTX_BASE_PROPS(MetaTimeSeries);
+    TSF_BASE_PROPS(MetaTimeSeries);
     MetaTimeSeries();
     
     enum MetaMode : unsigned int {
@@ -47,4 +47,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__MetaTimeSeries__) */
+#endif /* defined(__tsflib__MetaTimeSeries__) */

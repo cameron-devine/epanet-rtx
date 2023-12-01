@@ -1,21 +1,21 @@
 //
 //  OutlierExclusionTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 7/7/14.
 //
 //
 
-#ifndef __epanet_rtx__OutlierExclusionTimeSeries__
-#define __epanet_rtx__OutlierExclusionTimeSeries__
+#ifndef __tsflib__OutlierExclusionTimeSeries__
+#define __tsflib__OutlierExclusionTimeSeries__
 
 #include <iostream>
 #include "BaseStatsTimeSeries.h"
 
 
-#define RTX_OUTX_SUPER BaseStatsTimeSeries
+#define TSF_OUTX_SUPER BaseStatsTimeSeries
 
-namespace RTX {
+namespace TSF {
   
   
   class OutlierExclusionTimeSeries : public BaseStatsTimeSeries {
@@ -27,7 +27,7 @@ namespace RTX {
       OutlierExclusionModeStdDeviation
     } exclusion_mode_t;
     
-    RTX_BASE_PROPS(OutlierExclusionTimeSeries);
+    TSF_BASE_PROPS(OutlierExclusionTimeSeries);
     OutlierExclusionTimeSeries();
     
     void setOutlierMultiplier(double multiplier);
@@ -58,4 +58,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__OutlierExclusionTimeSeries__) */
+#endif /* defined(__tsflib__OutlierExclusionTimeSeries__) */

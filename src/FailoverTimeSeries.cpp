@@ -1,6 +1,6 @@
 //
 //  FailoverTimeSeries.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Open Water Analytics [wateranalytics.org]
 //  See README.md and license.txt for more information
@@ -12,7 +12,7 @@
 #include <boost/foreach.hpp>
 
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 #define MAX(x,y) (((x)>=(y)) ? (x) : (y))     /* maximum of x and y    */

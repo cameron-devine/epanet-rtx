@@ -9,7 +9,7 @@
 #include <sstream>
 #include <thread>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 const auto shortTime = chrono::milliseconds(200);
@@ -24,7 +24,7 @@ AutoRunner::AutoRunner() {
   });
   setLogging([](string msg){
     cout << msg << endl;
-  }, RTX_AUTORUNNER_LOGLEVEL_VERBOSE);
+  }, TSF_AUTORUNNER_LOGLEVEL_VERBOSE);
 }
 
 void AutoRunner::setSeries(std::vector<TimeSeries::_sp> series) {
@@ -114,7 +114,7 @@ void AutoRunner::_runLoop(std::atomic_bool &cancel) {
     _pct = 0;
     size_t backfillCount = 0;
     size_t iSeries = 0;
-    _log("Scanning Series...", RTX_AUTORUNNER_LOGLEVEL_VERBOSE);
+    _log("Scanning Series...", TSF_AUTORUNNER_LOGLEVEL_VERBOSE);
     
     for(auto &e : _series) {
       ++iSeries;
@@ -139,7 +139,7 @@ void AutoRunner::_runLoop(std::atomic_bool &cancel) {
         backfillCount += points.size();
         ss.str(std::string());
         ss << "Backfill Operation: Fetched " << backfillCount << " points. Scanning " << iSeries << " of " << _series.size() << " series.";
-        _log(ss.str(), RTX_AUTORUNNER_LOGLEVEL_VERBOSE);
+        _log(ss.str(), TSF_AUTORUNNER_LOGLEVEL_VERBOSE);
         
         _throttleWait(_throttle);
       }
@@ -172,7 +172,7 @@ void AutoRunner::_runLoop(std::atomic_bool &cancel) {
       
       ss.str(std::string());
       ss << "Fetched " << nPoints << " points. Scanning " << iSeries << " of " << _series.size() << " series.";
-      _log(ss.str(), RTX_AUTORUNNER_LOGLEVEL_VERBOSE);
+      _log(ss.str(), TSF_AUTORUNNER_LOGLEVEL_VERBOSE);
       
       _throttleWait(_throttle);
     } // for series
@@ -183,7 +183,7 @@ void AutoRunner::_runLoop(std::atomic_bool &cancel) {
     while (!cancel && tick + _freq > time(NULL)) {
       ss.str(std::string());
       ss << "Waiting for " << (tick + _freq - time(NULL)) << " seconds. Last fetch took " << duration << "s for " << nPoints << " points.";
-      _log(ss.str(), RTX_AUTORUNNER_LOGLEVEL_VERBOSE);
+      _log(ss.str(), TSF_AUTORUNNER_LOGLEVEL_VERBOSE);
       this_thread::sleep_for(shortTime);
     }
   } // while !cancel

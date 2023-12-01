@@ -1,23 +1,23 @@
 //
 //  IntegratorTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 2/13/15.
 //
 //
 
-#ifndef __epanet_rtx__IntegratorTimeSeries__
-#define __epanet_rtx__IntegratorTimeSeries__
+#ifndef __tsflib__IntegratorTimeSeries__
+#define __tsflib__IntegratorTimeSeries__
 
 #include <vector>
 #include <boost/foreach.hpp>
 
 #include "TimeSeriesFilter.h"
 
-namespace RTX {
+namespace TSF {
   class IntegratorTimeSeries : public TimeSeriesFilter {
   public:
-    RTX_BASE_PROPS(IntegratorTimeSeries);
+    TSF_BASE_PROPS(IntegratorTimeSeries);
     
     void setResetClock(Clock::_sp resetClock);
     Clock::_sp resetClock();
@@ -38,4 +38,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__IntegratorTimeSeries__) */
+#endif /* defined(__tsflib__IntegratorTimeSeries__) */

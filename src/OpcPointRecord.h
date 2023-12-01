@@ -7,10 +7,10 @@
 
 #include "DbPointRecord.h"
 
-namespace RTX {
+namespace TSF {
   class OpcPointRecord : public DbPointRecord {
   public:
-    RTX_BASE_PROPS(OpcPointRecord);
+    TSF_BASE_PROPS(OpcPointRecord);
     OpcPointRecord();
     
     bool supportsUnitsColumn() {return false;};
@@ -30,7 +30,7 @@ namespace RTX {
     bool insertIdentifierAndUnits(const std::string& id, Units units) {};
     
   protected:
-    void doConnect() throw(RtxException);
+    void doConnect() throw(TsfException);
     
   private:
     void refreshIds();

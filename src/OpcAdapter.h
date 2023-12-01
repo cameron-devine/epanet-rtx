@@ -16,7 +16,7 @@
 
 #include <open62541.h>
 
-namespace RTX {
+namespace TSF {
   class OpcAdapter : public DbAdapter {
   public:
     OpcAdapter( errCallback_t cb );

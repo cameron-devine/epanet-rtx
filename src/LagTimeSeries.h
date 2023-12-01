@@ -1,22 +1,22 @@
 //
 //  LagTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 1/20/15.
 //
 //
 
-#ifndef __epanet_rtx__LagTimeSeries__
-#define __epanet_rtx__LagTimeSeries__
+#ifndef __tsflib__LagTimeSeries__
+#define __tsflib__LagTimeSeries__
 
 #include <stdio.h>
 
 #include "TimeSeriesFilter.h"
 
-namespace RTX {
+namespace TSF {
   class LagTimeSeries : public TimeSeriesFilter {
   public:
-    RTX_BASE_PROPS(LagTimeSeries);
+    TSF_BASE_PROPS(LagTimeSeries);
     LagTimeSeries();
     
     void setOffset(time_t offset);
@@ -39,4 +39,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__LagTimeSeries__) */
+#endif /* defined(__tsflib__LagTimeSeries__) */

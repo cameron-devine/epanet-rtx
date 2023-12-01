@@ -1,7 +1,7 @@
-#ifndef RTX_Visitable_hpp
-#define RTX_Visitable_hpp
+#ifndef TSF_Visitable_hpp
+#define TSF_Visitable_hpp
 
-namespace RTX {
+namespace TSF {
   class BaseVisitor {
   public:
     virtual ~BaseVisitor() {};
@@ -29,8 +29,8 @@ namespace RTX {
     }
   };
   
-  #define RTX_VISITABLE() virtual void accept(BaseVisitor &v) { return acceptVisitor(*this, v); }
-  #define RTX_VISITABLE_TYPE BaseVisitable
+  #define TSF_VISITABLE() virtual void accept(BaseVisitor &v) { return acceptVisitor(*this, v); }
+  #define TSF_VISITABLE_TYPE BaseVisitable
 }
 
-#endif /* RTX_Visitable_hpp */
+#endif /* TSF_Visitable_hpp */

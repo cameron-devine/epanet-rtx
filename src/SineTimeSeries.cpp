@@ -7,7 +7,7 @@
 #include "SineTimeSeries.h"
 
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 SineTimeSeries::SineTimeSeries(double magnitude, time_t period) {

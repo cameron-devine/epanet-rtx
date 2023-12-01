@@ -1,16 +1,16 @@
 //
 //  TimeSeriesFilter.h
-//  epanet-rtx
+//  tsflib
 //
-#ifndef __epanet_rtx__TimeSeriesFilter__
-#define __epanet_rtx__TimeSeriesFilter__
+#ifndef __tsflib__TimeSeriesFilter__
+#define __tsflib__TimeSeriesFilter__
 
 #include <stdio.h>
 
 #include "TimeSeries.h"
 #include <set>
 
-namespace RTX {
+namespace TSF {
   
   /*!
    \class TimeSeriesFilter
@@ -62,7 +62,7 @@ namespace RTX {
   
   class TimeSeriesFilter : public TimeSeries {
   public:
-    RTX_BASE_PROPS(TimeSeriesFilter);
+    TSF_BASE_PROPS(TimeSeriesFilter);
     TimeSeriesFilter();
     // explicit constructor
     
@@ -115,4 +115,4 @@ namespace RTX {
   };
 }
 
-#endif /* defined(__epanet_rtx__TimeSeriesFilter__) */
+#endif /* defined(__tsflib__TimeSeriesFilter__) */

@@ -1,6 +1,6 @@
 //
 //  TimeSeriesFilterSinglePoint.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 1/16/15.
 //
@@ -9,7 +9,7 @@
 #include "TimeSeriesFilterSinglePoint.h"
 #include <boost/foreach.hpp>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 

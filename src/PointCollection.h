@@ -10,7 +10,7 @@
 #include "TimeRange.h"
 #include "Point.h"
 
-namespace RTX {
+namespace TSF {
   
   typedef enum {
     ResampleModeLinear = 0,

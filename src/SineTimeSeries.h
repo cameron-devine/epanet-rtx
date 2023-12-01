@@ -1,22 +1,22 @@
 //
 //  SineTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__SineTimeSeries__
-#define __epanet_rtx__SineTimeSeries__
+#ifndef __tsflib__SineTimeSeries__
+#define __tsflib__SineTimeSeries__
 
 #include "TimeSeriesSynthetic.h"
 
-namespace RTX {
+namespace TSF {
   
   class SineTimeSeries : public TimeSeriesSynthetic {
     
   public:
-    RTX_BASE_PROPS(SineTimeSeries);
+    TSF_BASE_PROPS(SineTimeSeries);
     SineTimeSeries(double magnitude = 1., time_t period = 86400);
     
     time_t period();
@@ -36,4 +36,4 @@ namespace RTX {
 }
 
 
-#endif /* defined(__epanet_rtx__SineTimeSeries__) */
+#endif /* defined(__tsflib__SineTimeSeries__) */

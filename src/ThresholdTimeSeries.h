@@ -1,18 +1,18 @@
 //
 //  ThresholdTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__ThresholdTimeSeries__
-#define __epanet_rtx__ThresholdTimeSeries__
+#ifndef __tsflib__ThresholdTimeSeries__
+#define __tsflib__ThresholdTimeSeries__
 
 #include <iostream>
 #include "TimeSeriesFilterSinglePoint.h"
 
-namespace RTX {
+namespace TSF {
   //!   A Status Class to map the input time series into binary status based on a threshold.
   /*!
    This time series class maps a dimensional input into a dimensionless binary status (0/1),
@@ -28,7 +28,7 @@ namespace RTX {
       thresholdModeAbsolute = 1
     } thresholdMode_t;
     
-    RTX_BASE_PROPS(ThresholdTimeSeries);
+    TSF_BASE_PROPS(ThresholdTimeSeries);
     ThresholdTimeSeries();
     
     double threshold();
@@ -58,4 +58,4 @@ namespace RTX {
     
   };
 }
-#endif /* defined(__epanet_rtx__ThresholdTimeSeries__) */
+#endif /* defined(__tsflib__ThresholdTimeSeries__) */

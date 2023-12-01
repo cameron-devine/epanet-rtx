@@ -1,6 +1,6 @@
 //
 //  TimeSeriesSynthetic.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 1/19/15.
 //
@@ -11,7 +11,7 @@
 #include <vector>
 #include <boost/foreach.hpp>
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 TimeSeriesSynthetic::TimeSeriesSynthetic() {

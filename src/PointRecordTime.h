@@ -1,13 +1,13 @@
 //
 //  PointRecordTime.h
-//  epanet-rtx
+//  tsflib
 //
 //  Open Water Analytics [wateranalytics.org]
 //  See README.md and license.txt for more information
 //
 
-#ifndef __epanet_rtx__PointRecordTime__
-#define __epanet_rtx__PointRecordTime__
+#ifndef __tsflib__PointRecordTime__
+#define __tsflib__PointRecordTime__
 
 #include <iostream>
 #include <time.h>
@@ -17,7 +17,7 @@
 #endif  // this is to prevent mac debugger core from conflicting with boost macros
 #include <boost/date_time/local_time/local_time.hpp>
 
-namespace RTX {
+namespace TSF {
   class PointRecordTime {
     
   public:
@@ -34,4 +34,4 @@ namespace RTX {
 
 
 
-#endif /* defined(__epanet_rtx__PointRecordTime__) */
+#endif /* defined(__tsflib__PointRecordTime__) */

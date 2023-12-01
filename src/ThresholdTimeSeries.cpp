@@ -4,7 +4,7 @@
 #include <cmath>
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 
 ThresholdTimeSeries::ThresholdTimeSeries() {
   _threshold = 0;
@@ -38,7 +38,7 @@ ThresholdTimeSeries::thresholdMode_t ThresholdTimeSeries::mode() {
 
 
 
-Point ThresholdTimeSeries::filteredWithSourcePoint(RTX::Point sourcePoint) {
+Point ThresholdTimeSeries::filteredWithSourcePoint(TSF::Point sourcePoint) {
   double pointValue;
   if (_mode == thresholdModeAbsolute) {
     pointValue = (abs(sourcePoint.value) > _threshold) ? _fixedValue : 0.;
@@ -59,6 +59,6 @@ void ThresholdTimeSeries::didSetSource(TimeSeries::_sp ts) {
   }
 }
 
-bool ThresholdTimeSeries::canChangeToUnits(RTX::Units units) {
+bool ThresholdTimeSeries::canChangeToUnits(TSF::Units units) {
   return true; // any units are ok.
 }

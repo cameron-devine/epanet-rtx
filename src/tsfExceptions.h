@@ -1,40 +1,40 @@
 //
-//  rtxExceptions.h
-//  epanet-rtx
+//  tsfExceptions.h
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //  
 
-#ifndef epanet_rtx_rtxExceptions_h
-#define epanet_rtx_rtxExceptions_h
+#ifndef tsflib_tsfExceptions_h
+#define tsflib_tsfExceptions_h
 
 #include <stdexcept>
 
-namespace RTX {
+namespace TSF {
   
-  class RtxException : public std::exception {
+  class TsfException : public std::exception {
   public:
-    RtxException(std::string ss = "Unknown") : s(ss) {}
+    TsfException(std::string ss = "Unknown") : s(ss) {}
     virtual const char* what() const throw()
     { return s.c_str(); }
-    virtual ~RtxException() throw() {}
+    virtual ~TsfException() throw() {}
     std::string s;
   };
   
-  class RtxIoException : public RtxException {
+  class TsfIoException : public TsfException {
   public:
     virtual const char* what() const throw()
     { return "I/O Exception\n"; }
   };
   
-  class RtxMethodNotValid : public RtxException {
+  class TsfMethodNotValid : public TsfException {
   public:
     virtual const char* what() const throw()
     { return "Method not Valid\n"; }
   };
   
-  class IncompatibleComponent : public RtxException {
+  class IncompatibleComponent : public TsfException {
     virtual const char* what() const throw()
     { return "Component not compatible\n"; }
   };

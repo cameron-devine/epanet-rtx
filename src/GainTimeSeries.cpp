@@ -1,11 +1,11 @@
 #include "GainTimeSeries.h"
 
-using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 GainTimeSeries::GainTimeSeries() {
   _gain = 1.;
-  _gainUnits = RTX_DIMENSIONLESS;
+  _gainUnits = TSF_DIMENSIONLESS;
 }
 
 double GainTimeSeries::gain() {
@@ -19,7 +19,7 @@ void GainTimeSeries::setGain(double gain) {
 Units GainTimeSeries::gainUnits() {
   return _gainUnits;
 }
-void GainTimeSeries::setGainUnits(RTX::Units u) {
+void GainTimeSeries::setGainUnits(TSF::Units u) {
   _gainUnits = u;
   this->invalidate();
   
@@ -30,7 +30,7 @@ void GainTimeSeries::setGainUnits(RTX::Units u) {
 }
 
 
-Point GainTimeSeries::filteredWithSourcePoint(RTX::Point sourcePoint) {
+Point GainTimeSeries::filteredWithSourcePoint(TSF::Point sourcePoint) {
   Point p = sourcePoint * gain();
   Point newPoint = Point::convertPoint(p, (this->source()->units() * this->gainUnits()), this->units());
   return newPoint;
@@ -43,7 +43,7 @@ bool GainTimeSeries::canSetSource(TimeSeries::_sp ts) {
 
 void GainTimeSeries::didSetSource(TimeSeries::_sp ts) {
   Units derived = ts->units() * this->gainUnits();
-  if (!this->units().isSameDimensionAs(derived) || this->units() == RTX_NO_UNITS) {
+  if (!this->units().isSameDimensionAs(derived) || this->units() == TSF_NO_UNITS) {
     this->setUnits(derived);
   }
 }

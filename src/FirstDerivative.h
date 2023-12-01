@@ -1,21 +1,21 @@
 //
 //  FirstDerivative.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //  
 
-#ifndef epanet_rtx_FirstDerivative_h
-#define epanet_rtx_FirstDerivative_h
+#ifndef tsflib_FirstDerivative_h
+#define tsflib_FirstDerivative_h
 
 #include "TimeSeriesFilter.h"
 
-namespace RTX {
+namespace TSF {
   
   class FirstDerivative : public TimeSeriesFilter {
   public:
-    RTX_BASE_PROPS(FirstDerivative);
+    TSF_BASE_PROPS(FirstDerivative);
     FirstDerivative();
     virtual ~FirstDerivative();
     virtual std::ostream& toStream(std::ostream &stream);

@@ -1,13 +1,13 @@
 //
 //  CurveFunctionTimeSeries.h
-//  epanet-rtx
+//  tsflib
 //
 //  Created by the EPANET-RTX Development Team
 //  See README.md and license.txt for more information
 //
 
-#ifndef epanet_rtx_CurveFunctionTimeSeries_h
-#define epanet_rtx_CurveFunctionTimeSeries_h
+#ifndef tsflib_CurveFunctionTimeSeries_h
+#define tsflib_CurveFunctionTimeSeries_h
 
 #include <vector>
 #include <boost/foreach.hpp>
@@ -16,7 +16,7 @@
 #include "CurveFunction.h"
 #include "Curve.h"
 
-namespace RTX {
+namespace TSF {
   
   //!   A Curve Function Class to perform arbitrary mapping of values.
   /*!
@@ -27,7 +27,7 @@ namespace RTX {
   class CurveFunction : public TimeSeriesFilter {
     
   public:
-    RTX_BASE_PROPS(CurveFunction);
+    TSF_BASE_PROPS(CurveFunction);
     CurveFunction();
     
     Curve::_sp curve();

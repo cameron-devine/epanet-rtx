@@ -18,10 +18,10 @@
 
 #include "MetricInfo.h"
 
-#define RTX_INFLUX_CLIENT_TIMEOUT 30
+#define TSF_INFLUX_CLIENT_TIMEOUT 30
 
 using namespace std;
-using namespace RTX;
+using namespace TSF;
 using namespace oatpp;
 using namespace oatpp::web;
 using namespace oatpp::network;
@@ -65,7 +65,7 @@ InfluxAdapter::~InfluxAdapter() {
 
 
 void InfluxAdapter::setConnectionString(const std::string& str) {
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   
   regex kvReg("([^=]+)=([^&\\s]+)&?"); // key - value pair
   // split the tokenized string. we're expecting something like "host=127.0.0.1&port=4242"
@@ -110,7 +110,7 @@ void InfluxAdapter::beginTransaction() {
   }
   _inTransaction = true;
   {
-    _RTX_DB_SCOPED_LOCK;
+    _TSF_DB_SCOPED_LOCK;
     _transactionLines.clear();
   }
 }
@@ -124,14 +124,14 @@ void InfluxAdapter::endTransaction() {
 
 void InfluxAdapter::commitTransactionLines() {
   {
-    _RTX_DB_SCOPED_LOCK;
+    _TSF_DB_SCOPED_LOCK;
     if (_transactionLines.size() == 0) {
       return;
     }
   }
   {
     string concatLines;
-    _RTX_DB_SCOPED_LOCK;
+    _TSF_DB_SCOPED_LOCK;
     auto curs = _transactionLines.begin();
     auto end = _transactionLines.end();
     size_t iLine = 0;
@@ -158,7 +158,7 @@ void InfluxAdapter::commitTransactionLines() {
 }
 
 
-bool InfluxAdapter::insertIdentifierAndUnits(const std::string &id, RTX::Units units) {
+bool InfluxAdapter::insertIdentifierAndUnits(const std::string &id, TSF::Units units) {
   
   MetricInfo m(id);
   m.tags.erase("units"); // get rid of units if they are included.
@@ -172,7 +172,7 @@ bool InfluxAdapter::insertIdentifierAndUnits(const std::string &id, RTX::Units u
   boost::replace_all(tsNameEscaped, " ", "\\ ");
   const string content(tsNameEscaped + " exist=true");
   if (_inTransaction) {
-    _RTX_DB_SCOPED_LOCK;
+    _TSF_DB_SCOPED_LOCK;
     _transactionLines.push_back(content);
   }
   else {
@@ -197,7 +197,7 @@ void InfluxAdapter::insertRange(const std::string& id, std::vector<Point> points
   if (_inTransaction) {
     size_t nLines = 0;
     { // mutex
-      _RTX_DB_SCOPED_LOCK;
+      _TSF_DB_SCOPED_LOCK;
       for (auto s : content) {
         _transactionLines.push_back(s);
       }
@@ -230,7 +230,7 @@ void InfluxAdapter::sendInfluxString(time_t time, const string& seriesId, const 
   if (_inTransaction) {
     size_t nLines = 0;
     {
-      _RTX_DB_SCOPED_LOCK;
+      _TSF_DB_SCOPED_LOCK;
       _transactionLines.push_back(data);
       nLines = _transactionLines.size();
     }
@@ -301,7 +301,7 @@ const char *kERROR = "error";
 const char *kRESULTS = "results";
 // INFLUX TCP
 // task wrapper impl
-/**namespace RTX {
+/**namespace TSF {
   class PplxTaskWrapper : public ITaskWrapper {
   public:
     PplxTaskWrapper();
@@ -365,19 +365,19 @@ InfluxTcpAdapter::~InfluxTcpAdapter() {
 }
 
 shared_ptr<oatpp::web::client::RequestExecutor> InfluxTcpAdapter::createExecutor() {
-  if( RTX_STRINGS_ARE_EQUAL(this->conn.host, "localhost") && this->conn.port == 0){
+  if( TSF_STRINGS_ARE_EQUAL(this->conn.host, "localhost") && this->conn.port == 0){
     auto interface = oatpp::network::virtual_::Interface::obtainShared("virtualhost");
     auto clientConnectionProvider = oatpp::network::virtual_::client::ConnectionProvider::createShared(interface);
     return client::HttpRequestExecutor::createShared(clientConnectionProvider);
   }
   shared_ptr<ClientConnectionProvider> connectionProvider;
   /* Create connection provider */
-  if( RTX_STRINGS_ARE_EQUAL(this->conn.proto, "http") )
+  if( TSF_STRINGS_ARE_EQUAL(this->conn.proto, "http") )
   {
     connectionProvider = oatpp::network::tcp::client::ConnectionProvider::createShared({this->conn.host,
       (v_uint16)this->conn.port});
   }
-  else if( RTX_STRINGS_ARE_EQUAL(this->conn.proto, "https") )
+  else if( TSF_STRINGS_ARE_EQUAL(this->conn.proto, "https") )
   {
     auto config = oatpp::openssl::Config::createShared();
     connectionProvider = oatpp::openssl::client::ConnectionProvider::createShared(config, {this->conn.host, (v_uint16)this->conn.port});
@@ -531,7 +531,7 @@ IdentifierUnitsList InfluxTcpAdapter::idUnitsList() {
   if (_inTransaction) {
     return _idCache;
   }
-  _RTX_DB_SCOPED_LOCK;
+  _TSF_DB_SCOPED_LOCK;
   
   json jsv;
   try {
@@ -565,7 +565,7 @@ IdentifierUnitsList InfluxTcpAdapter::idUnitsList() {
         MetricInfo m(dbId);
         // now we have all kv pairs that define a time series.
         // do we have units info? strip it off before showing the user.
-        Units units = RTX_NO_UNITS;
+        Units units = TSF_NO_UNITS;
         if (m.tags.count("units") > 0) {
           units = Units::unitOfType(m.tags["units"]);
           // remove units from string name.
@@ -584,7 +584,7 @@ IdentifierUnitsList InfluxTcpAdapter::idUnitsList() {
 
 
 std::map<std::string, std::vector<Point> > InfluxTcpAdapter::wideQuery(TimeRange range) {
-  //_RTX_DB_SCOPED_LOCK;
+  //_TSF_DB_SCOPED_LOCK;
   
   
   // aggressive prefetch. query all series for some range, then shortcut subsequent queries if they are in the range cached.
@@ -623,7 +623,7 @@ std::map<std::string, std::vector<Point> > InfluxTcpAdapter::wideQuery(TimeRange
 
 // READ
 std::vector<Point> InfluxTcpAdapter::selectRange(const std::string& id, TimeRange range) {
-  //_RTX_DB_SCOPED_LOCK;
+  //_TSF_DB_SCOPED_LOCK;
   
   string dbId = influxIdForTsId(id);
   InfluxTcpAdapter::Query q = this->queryPartsFromMetricId(dbId);
@@ -666,7 +666,7 @@ vector<string> _makeSelectStrs(WhereClause q) {
 }
 
 Point InfluxTcpAdapter::selectNext(const std::string& id, time_t time, WhereClause whereClause) {
-  //_RTX_DB_SCOPED_LOCK;
+  //_TSF_DB_SCOPED_LOCK;
   
   std::vector<Point> points;
   string dbId = influxIdForTsId(id);
@@ -699,7 +699,7 @@ Point InfluxTcpAdapter::selectNext(const std::string& id, time_t time, WhereClau
 }
 
 Point InfluxTcpAdapter::selectPrevious(const std::string& id, time_t time, WhereClause whereClause) {
-  //_RTX_DB_SCOPED_LOCK;
+  //_TSF_DB_SCOPED_LOCK;
   
   std::vector<Point> points;
   string dbId = influxIdForTsId(id);
@@ -735,7 +735,7 @@ Point InfluxTcpAdapter::selectPrevious(const std::string& id, time_t time, Where
 
 
 vector<Point> InfluxTcpAdapter::selectWithQuery(const std::string& query, TimeRange range) {
-  //_RTX_DB_SCOPED_LOCK;
+  //_TSF_DB_SCOPED_LOCK;
   // expects a "$timeFilter" placeholder, to be replaced with the time range, e.g., "time >= t1 and time <= t2"
   
   //case insensitive find
@@ -952,7 +952,7 @@ map<string, vector<Point> > InfluxTcpAdapter::__pointsFromJson(json& json) {
           }
           ++tagsIter;
         }
-        Units units = RTX_DIMENSIONLESS;
+        Units units = TSF_DIMENSIONLESS;
         if (metric.tags.count("units") == 0) {
           OATPP_LOGE(InfluxTcpAdapter::TAG, "Influx returned malformed response. No \"units\" property in tag list.");
           OATPP_LOGI(InfluxTcpAdapter::TAG, "Tags object format returned: %s", tagsObj.dump().c_str());
@@ -1024,7 +1024,7 @@ map<string, vector<Point> > InfluxTcpAdapter::__pointsFromJson(json& json) {
         }
         time_t t = row.at(timeIndex);
         double v = row.at(valueIndex);
-        Point::PointQuality q = Point::opc_rtx_override;
+        Point::PointQuality q = Point::opc_tsf_override;
         if (!row.at(qualityIndex).is_null()) {
           q = (Point::PointQuality)(row.at(qualityIndex));
         }

@@ -1,6 +1,6 @@
 //
 //  TimeSeriesFilterSecondary.cpp
-//  epanet-rtx
+//  tsflib
 //
 //  Created by Sam Hatchett on 2/15/16.
 //
@@ -8,7 +8,7 @@
 
 #include "TimeSeriesFilterSecondary.h"
 
-using namespace RTX;
+using namespace TSF;
 
 void TimeSeriesFilterSecondary::setSecondary(TimeSeries::_sp secondary) {
   if (this->canSetSecondary(secondary)) {
