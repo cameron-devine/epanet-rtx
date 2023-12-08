@@ -12,6 +12,7 @@
 #include "Junction.h"
 
 using namespace RTX;
+using namespace TSF;
 
 
 Pipe::Pipe(const std::string& name) : Link(name) {

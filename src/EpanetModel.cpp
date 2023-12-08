@@ -12,13 +12,14 @@
 #include <iostream>
 #include "EpanetModel.h"
 #include "rtxMacros.h"
-#include "CurveFunction.h"
+#include <CurveFunction.h>
 
 #include <types.h>
 
 #include <boost/filesystem.hpp>
 
 using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 #define SMALL 0.001

@@ -10,11 +10,12 @@
 
 #include "Tank.h"
 
-#include "OffsetTimeSeries.h"
-#include "CurveFunction.h"
-#include "FirstDerivative.h"
+#include <OffsetTimeSeries.h>
+#include <CurveFunction.h>
+#include <FirstDerivative.h>
 
 using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 Tank::Tank(const std::string& name) : Junction(name) {

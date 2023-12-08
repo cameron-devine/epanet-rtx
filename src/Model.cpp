@@ -11,9 +11,9 @@
 #include <set>
 #include <boost/lexical_cast.hpp>
 #include "Model.h"
-#include "Units.h"
+#include <Units.h>
 
-#include "DbPointRecord.h"
+#include <DbPointRecord.h>
 
 
 #include <boost/config.hpp>
@@ -37,6 +37,7 @@
 #include "oatpp/core/base/Environment.hpp"
 
 using namespace RTX;
+using namespace TSF;
 using namespace std;
 
 bool _rtxmodel_isDbRecord(PointRecord::_sp record);
@@ -267,7 +268,7 @@ void Model::setQualityUnits(Units units) {
   }
 }
 
-void Model::setVolumeUnits(RTX::Units units) {
+void Model::setVolumeUnits(TSF::Units units) {
   _volumeUnits = units;
   for(Tank::_sp t : this->tanks()) {
     t->volume()->setUnits(units);

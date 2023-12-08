@@ -10,13 +10,17 @@
 #define epanet_rtx_tank_h
 
 #include "Junction.h"
-#include "OffsetTimeSeries.h"
-#include "CurveFunction.h"
-#include "FirstDerivative.h"
-#include "Curve.h"
+#include <OffsetTimeSeries.h>
+#include <CurveFunction.h>
+#include <FirstDerivative.h>
+#include <Curve.h>
+
+using TSF::TimeSeries;
+using TSF::Curve;
+using TSF::FirstDerivative;
+using TSF::CurveFunction;
 
 namespace RTX {
-  
   
   class Tank : public Junction {
   public:

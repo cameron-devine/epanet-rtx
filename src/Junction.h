@@ -11,6 +11,8 @@
 
 #include "Node.h"
 
+using TSF::TimeSeries;
+
 namespace RTX {
   
   //!   Junction Class

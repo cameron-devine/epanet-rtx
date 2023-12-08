@@ -11,12 +11,14 @@
 #include <algorithm>
 
 #include <LagTimeSeries.h>
-#include "PointRecordTime.h"
-#include "AggregatorTimeSeries.h"
+#include <PointRecordTime.h>
+#include <AggregatorTimeSeries.h>
+
 #include "types.h"
 
 using namespace std;
 using namespace RTX;
+using namespace TSF;
 using PointCollection = PointCollection;
 
 #define BR '\n'

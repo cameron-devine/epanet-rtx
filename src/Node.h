@@ -9,7 +9,7 @@
 #ifndef epanet_rtx_node_family_h
 #define epanet_rtx_node_family_h
 
-#include <boost/weak_ptr.hpp>
+// #include <boost/weak_ptr.hpp>
 
 #include "Element.h"
 

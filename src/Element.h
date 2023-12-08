@@ -15,8 +15,8 @@
 #include <variant>
 #include <vector>
 #include "rtxMacros.h"
-#include "TimeSeries.h"
-#include "PointRecord.h"
+#include <TimeSeries.h>
+#include <PointRecord.h>
 
 namespace RTX {
 

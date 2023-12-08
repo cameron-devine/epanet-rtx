@@ -11,6 +11,7 @@
 #include "Pump.h"
 
 using namespace RTX;
+using namespace TSF;
 
 Pump::Pump(const std::string& name) : Pipe(name) {
   setType(PUMP);

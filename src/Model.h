@@ -25,11 +25,12 @@
 #include "Pump.h"
 #include "Valve.h"
 #include "Dma.h"
-#include "PointRecord.h"
-#include "Units.h"
-#include "Curve.h"
+#include <PointRecord.h>
+#include <Units.h>
+#include <Curve.h>
 #include "rtxMacros.h"
 
+using TSF::TimeSeries;
 
 namespace RTX {
   

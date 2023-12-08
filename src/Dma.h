@@ -12,13 +12,13 @@
 #include <vector>
 #include <set>
 #include "rtxMacros.h"
-#include "TimeSeries.h"
+#include <TimeSeries.h>
 #include "Element.h"
 #include "Junction.h"
 #include "Tank.h"
 #include "Link.h"
 #include "Pipe.h"
-#include "Units.h"
+#include <Units.h>
 
 //#include "networkGraph.h"
 

@@ -9,11 +9,12 @@
 #include <iostream>
 
 #include "Junction.h"
-#include "OffsetTimeSeries.h"
-#include "GainTimeSeries.h"
+#include <OffsetTimeSeries.h>
+#include <GainTimeSeries.h>
 
 using namespace std;
 using namespace RTX;
+using namespace TSF;
 
 Junction::Junction(const std::string& name) : Node(name) {
   //_demand = 0;

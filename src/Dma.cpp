@@ -10,8 +10,8 @@
 #include <boost/range/adaptors.hpp>
 
 #include "Dma.h"
-#include "ConstantTimeSeries.h"
-#include "AggregatorTimeSeries.h"
+#include <ConstantTimeSeries.h>
+#include <AggregatorTimeSeries.h>
 
 #include <boost/config.hpp>
 #include <boost/algorithm/string/join.hpp>
@@ -22,17 +22,18 @@
 #include <openssl/sha.h>
 
 using namespace RTX;
+using namespace TSF;
 using namespace std;
 using std::cout;
 
 Dma::Dma(const std::string& name) : Element(name), _flowUnits(1) {
   this->setType(DMA);
-  _flowUnits = RTX_LITER_PER_SECOND;
+  _flowUnits = TSF_LITER_PER_SECOND;
   // set to aggregator type because that's the most likely scenario.
   // presumably, we will use Dma::enumerateJunctionsWithRootNode to populate the aggregation.
   _demand.reset(new AggregatorTimeSeries() );
   _demand->setName("DMA " + name + " demand");
-  _demand->setUnits(RTX_LITER_PER_SECOND);
+  _demand->setUnits(TSF_LITER_PER_SECOND);
 }
 Dma::~Dma() {
   
@@ -66,7 +67,7 @@ void Dma::setRecord(PointRecord::_sp record) {
   }
 }
 
-void Dma::setJunctionFlowUnits(RTX::Units units) {
+void Dma::setJunctionFlowUnits(TSF::Units units) {
   _flowUnits = units;
 }
 

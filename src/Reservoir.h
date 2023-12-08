@@ -10,6 +10,7 @@
 #define epanet_rtx_reservoir_h
 
 #include "Junction.h"
+using TSF::TimeSeries;
 
 namespace RTX {
   

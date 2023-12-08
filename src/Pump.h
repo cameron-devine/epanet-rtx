@@ -10,7 +10,10 @@
 #define epanet_rtx_Pump_h
 
 #include "Pipe.h"
-#include "Curve.h"
+#include <Curve.h>
+
+using TSF::TimeSeries;
+using TSF::Curve;
 
 namespace RTX {
   class Pump : public Pipe {

@@ -11,6 +11,8 @@
 
 #include "Link.h"
 
+using TSF::TimeSeries;
+
 namespace RTX {
 //!   Pipe Class
 /*!
