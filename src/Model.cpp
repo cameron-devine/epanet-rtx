@@ -62,20 +62,20 @@ void Model::initObj() {
   _heartbeat.reset( new TimeSeries() );
   
   _relativeError->setName("rel_err,generator=simulation");
-  _relativeError->setUnits(RTX_DIMENSIONLESS);
+  _relativeError->setUnits(TSF_DIMENSIONLESS);
   _iterations->setName("iterations,generator=simulation");
-  _iterations->setUnits(RTX_DIMENSIONLESS);
+  _iterations->setUnits(TSF_DIMENSIONLESS);
   _convergence->setName("convergence,generator=simulation");
-  _convergence->setUnits(RTX_DIMENSIONLESS);
-  _heartbeat->name("heartbeat,generator=simulation")->units(RTX_DIMENSIONLESS);
+  _convergence->setUnits(TSF_DIMENSIONLESS);
+  _heartbeat->name("heartbeat,generator=simulation")->units(TSF_DIMENSIONLESS);
   
   _simWallTime.reset(new TimeSeries);
-  _simWallTime->name("duration,component=simulate,generator=simulation")->units(RTX_SECOND);
+  _simWallTime->name("duration,component=simulate,generator=simulation")->units(TSF_SECOND);
   _saveWallTime.reset(new TimeSeries);
-  _saveWallTime->name("duration,component=save,generator=simulation")->units(RTX_SECOND);
+  _saveWallTime->name("duration,component=save,generator=simulation")->units(TSF_SECOND);
   
   _filterWallTime.reset(new TimeSeries);
-  _filterWallTime->name("duration,component=filter,generator=simulation")->units(RTX_SECOND);
+  _filterWallTime->name("duration,component=filter,generator=simulation")->units(TSF_SECOND);
   
   _doesOverrideDemands = false;
   _shouldRunWaterQuality = false;
@@ -84,9 +84,9 @@ void Model::initObj() {
   _dmaPipesToIgnore = vector<Pipe::_sp>();
   
   // defaults
-  setFlowUnits(RTX_LITER_PER_SECOND);
-  setPressureUnits(RTX_PASCAL);
-  setHeadUnits(RTX_METER);
+  setFlowUnits(TSF_LITER_PER_SECOND);
+  setPressureUnits(TSF_PASCAL);
+  setHeadUnits(TSF_METER);
   _name = "Model";
   _shouldCancelSimulation = false;
   _tanksNeedReset = false;
@@ -222,7 +222,7 @@ Units Model::volumeUnits() {
 }
 
 void Model::setFlowUnits(Units units)    {
-  if (!units.isSameDimensionAs(RTX_LITER_PER_SECOND)) {
+  if (!units.isSameDimensionAs(TSF_LITER_PER_SECOND)) {
     cerr << "units not dimensionally consistent with flow" << endl;
     return;
   }
@@ -1269,10 +1269,10 @@ void Model::setSimulationParameters(time_t time) {
       if (status) {
         Point p = valve->settingBoundary()->pointAtOrBefore(time);
         if (p.isValid) {
-          if (settingUnits.isSameDimensionAs(RTX_PSI)) {
+          if (settingUnits.isSameDimensionAs(TSF_PSI)) {
             p = Point::convertPoint(p, settingUnits, this->pressureUnits());
           }
-          else if (settingUnits.isSameDimensionAs(RTX_GALLON_PER_MINUTE)) {
+          else if (settingUnits.isSameDimensionAs(TSF_GALLON_PER_MINUTE)) {
             p = Point::convertPoint(p, settingUnits, this->flowUnits());
           }
           setValveSettingControl( valve->name(), p.value, enable );
@@ -1314,7 +1314,7 @@ void Model::setSimulationParameters(time_t time) {
       if (status == Pipe::OPEN) {
         Point p = pump->settingBoundary()->pointAtOrBefore(time);
         // edge case where series is in % or purely dimensionless
-        if (pump->settingBoundary()->units() == RTX_PERCENT) {
+        if (pump->settingBoundary()->units() == TSF_PERCENT) {
           p.value /= 100.0;
         }
         if (p.isValid) {

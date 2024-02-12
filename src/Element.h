@@ -18,6 +18,11 @@
 #include <TimeSeries.h>
 #include <PointRecord.h>
 
+using TSF::TimeSeries;
+using TSF::Units;
+using TSF::Clock;
+using TSF::PointRecord;
+
 namespace RTX {
 
 #pragma mark -

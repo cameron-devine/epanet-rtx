@@ -97,48 +97,48 @@ void EpanetModel::useEpanetModel(EN_Project *model, string path) {
   }
   switch (flowUnitType) {
     case EN_LPS:
-      setFlowUnits(RTX_LITER_PER_SECOND);
+      setFlowUnits(TSF_LITER_PER_SECOND);
       break;
     case EN_MLD:
-      setFlowUnits(RTX_MILLION_LITER_PER_DAY);
+      setFlowUnits(TSF_MILLION_LITER_PER_DAY);
       break;
     case EN_CMH:
-      setFlowUnits(RTX_CUBIC_METER_PER_HOUR);
+      setFlowUnits(TSF_CUBIC_METER_PER_HOUR);
       break;
     case EN_CMD:
-      setFlowUnits(RTX_CUBIC_METER_PER_DAY);
+      setFlowUnits(TSF_CUBIC_METER_PER_DAY);
       break;
     case EN_GPM:
-      setFlowUnits(RTX_GALLON_PER_MINUTE);
+      setFlowUnits(TSF_GALLON_PER_MINUTE);
       break;
     case EN_MGD:
-      setFlowUnits(RTX_MILLION_GALLON_PER_DAY);
+      setFlowUnits(TSF_MILLION_GALLON_PER_DAY);
       break;
     case EN_IMGD:
-      setFlowUnits(RTX_IMPERIAL_MILLION_GALLON_PER_DAY);
+      setFlowUnits(TSF_IMPERIAL_MILLION_GALLON_PER_DAY);
       break;
     case EN_AFD:
-      setFlowUnits(RTX_ACRE_FOOT_PER_DAY);
+      setFlowUnits(TSF_ACRE_FOOT_PER_DAY);
     default:
       break;
   }
   
   if (isSI) {
-    setHeadUnits(RTX_METER);
-    setPressureUnits(RTX_KILOPASCAL);
-    volumeUnits = RTX_CUBIC_METER;
+    setHeadUnits(TSF_METER);
+    setPressureUnits(TSF_KILOPASCAL);
+    volumeUnits = TSF_CUBIC_METER;
     
   }
   else {
-    setHeadUnits(RTX_FOOT);
-    setPressureUnits(RTX_PSI);
-    volumeUnits = RTX_CUBIC_FOOT;
+    setHeadUnits(TSF_FOOT);
+    setPressureUnits(TSF_PSI);
+    volumeUnits = TSF_CUBIC_FOOT;
   }
   
   this->setVolumeUnits(volumeUnits);
   
   // what units are quality in? who knows!
-  //this->setQualityUnits(RTX_MICROSIEMENS_PER_CM);
+  //this->setQualityUnits(TSF_MICROSIEMENS_PER_CM);
   //EN_API_CHECK(EN_setqualtype(_enModel, CHEM, (char*)"rtxConductivity", (char*)"us/cm", (char*)""), "EN_setqualtype");
     
   // get simulation parameters
@@ -299,8 +299,8 @@ void EpanetModel::createRtxWrappers() {
     
     Curve::_sp newCurve( new Curve );
     newCurve->curveData = curveData;
-    newCurve->inputUnits = RTX_DIMENSIONLESS;
-    newCurve->outputUnits = RTX_DIMENSIONLESS;
+    newCurve->inputUnits = TSF_DIMENSIONLESS;
+    newCurve->outputUnits = TSF_DIMENSIONLESS;
     newCurve->name = string(buf);
     
     this->addCurve(newCurve);
@@ -509,7 +509,7 @@ void EpanetModel::createRtxWrappers() {
           Curve::_sp effCurve = namedCurves[(int)curveIdx];
           if (effCurve) {
             effCurve->inputUnits = this->flowUnits();
-            effCurve->outputUnits = RTX_DIMENSIONLESS;
+            effCurve->outputUnits = TSF_DIMENSIONLESS;
             newPump->setEfficiencyCurve(effCurve);
           }
         }
@@ -645,10 +645,10 @@ void EpanetModel::setQualityOptions(QualityType qt, const std::string& traceNode
   
   switch (qt) {
     case Model::Age:
-      this->setQualityUnits(RTX_HOUR);
+      this->setQualityUnits(TSF_HOUR);
       break;
     case Model::Trace:
-      this->setQualityUnits(RTX_DIMENSIONLESS);
+      this->setQualityUnits(TSF_DIMENSIONLESS);
       break;
     default:
       break;

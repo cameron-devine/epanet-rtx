@@ -241,7 +241,7 @@ bool Dma::doesContainReservoir() {
 //    // assemble the aggregated demand time series
 //    
 //    AggregatorTimeSeries::_sp dmaDemand( new AggregatorTimeSeries() );
-//    dmaDemand->setUnits(RTX_GALLON_PER_MINUTE);
+//    dmaDemand->setUnits(TSF_GALLON_PER_MINUTE);
 //    dmaDemand->setName("DMA " + this->name() + " demand");
 //    for(Tank::_sp t : _tanks) {
 //      dmaDemand->addSource(t->flowMeasure(), -1.);
@@ -265,7 +265,7 @@ bool Dma::doesContainReservoir() {
 //    ConstantTimeSeries::_sp constDma(new ConstantTimeSeries());
 //    constDma->setName("Zero Demand");
 //    constDma->setValue(0.);
-//    constDma->setUnits(RTX_GALLON_PER_MINUTE);
+//    constDma->setUnits(TSF_GALLON_PER_MINUTE);
 //    this->setDemand(constDma);
 //  }
 //  
@@ -326,7 +326,7 @@ void Dma::initDemandTimeseries(const set<Pipe::_sp> &boundarySet) {
   
   
   AggregatorTimeSeries::_sp boundaryDemandSum(new AggregatorTimeSeries());
-  boundaryDemandSum->setUnits(RTX_GALLON_PER_MINUTE);
+  boundaryDemandSum->setUnits(TSF_GALLON_PER_MINUTE);
   for(auto ts : _boundaryFlowJunctions) {
     boundaryDemandSum->addSource(ts->boundaryFlow());
   }
@@ -337,7 +337,7 @@ void Dma::initDemandTimeseries(const set<Pipe::_sp> &boundarySet) {
     ConstantTimeSeries::_sp c(new ConstantTimeSeries());
     c->setValue(0);
     c->setClock(fixed_minute_clock);
-    c->setUnits(RTX_GALLON_PER_MINUTE);
+    c->setUnits(TSF_GALLON_PER_MINUTE);
     _boundaryDemand = c;
   }
   
@@ -350,7 +350,7 @@ void Dma::initDemandTimeseries(const set<Pipe::_sp> &boundarySet) {
     // assemble the aggregated demand time series
     
     AggregatorTimeSeries::_sp dmaDemand( new AggregatorTimeSeries() );
-    dmaDemand->setUnits(RTX_GALLON_PER_MINUTE);
+    dmaDemand->setUnits(TSF_GALLON_PER_MINUTE);
     dmaDemand->setName("DMA " + this->name() + " demand");
     for(Tank::_sp t : _tanks) {
       dmaDemand->addSource(t->flowCalc(), -1.);
@@ -363,7 +363,7 @@ void Dma::initDemandTimeseries(const set<Pipe::_sp> &boundarySet) {
     
     if (_measuredBoundaryPipesDirectional.size() == 0) {
       ConstantTimeSeries::_sp zero( new ConstantTimeSeries() );
-      zero->setUnits(RTX_GALLON_PER_MINUTE);
+      zero->setUnits(TSF_GALLON_PER_MINUTE);
       zero->setClock(fixed_minute_clock);
       zero->setValue(0.);
       this->setDemand(zero);
@@ -383,7 +383,7 @@ void Dma::initDemandTimeseries(const set<Pipe::_sp> &boundarySet) {
     ConstantTimeSeries::_sp constDma(new ConstantTimeSeries());
     constDma->setName("Zero Demand");
     constDma->setValue(0.);
-    constDma->setUnits(RTX_GALLON_PER_MINUTE);
+    constDma->setUnits(TSF_GALLON_PER_MINUTE);
     constDma->setClock(fixed_minute_clock);
     this->setDemand(constDma);
   }
@@ -652,7 +652,7 @@ bool Dma::isBoundaryPipe(Pipe::_sp pipe) {
 }
 
 void Dma::setDemand(TimeSeries::_sp demand) {
-  if (demand->units().isSameDimensionAs(RTX_CUBIC_METER_PER_SECOND)) {
+  if (demand->units().isSameDimensionAs(TSF_CUBIC_METER_PER_SECOND)) {
     _demand = demand;
   }
   else {

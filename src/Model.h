@@ -31,6 +31,9 @@
 #include "rtxMacros.h"
 
 using TSF::TimeSeries;
+using TSF::Units;
+using TSF::Clock;
+using TSF::PointRecord;
 
 namespace RTX {
   
