@@ -17,7 +17,7 @@ class SqliteModernCppConan(ConanFile):
 
     def source(self):
         git = Git(self)
-        git.clone(url="https://github.com/aminroosta/sqlite_modern_cpp.git", target=".")
+        git.clone(url="https://github.com/SqliteModernCpp/sqlite_modern_cpp.git", target=".")
         git.checkout("v3.2")
 
     def package_id(self):
