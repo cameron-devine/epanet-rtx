@@ -27,6 +27,8 @@ Tank::Tank(const std::string& name) : Junction(name) {
   
   _minLevel = 0;
   _maxLevel = 0;
+  _initLevel = 0;
+  _diameter = 0;
   
   
   _volumeCalc.reset( new CurveFunction() );
@@ -71,6 +73,19 @@ double Tank::maxLevel() {
   return _maxLevel;
 }
 
+
+void Tank::setEnProperties(double initLevel, double diameter) {
+  _initLevel = initLevel;
+  _diameter = diameter;
+}
+
+double Tank::initLevel() {
+  return _initLevel;
+}
+
+double Tank::diameter() {
+  return _diameter;
+}
 
 void Tank::setGeometry(Curve::_sp curve) {
   _geometry = curve;
