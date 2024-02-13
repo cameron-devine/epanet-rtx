@@ -46,7 +46,7 @@ EpanetModel::EpanetModel(const EpanetModel& o) {
   
 }
 
-EN_Project* EpanetModel::epanetModelPointer() {
+EN_Project EpanetModel::epanetModelPointer() {
   return _enModel;
 }
 
@@ -63,7 +63,7 @@ EpanetModel::EpanetModel(const std::string& filename) {
 
 #pragma mark - Loading
 
-void EpanetModel::useEpanetModel(EN_Project *model, string path) {
+void EpanetModel::useEpanetModel(EN_Project model, string path) {
   Units volumeUnits(0);
   this->_enModel = model;
   _modelFile = path;
@@ -182,7 +182,7 @@ void EpanetModel::useEpanetModel(EN_Project *model, string path) {
   // get the valve types
   for(Valve::_sp v : this->valves()) {
     int enIdx = _linkIndex[v->name()];
-    EN_LinkType type = EN_PIPE;
+    int type = EN_PIPE;
     EN_getlinktype(_enModel, enIdx, &type);
     if (type == EN_PIPE) {
       // should not happen
@@ -215,7 +215,8 @@ void EpanetModel::useEpanetModel(EN_Project *model, string path) {
 }
 
 void EpanetModel::useEpanetFile(const std::string& filename) {
-  EN_Project *model;
+  EN_Project model;
+  EN_createproject(&model);
   
   try {
     // set up temp path for report file so EPANET does not mess with stdout buffer
@@ -224,7 +225,7 @@ void EpanetModel::useEpanetFile(const std::string& filename) {
     
     cout << rptPath << endl;
     
-    EN_API_CHECK( EN_open((char*)filename.c_str(), &model, (char*)rptPath.c_str(), (char*)""), "EN_open" );
+    EN_API_CHECK( EN_open(model, (char*)filename.c_str(), (char*)rptPath.c_str(), (char*)""), "EN_open" );
     
   } catch (const std::string& errStr) {
     cerr << "model not formatted correctly. " << errStr << endl;
@@ -286,7 +287,12 @@ void EpanetModel::createRtxWrappers() {
     double *xVals, *yVals;
     int nPoints;
     char buf[1024];
-    int err = EN_getcurve (_enModel, iCurve, buf, &nPoints, &xVals, &yVals);
+    int err = 0;
+    err = EN_getcurvelen(_enModel, iCurve, &nPoints);
+    xVals = (double*)calloc(nPoints, sizeof(double));
+    yVals = (double*)calloc(nPoints, sizeof(double));
+    
+    err = EN_getcurve(_enModel, iCurve, buf, &nPoints, xVals, yVals);
     
     if (err) {
       throw("could not find curve " + to_string(iCurve));
@@ -316,19 +322,19 @@ void EpanetModel::createRtxWrappers() {
   for (int iNode=1; iNode <= nodeCount; iNode++) {
     char enName[RTX_MAX_CHAR_STRING];
     double x,y,z;         // rtx coordinates
-    EN_NodeType nodeType;         // epanet node type code
+    int nodeType;         // epanet node type code
     string nodeName, comment;
     Junction::_sp newJunction;
     Reservoir::_sp newReservoir;
     Tank::_sp newTank;
-    char enComment[MAXMSG];
+    char enComment[MAXMSG+1];
     
     // get relevant info from EPANET toolkit
     EN_API_CHECK( EN_getnodeid(_enModel, iNode, enName), "EN_getnodeid" );
     EN_API_CHECK( EN_getnodevalue(_enModel, iNode, EN_ELEVATION, &z), "EN_getnodevalue EN_ELEVATION");
     EN_API_CHECK( EN_getnodetype(_enModel, iNode, &nodeType), "EN_getnodetype");
     EN_API_CHECK( EN_getcoord(_enModel, iNode, &x, &y), "EN_getcoord");
-    EN_API_CHECK( EN_getnodecomment(_enModel, iNode, enComment), "EN_getnodecomment");
+    EN_API_CHECK( EN_getcomment(_enModel, EN_NODE, iNode, enComment), "EN_getnodecomment");
     
     nodeName = string(enName);
     comment = string(enComment);
@@ -445,7 +451,7 @@ void EpanetModel::createRtxWrappers() {
   for (int iLink = 1; iLink <= linkCount; iLink++) {
     char enLinkName[RTX_MAX_CHAR_STRING+1], enFromName[RTX_MAX_CHAR_STRING+1], enToName[RTX_MAX_CHAR_STRING+1], enComment[RTX_MAX_CHAR_STRING+1];
     int enFrom, enTo;
-    EN_LinkType linkType;
+    int linkType;
     double length, diameter, status, rough, mloss, setting, curveIdx;
     string linkName, comment;
     Node::_sp startNode, endNode;
@@ -465,7 +471,7 @@ void EpanetModel::createRtxWrappers() {
     EN_API_CHECK(EN_getlinkvalue(_enModel, iLink, EN_ROUGHNESS, &rough), "EN_getlinkvalue EN_ROUGHNESS");
     EN_API_CHECK(EN_getlinkvalue(_enModel, iLink, EN_MINORLOSS, &mloss), "EN_getlinkvalue EN_MINORLOSS");
     EN_API_CHECK(EN_getlinkvalue(_enModel, iLink, EN_INITSETTING, &setting), "EN_getlinkvalue EN_INITSETTING");
-    EN_API_CHECK(EN_getlinkcomment(_enModel, iLink, enComment), "EN_getlinkcomment");
+    EN_API_CHECK(EN_getcomment(_enModel, EN_LINK, iLink, enComment), "EN_getlinkcomment");
     
     linkName = string(enLinkName);
     comment = string(enComment);
@@ -495,8 +501,8 @@ void EpanetModel::createRtxWrappers() {
         
       {
         // has curve?
-        int err = EN_getlinkvalue(_enModel, iLink, EN_HEADCURVE, &curveIdx);
-        if (err == EN_OK) {
+        int err = EN_getlinkvalue(_enModel, iLink, EN_PUMP_HCURVE, &curveIdx);
+        if (err == 0) {
           Curve::_sp pumpCurve = namedCurves[(int)curveIdx];
           if (pumpCurve) {
             pumpCurve->inputUnits = this->flowUnits();
@@ -504,8 +510,8 @@ void EpanetModel::createRtxWrappers() {
             newPump->setHeadCurve(pumpCurve);
           }
         }
-        err = EN_getlinkvalue(_enModel, iLink, EN_EFFICIENCYCURVE, &curveIdx);
-        if (err == EN_OK) {
+        err = EN_getlinkvalue(_enModel, iLink, EN_PUMP_ECURVE, &curveIdx);
+        if (err == 0) {
           Curve::_sp effCurve = namedCurves[(int)curveIdx];
           if (effCurve) {
             effCurve->inputUnits = this->flowUnits();
@@ -580,7 +586,7 @@ void EpanetModel::overrideControls() {
       EN_API_CHECK( EN_setnodevalue(_enModel, iNode, EN_BASEDEMAND, 0. ), "EN_setnodevalue(EN_BASEDEMAND)" );	// set base demand to zero
       // look for a quality source and nullify its existance
       int errCode = EN_getnodevalue(_enModel, iNode, EN_SOURCEPAT, &sourcePat);
-      if (errCode != EN_ERR_UNDEF_SOURCE) {
+      if (errCode != 240 /* == nonexistent source */) {
         EN_API_CHECK( EN_setnodevalue(_enModel, iNode, EN_SOURCETYPE, EN_CONCEN), "EN_setnodevalue(EN_SOURCETYPE)" );
         EN_API_CHECK( EN_setnodevalue(_enModel, iNode, EN_SOURCEQUAL, 0.), "EN_setnodevalue(EN_SOURCEQUAL)" );
         EN_API_CHECK( EN_setnodevalue(_enModel, iNode, EN_SOURCEPAT, 0.), "EN_setnodevalue(EN_SOURCEPAT)" );
@@ -726,20 +732,20 @@ void EpanetModel::setPipeStatus(const string& pipe, Pipe::status_t status) {
 
 void EpanetModel::setPipeStatusControl(const std::string& pipe, Pipe::status_t status, enableControl_t enableStatus) {
   int linkIndex = _linkIndex[pipe];
-  int enEnableStatus = (enableStatus == enable) ? EN_ENABLE : EN_DISABLE;
+  int enEnableStatus = (enableStatus == enable) ? 1 : 0;
 
   if (_statusControlIndex.count(pipe) == 0) {
     // if this element doesn't have a control, add one
     int cindex;
-    EN_API_CHECK(EN_addstatuscontrol(_enModel, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)status, 0, (EN_API_FLOAT_TYPE)0.0, &cindex), "EN_addcontrol");
+    EN_API_CHECK(EN_addcontrol(_enModel, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)status, 0, (EN_API_FLOAT_TYPE)0.0, &cindex), "EN_addcontrol");
     _statusControlIndex[pipe] = cindex;
-    EN_API_CHECK(EN_setControlEnabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
+    EN_API_CHECK(EN_setcontrolenabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
   }
   else {
     // set the control
     int cindex = _statusControlIndex[pipe];
-    EN_API_CHECK(EN_setstatuscontrol(_enModel, cindex, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)status, 0, (EN_API_FLOAT_TYPE)0.0), "EN_setcontrol");
-    EN_API_CHECK(EN_setControlEnabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
+    EN_API_CHECK(EN_setcontrol(_enModel, cindex, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)status, 0, (EN_API_FLOAT_TYPE)0.0), "EN_setcontrol");
+    EN_API_CHECK(EN_setcontrolenabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
   }
 }
 
@@ -759,21 +765,21 @@ void EpanetModel::setPumpSetting(const string& pump, double setting) {
 
 void EpanetModel::setPumpSettingControl(const string& pump, double setting, enableControl_t enableStatus) {
   int linkIndex = _linkIndex[pump];
-  int enEnableStatus = (enableStatus == enable) ? EN_ENABLE : EN_DISABLE;
+  int enEnableStatus = (enableStatus == enable) ? 1 : 0;
 
   if (_settingControlIndex.count(pump) == 0) {
     // if this element doesn't have a control, add one
     int cindex;
     EN_API_CHECK(EN_addcontrol(_enModel, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)setting, 0, (EN_API_FLOAT_TYPE)0.0, &cindex), "EN_addcontrol");
     _settingControlIndex[pump] = cindex;
-    EN_API_CHECK(EN_setControlEnabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
+    EN_API_CHECK(EN_setcontrolenabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
   }
   else {
     // set the control
     int cindex = _settingControlIndex[pump];
     try {
       EN_API_CHECK(EN_setcontrol(_enModel, cindex, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)setting, 0, (EN_API_FLOAT_TYPE)0.0), "EN_setcontrol");
-      EN_API_CHECK(EN_setControlEnabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
+      EN_API_CHECK(EN_setcontrolenabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
     } catch (const std::string& errorMessage) {
       stringstream ss;
       ss << std::string(errorMessage) << EOL;
@@ -810,15 +816,32 @@ double EpanetModel::junctionQuality(const string &junction) {
 }
 
 double EpanetModel::tankInletQuality(const string& tank) {
-  int nodeIndex = _nodeIndex[tank];
-  double value = 0;
-  int ok = EN_getnodevalue(_enModel, nodeIndex, EN_INLETQUALITY, &value);
-  if (ok == EN_ERR_ILLEGAL_NUMERIC_VALUE) {
-    // this is a special edge-edge case: volume into the tank over this step is <= 0
+  
+  // approximation: get flow in adjacent links, any quality going into the tank can be average flow-weighted.
+  
+  auto t = dynamic_pointer_cast<Tank>(this->nodeWithName(tank));
+  double qualityIn = 0.0;
+  double totalFlowIn = 0.0;
+  
+  for (auto l : t->links()) {
+    auto p = dynamic_pointer_cast<Pipe>(l);
+    auto flow = p->state_flow;
+    
+    if (p->to() == t && flow > 0) {
+      // flow is into the tank from this link.
+      // create a flow-weighted sum of qualities into the tank.
+      qualityIn += p->state_quality() * flow;
+      totalFlowIn += flow;
+    }
+  }
+  // complete the flow-weighted averaging.
+  qualityIn = qualityIn / totalFlowIn;
+  
+  if (qualityIn == 0) {
     return NAN;
   }
   else {
-    return value;
+    return qualityIn;
   }
 }
 
@@ -855,25 +878,25 @@ double EpanetModel::pipeEnergy(const string &name) {
 #pragma mark - Sim options
 void EpanetModel::enableControls() {
   for (int i = 1; i <= _controlCount; ++i) {
-    EN_setControlEnabled(_enModel, i, EN_ENABLE);
+    EN_setcontrolenabled(_enModel, i, EN_TRUE);
   }
   
   int nC;
   EN_getcount(_enModel, EN_RULECOUNT, &nC);
   for (int i = 1; i <= nC; ++i) {
-    EN_setRuleEnabled(_enModel, i, EN_ENABLE);
+    EN_setruleenabled(_enModel, i, EN_TRUE);
   }
 }
 
 void EpanetModel::disableControls() {
   for (int i = 1; i <= _controlCount; ++i) {
-    EN_setControlEnabled(_enModel, i, EN_DISABLE);
+    EN_setcontrolenabled(_enModel, i, EN_FALSE);
   }
   
   int nC;
   EN_getcount(_enModel, EN_RULECOUNT, &nC);
   for (int i = 1; i <= nC; ++i) {
-    EN_setRuleEnabled(_enModel, i, EN_DISABLE);
+    EN_setruleenabled(_enModel, i, EN_FALSE);
   }
 }
 
@@ -941,10 +964,10 @@ time_t EpanetModel::nextHydraulicStep(time_t time) {
   this->setHydraulicTimeStep(actualTimeStep);
   
   // get time to next hydraulic event
-  EN_TimestepEvent eventType;
+  int eventType;
   long duration = 0;
   int elementIndex = 0;
-  EN_API_CHECK(EN_timeToNextEvent(_enModel, &eventType, &duration, &elementIndex), "EN_timeToNextEvent");
+  EN_API_CHECK(EN_timetonextevent(_enModel, &eventType, &duration, &elementIndex), "EN_timeToNextEvent");
   nextTime += duration;
   
   if (eventType == EN_STEP_TANKEVENT || eventType == EN_STEP_CONTROLEVENT) {
@@ -1271,7 +1294,7 @@ void EpanetModel::setComment(Element::_sp element, const std::string& comment)
     case Element::RESERVOIR:
     {
       int nodeIndex = _nodeIndex[element->name()];
-      EN_API_CHECK(EN_setnodecomment(_enModel, nodeIndex, comment.c_str()), "EN_setnodecomment");
+      EN_API_CHECK(EN_setcomment(_enModel, EN_NODE, nodeIndex, comment.c_str()), "EN_setnodecomment");
     }
       break;
     case Element::PIPE:
@@ -1279,7 +1302,7 @@ void EpanetModel::setComment(Element::_sp element, const std::string& comment)
     case Element::VALVE:
     {
       int linkIndex = _linkIndex[element->name()];
-      EN_API_CHECK(EN_setlinkcomment(_enModel, linkIndex, comment.c_str()), "EN_setlinkcomment");
+      EN_API_CHECK(EN_setcomment(_enModel, EN_LINK, linkIndex, comment.c_str()), "EN_setlinkcomment");
     }
       break;
     default:
