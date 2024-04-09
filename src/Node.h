@@ -33,7 +33,7 @@ namespace RTX {
       location_t(double lon, double lat) {longitude = lon; latitude = lat;};
     };
     friend class Model;
-    RTX_BASE_PROPS(Node);
+    TSF_BASE_PROPS(Node);
     // properties - get/set
     location_t coordinates();
     virtual void setCoordinates(location_t location);

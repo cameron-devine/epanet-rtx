@@ -21,7 +21,7 @@ namespace RTX {
    */
   class Junction : public Node {
   public:
-    RTX_BASE_PROPS(Junction);
+    TSF_BASE_PROPS(Junction);
     Junction(const std::string& name);
     virtual ~Junction();
     

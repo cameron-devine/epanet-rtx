@@ -72,6 +72,7 @@ add_library(epanetrtx
 ./src/Pipe.cpp
 ./src/Pump.cpp
 ./src/Reservoir.cpp
+./src/RtxObject.cpp
 ./src/Tank.cpp
 ./src/Valve.cpp
 )

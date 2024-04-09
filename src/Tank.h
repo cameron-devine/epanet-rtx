@@ -24,7 +24,7 @@ namespace RTX {
   
   class Tank : public Junction {
   public:
-    RTX_BASE_PROPS(Tank);
+    TSF_BASE_PROPS(Tank);
     Tank(const std::string& name);
     virtual ~Tank();
     

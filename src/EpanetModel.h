@@ -30,7 +30,7 @@ namespace RTX {
   class EpanetModel : public Model {
     
   public:
-    RTX_BASE_PROPS(EpanetModel);
+    TSF_BASE_PROPS(EpanetModel);
     EpanetModel();
     EpanetModel(const std::string& filename);
     EpanetModel(const EpanetModel& o); // copy constructor

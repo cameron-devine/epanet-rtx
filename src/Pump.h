@@ -18,7 +18,7 @@ using TSF::Curve;
 namespace RTX {
   class Pump : public Pipe {
   public:
-    RTX_BASE_PROPS(Pump);
+    TSF_BASE_PROPS(Pump);
     Pump(const std::string& name);
     virtual ~Pump();
     

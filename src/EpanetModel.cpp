@@ -33,7 +33,9 @@ EpanetModel::EpanetModel() : Model() {
 
 EpanetModel::~EpanetModel() {
   this->closeEngine();
-  EN_API_CHECK( EN_close(_enModel), "EN_close");
+  if (_enOpened) {
+    EN_API_CHECK( EN_close(_enModel), "EN_close");
+  }
   //  EN_API_CHECK(EN_freeModel(_enModel), "EN_freeModel");
 }
 

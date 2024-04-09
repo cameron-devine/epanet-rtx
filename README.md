@@ -40,7 +40,6 @@ Building
 ```
 
 conan export deps/local_export/sqlite_modern_cpp
-conan export deps/local_export/epanet
 conan install . --profile=x86 --build=missing -s build_type=Release
 conan build . --profile=x86 --build=missing -s build_type=Release
 conan export-pkg . --profile=x86 -s build_type=Release
