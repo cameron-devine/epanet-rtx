@@ -3,7 +3,7 @@ Time Series Filter Library
 
 Introduction
 ------------
-TSFlib is a set of c++ classes that can be used to filter time series in either batch or streaming applications. It was originally part of the EPANET-RTX library, a library used for realtime simulation of water distribution systems.
+TSFlib is a set of C++ classes that can be used to filter time series in either batch or streaming applications. It was originally part of the EPANET-RTX library, a library used for realtime simulation of water distribution systems.
  
 
  

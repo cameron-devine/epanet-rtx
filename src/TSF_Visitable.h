@@ -28,9 +28,9 @@ namespace TSF {
       }
     }
   };
-  
-  #define TSF_VISITABLE() virtual void accept(BaseVisitor &v) { return acceptVisitor(*this, v); }
-  #define TSF_VISITABLE_TYPE BaseVisitable
 }
+
+#define TSF_VISITABLE() virtual void accept(TSF::BaseVisitor &v) { return acceptVisitor(*this, v); }
+#define TSF_VISITABLE_TYPE TSF::BaseVisitable
 
 #endif /* TSF_Visitable_hpp */

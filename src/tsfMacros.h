@@ -21,8 +21,7 @@
 namespace TSF {
   class TSF_object : public std::enable_shared_from_this<TSF_object>, public TSF_VISITABLE_TYPE {
   public:
-    typedef std::shared_ptr<TSF_object> _sp; 
-    TSF_VISITABLE();
+    TSF_BASE_PROPS(TSF_object);
     
     template<class T>
     std::shared_ptr<T> share_me(T* thisPtr) {
