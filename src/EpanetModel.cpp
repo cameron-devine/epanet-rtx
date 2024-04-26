@@ -595,6 +595,7 @@ void EpanetModel::overrideControls() {
       }
     }
     // set the global demand multiplier is unity as well.
+    EN_setoption(_enModel, EN_DEMANDPATTERN, 0); // set default pattern to internal
     EN_setoption(_enModel, EN_DEMANDMULT, 1.);
     
     // disregard controls and rules.
