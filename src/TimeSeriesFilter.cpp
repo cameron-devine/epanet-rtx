@@ -163,13 +163,15 @@ Point TimeSeriesFilter::pointBefore(time_t time) {
       p = c.points().back();
     }
     else {
-      struct tm * timeinfo = localtime (&time);
-      cerr << "pointBefore Iterative search exceeded max strides:" << this->name() << " time=" << asctime(timeinfo) << endl;
-      cerr << "Root Series -> ";
-      for (auto s : this->rootTimeSeries()) {
-        cerr << " :: " << s->name();
+      if (false) {
+        struct tm * timeinfo = localtime (&time);
+        cerr << "pointBefore Iterative search exceeded max strides:" << this->name() << " time=" << asctime(timeinfo) << endl;
+        cerr << "Root Series -> ";
+        for (auto s : this->rootTimeSeries()) {
+          cerr << " :: " << s->name();
+        }
+        cerr << EOL << flush;
       }
-      cerr << EOL << flush;
     }
   }
   else {
@@ -215,13 +217,15 @@ Point TimeSeriesFilter::pointAfter(time_t time) {
       p = c.points().front();
     }
     else {
-      struct tm * timeinfo = localtime (&time);
-      cerr << "pointAfter Iterative search exceeded max strides:" << this->name() << " time=" << asctime(timeinfo) << endl;
-      cerr << "Root Series -> ";
-      for (auto s : this->rootTimeSeries()) {
-        cerr << " :: " << s->name();
+      if (false) {
+        struct tm * timeinfo = localtime (&time);
+        cerr << "pointAfter Iterative search exceeded max strides:" << this->name() << " time=" << asctime(timeinfo) << endl;
+        cerr << "Root Series -> ";
+        for (auto s : this->rootTimeSeries()) {
+          cerr << " :: " << s->name();
+        }
+        cerr << EOL << flush;
       }
-      cerr << EOL << flush;
     }
   }
   else {

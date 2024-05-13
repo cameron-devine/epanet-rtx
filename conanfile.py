@@ -52,7 +52,7 @@ class TSFlib(ConanFile):
         self.requires("boost/1.83.0")
         self.requires("nlohmann_json/3.10.5")
         self.requires("libcurl/7.80.0")
-        self.requires("sqlite3/3.43.2")
+        self.requires("sqlite3/3.45.3")
         self.requires("sqlite_modern_cpp/3.2")
 
 

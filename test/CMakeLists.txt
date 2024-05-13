@@ -1,7 +1,9 @@
 add_executable( tsflib-test 
 	test_main.cpp
 	test_units.cpp
-	test_record.cpp )
+	test_record.cpp 
+	test_filters.cpp
+	)
 
 set_target_properties(tsflib-test PROPERTIES CXX_STANDARD 17)
 

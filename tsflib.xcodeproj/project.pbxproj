@@ -1,0 +1,831 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5470C4952BDAE2FF005223D7 /* PointRecordTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C42A2BDAE2FE005223D7 /* PointRecordTime.h */; };
+		5470C4962BDAE2FF005223D7 /* ConstantTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C42B2BDAE2FE005223D7 /* ConstantTimeSeries.cpp */; };
+		5470C4972BDAE2FF005223D7 /* InfluxClient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5470C42C2BDAE2FE005223D7 /* InfluxClient.hpp */; };
+		5470C4982BDAE2FF005223D7 /* InfluxAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C42D2BDAE2FE005223D7 /* InfluxAdapter.cpp */; };
+		5470C4992BDAE2FF005223D7 /* CurveFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C42E2BDAE2FE005223D7 /* CurveFunction.h */; };
+		5470C49A2BDAE2FF005223D7 /* IntegratorTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C42F2BDAE2FE005223D7 /* IntegratorTimeSeries.h */; };
+		5470C49B2BDAE2FF005223D7 /* OpcAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4302BDAE2FE005223D7 /* OpcAdapter.h */; };
+		5470C49C2BDAE2FF005223D7 /* InversionTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4312BDAE2FE005223D7 /* InversionTimeSeries.cpp */; };
+		5470C49D2BDAE2FF005223D7 /* Units.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4322BDAE2FE005223D7 /* Units.cpp */; };
+		5470C49E2BDAE2FF005223D7 /* Components.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4332BDAE2FE005223D7 /* Components.hpp */; };
+		5470C49F2BDAE2FF005223D7 /* Lowess.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4342BDAE2FE005223D7 /* Lowess.h */; };
+		5470C4A02BDAE2FF005223D7 /* TimeRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4352BDAE2FE005223D7 /* TimeRange.cpp */; };
+		5470C4A12BDAE2FF005223D7 /* ConstantTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4362BDAE2FE005223D7 /* ConstantTimeSeries.h */; };
+		5470C4A22BDAE2FF005223D7 /* TimeSeriesFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4372BDAE2FE005223D7 /* TimeSeriesFilter.cpp */; };
+		5470C4A32BDAE2FF005223D7 /* DbAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4382BDAE2FE005223D7 /* DbAdapter.h */; };
+		5470C4A42BDAE2FF005223D7 /* tsfExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4392BDAE2FE005223D7 /* tsfExceptions.h */; };
+		5470C4A52BDAE2FF005223D7 /* AutoRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C43A2BDAE2FE005223D7 /* AutoRunner.cpp */; };
+		5470C4A62BDAE2FF005223D7 /* InversionTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C43B2BDAE2FE005223D7 /* InversionTimeSeries.h */; };
+		5470C4A72BDAE2FF005223D7 /* DbPointRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C43C2BDAE2FE005223D7 /* DbPointRecord.cpp */; };
+		5470C4A92BDAE2FF005223D7 /* ConcreteDbRecords.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C43E2BDAE2FE005223D7 /* ConcreteDbRecords.cpp */; };
+		5470C4AA2BDAE2FF005223D7 /* TimeSeriesSynthetic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C43F2BDAE2FE005223D7 /* TimeSeriesSynthetic.cpp */; };
+		5470C4AB2BDAE2FF005223D7 /* TSF_Visitable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4402BDAE2FE005223D7 /* TSF_Visitable.h */; };
+		5470C4AC2BDAE2FF005223D7 /* TimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4412BDAE2FE005223D7 /* TimeSeries.h */; };
+		5470C4AD2BDAE2FF005223D7 /* Point.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4422BDAE2FE005223D7 /* Point.h */; };
+		5470C4AE2BDAE2FF005223D7 /* CurveFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4432BDAE2FE005223D7 /* CurveFunction.cpp */; };
+		5470C4AF2BDAE2FF005223D7 /* DbPointRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4442BDAE2FE005223D7 /* DbPointRecord.h */; };
+		5470C4B02BDAE2FF005223D7 /* CorrelatorTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4452BDAE2FE005223D7 /* CorrelatorTimeSeries.cpp */; };
+		5470C4B12BDAE2FF005223D7 /* MovingAverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4462BDAE2FE005223D7 /* MovingAverage.cpp */; };
+		5470C4B22BDAE2FF005223D7 /* PointRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4472BDAE2FE005223D7 /* PointRecord.h */; };
+		5470C4B32BDAE2FF005223D7 /* ValidRangeTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4482BDAE2FE005223D7 /* ValidRangeTimeSeries.h */; };
+		5470C4B42BDAE2FF005223D7 /* SquareWaveTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4492BDAE2FE005223D7 /* SquareWaveTimeSeries.cpp */; };
+		5470C4B52BDAE2FF005223D7 /* TimeSeriesSynthetic.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C44A2BDAE2FE005223D7 /* TimeSeriesSynthetic.h */; };
+		5470C4B62BDAE2FF005223D7 /* IntegratorTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C44B2BDAE2FE005223D7 /* IntegratorTimeSeries.cpp */; };
+		5470C4B72BDAE2FF005223D7 /* SineTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C44C2BDAE2FE005223D7 /* SineTimeSeries.h */; };
+		5470C4B92BDAE2FF005223D7 /* MetaTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C44E2BDAE2FE005223D7 /* MetaTimeSeries.cpp */; };
+		5470C4BA2BDAE2FF005223D7 /* FailoverTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C44F2BDAE2FE005223D7 /* FailoverTimeSeries.h */; };
+		5470C4BB2BDAE2FF005223D7 /* FirstDerivative.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4502BDAE2FE005223D7 /* FirstDerivative.cpp */; };
+		5470C4BC2BDAE2FF005223D7 /* tsfMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4512BDAE2FE005223D7 /* tsfMacros.h */; };
+		5470C4BD2BDAE2FF005223D7 /* LogicTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4522BDAE2FE005223D7 /* LogicTimeSeries.cpp */; };
+		5470C4BE2BDAE2FF005223D7 /* OutlierExclusionTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4532BDAE2FE005223D7 /* OutlierExclusionTimeSeries.h */; };
+		5470C4C02BDAE2FF005223D7 /* OffsetTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4552BDAE2FE005223D7 /* OffsetTimeSeries.h */; };
+		5470C4C12BDAE2FF005223D7 /* Clock.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4562BDAE2FE005223D7 /* Clock.h */; };
+		5470C4C22BDAE2FF005223D7 /* MetricInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4572BDAE2FE005223D7 /* MetricInfo.h */; };
+		5470C4C32BDAE2FF005223D7 /* InfluxAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4582BDAE2FE005223D7 /* InfluxAdapter.h */; };
+		5470C4C42BDAE2FF005223D7 /* AggregatorTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4592BDAE2FE005223D7 /* AggregatorTimeSeries.cpp */; };
+		5470C4C52BDAE2FF005223D7 /* PointCollection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C45A2BDAE2FE005223D7 /* PointCollection.cpp */; };
+		5470C4C62BDAE2FF005223D7 /* ThresholdTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C45B2BDAE2FE005223D7 /* ThresholdTimeSeries.cpp */; };
+		5470C4C72BDAE2FF005223D7 /* GainTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C45C2BDAE2FE005223D7 /* GainTimeSeries.h */; };
+		5470C4C82BDAE2FF005223D7 /* CorrelatorTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C45D2BDAE2FE005223D7 /* CorrelatorTimeSeries.h */; };
+		5470C4C92BDAE2FF005223D7 /* Curve.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C45E2BDAE2FE005223D7 /* Curve.h */; };
+		5470C4CA2BDAE2FF005223D7 /* TimeSeriesQuery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C45F2BDAE2FE005223D7 /* TimeSeriesQuery.cpp */; };
+		5470C4CB2BDAE2FF005223D7 /* TimeSeriesFilterSecondary.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4602BDAE2FE005223D7 /* TimeSeriesFilterSecondary.h */; };
+		5470C4CC2BDAE2FF005223D7 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4612BDAE2FE005223D7 /* Point.cpp */; };
+		5470C4CD2BDAE2FF005223D7 /* AggregatorTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4622BDAE2FE005223D7 /* AggregatorTimeSeries.h */; };
+		5470C4CE2BDAE2FF005223D7 /* BufferPointRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4632BDAE2FE005223D7 /* BufferPointRecord.cpp */; };
+		5470C4CF2BDAE2FF005223D7 /* SqliteAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4642BDAE2FE005223D7 /* SqliteAdapter.cpp */; };
+		5470C4D02BDAE2FF005223D7 /* TimeSeriesLowess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4652BDAE2FE005223D7 /* TimeSeriesLowess.cpp */; };
+		5470C4D12BDAE2FF005223D7 /* IdentifierUnitsList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4662BDAE2FE005223D7 /* IdentifierUnitsList.cpp */; };
+		5470C4D22BDAE2FF005223D7 /* MetricInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4672BDAE2FE005223D7 /* MetricInfo.cpp */; };
+		5470C4D32BDAE2FF005223D7 /* StatsTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4682BDAE2FE005223D7 /* StatsTimeSeries.h */; };
+		5470C4D42BDAE2FF005223D7 /* LagTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4692BDAE2FE005223D7 /* LagTimeSeries.cpp */; };
+		5470C4D52BDAE2FF005223D7 /* TimeSeriesFilterSinglePoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C46A2BDAE2FE005223D7 /* TimeSeriesFilterSinglePoint.cpp */; };
+		5470C4D62BDAE2FF005223D7 /* BaseStatsTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C46B2BDAE2FE005223D7 /* BaseStatsTimeSeries.h */; };
+		5470C4D72BDAE2FF005223D7 /* TimeSeriesFilterSinglePoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C46C2BDAE2FE005223D7 /* TimeSeriesFilterSinglePoint.h */; };
+		5470C4D82BDAE2FF005223D7 /* ValidRangeTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C46D2BDAE2FE005223D7 /* ValidRangeTimeSeries.cpp */; };
+		5470C4D92BDAE2FF005223D7 /* OffsetTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C46E2BDAE2FE005223D7 /* OffsetTimeSeries.cpp */; };
+		5470C4DA2BDAE2FF005223D7 /* StatsTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C46F2BDAE2FE005223D7 /* StatsTimeSeries.cpp */; };
+		5470C4DB2BDAE2FF005223D7 /* MovingAverage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4702BDAE2FE005223D7 /* MovingAverage.h */; };
+		5470C4DC2BDAE2FF005223D7 /* MetaTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4712BDAE2FE005223D7 /* MetaTimeSeries.h */; };
+		5470C4DD2BDAE2FF005223D7 /* Units.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4722BDAE2FE005223D7 /* Units.h */; };
+		5470C4DE2BDAE2FF005223D7 /* AutoRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4732BDAE2FE005223D7 /* AutoRunner.h */; };
+		5470C4DF2BDAE2FF005223D7 /* TimeSeriesQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4742BDAE2FE005223D7 /* TimeSeriesQuery.h */; };
+		5470C4E02BDAE2FF005223D7 /* LogicTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4752BDAE2FE005223D7 /* LogicTimeSeries.h */; };
+		5470C4E12BDAE2FF005223D7 /* PiAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4762BDAE2FE005223D7 /* PiAdapter.h */; };
+		5470C4E22BDAE2FF005223D7 /* WhereClause.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4772BDAE2FE005223D7 /* WhereClause.h */; };
+		5470C4E32BDAE2FF005223D7 /* ThresholdTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4782BDAE2FE005223D7 /* ThresholdTimeSeries.h */; };
+		5470C4E42BDAE2FF005223D7 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4792BDAE2FE005223D7 /* Clock.cpp */; };
+		5470C4E52BDAE2FF005223D7 /* BufferPointRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C47A2BDAE2FE005223D7 /* BufferPointRecord.h */; };
+		5470C4E62BDAE2FF005223D7 /* IdentifierUnitsList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C47B2BDAE2FE005223D7 /* IdentifierUnitsList.h */; };
+		5470C4E72BDAE2FF005223D7 /* TimeRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C47C2BDAE2FE005223D7 /* TimeRange.h */; };
+		5470C4E82BDAE2FF005223D7 /* Curve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C47D2BDAE2FE005223D7 /* Curve.cpp */; };
+		5470C4E92BDAE2FF005223D7 /* FailoverTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C47E2BDAE2FE005223D7 /* FailoverTimeSeries.cpp */; };
+		5470C4EA2BDAE2FF005223D7 /* PointCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C47F2BDAE2FE005223D7 /* PointCollection.h */; };
+		5470C4EB2BDAE2FF005223D7 /* MultiplierTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4802BDAE2FE005223D7 /* MultiplierTimeSeries.h */; };
+		5470C4EC2BDAE2FF005223D7 /* MathOpsTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4812BDAE2FE005223D7 /* MathOpsTimeSeries.cpp */; };
+		5470C4ED2BDAE2FF005223D7 /* GainTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4822BDAE2FF005223D7 /* GainTimeSeries.cpp */; };
+		5470C4EE2BDAE2FF005223D7 /* BaseStatsTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4832BDAE2FF005223D7 /* BaseStatsTimeSeries.cpp */; };
+		5470C4EF2BDAE2FF005223D7 /* WhereClause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4842BDAE2FF005223D7 /* WhereClause.cpp */; };
+		5470C4F02BDAE2FF005223D7 /* TimeSeriesFilterSecondary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4852BDAE2FF005223D7 /* TimeSeriesFilterSecondary.cpp */; };
+		5470C4F12BDAE2FF005223D7 /* TimeSeriesFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4862BDAE2FF005223D7 /* TimeSeriesFilter.h */; };
+		5470C4F22BDAE2FF005223D7 /* PointRecordTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4872BDAE2FF005223D7 /* PointRecordTime.cpp */; };
+		5470C4F32BDAE2FF005223D7 /* MathOpsTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4882BDAE2FF005223D7 /* MathOpsTimeSeries.h */; };
+		5470C4F52BDAE2FF005223D7 /* SquareWaveTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C48A2BDAE2FF005223D7 /* SquareWaveTimeSeries.h */; };
+		5470C4F62BDAE2FF005223D7 /* TimeSeriesLowess.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C48B2BDAE2FF005223D7 /* TimeSeriesLowess.h */; };
+		5470C4F72BDAE2FF005223D7 /* SqliteAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C48C2BDAE2FF005223D7 /* SqliteAdapter.h */; };
+		5470C4F82BDAE2FF005223D7 /* LagTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C48D2BDAE2FF005223D7 /* LagTimeSeries.h */; };
+		5470C4F92BDAE2FF005223D7 /* MultiplierTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C48E2BDAE2FF005223D7 /* MultiplierTimeSeries.cpp */; };
+		5470C4FA2BDAE2FF005223D7 /* ConcreteDbRecords.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C48F2BDAE2FF005223D7 /* ConcreteDbRecords.h */; };
+		5470C4FB2BDAE2FF005223D7 /* TimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4902BDAE2FF005223D7 /* TimeSeries.cpp */; };
+		5470C4FC2BDAE2FF005223D7 /* FirstDerivative.h in Headers */ = {isa = PBXBuildFile; fileRef = 5470C4912BDAE2FF005223D7 /* FirstDerivative.h */; };
+		5470C4FD2BDAE2FF005223D7 /* SineTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4922BDAE2FF005223D7 /* SineTimeSeries.cpp */; };
+		5470C4FE2BDAE2FF005223D7 /* PointRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4932BDAE2FF005223D7 /* PointRecord.cpp */; };
+		5470C4FF2BDAE2FF005223D7 /* OutlierExclusionTimeSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C4942BDAE2FF005223D7 /* OutlierExclusionTimeSeries.cpp */; };
+		5470C5142BDAE3FE005223D7 /* test_units.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C50E2BDAE3FE005223D7 /* test_units.cpp */; };
+		5470C5152BDAE3FE005223D7 /* test_influx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C50F2BDAE3FE005223D7 /* test_influx.cpp */; };
+		5470C5162BDAE3FE005223D7 /* test_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C5112BDAE3FE005223D7 /* test_main.cpp */; };
+		5470C5172BDAE3FE005223D7 /* test_filters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C5122BDAE3FE005223D7 /* test_filters.cpp */; };
+		5470C5182BDAE3FE005223D7 /* test_record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5470C5132BDAE3FE005223D7 /* test_record.cpp */; };
+		5470C51A2BDAE416005223D7 /* libtsflib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5470C41B2BDAE2CD005223D7 /* libtsflib.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5470C5042BDAE3AB005223D7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5470C41B2BDAE2CD005223D7 /* libtsflib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtsflib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5470C42A2BDAE2FE005223D7 /* PointRecordTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointRecordTime.h; path = src/PointRecordTime.h; sourceTree = "<group>"; };
+		5470C42B2BDAE2FE005223D7 /* ConstantTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConstantTimeSeries.cpp; path = src/ConstantTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C42C2BDAE2FE005223D7 /* InfluxClient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = InfluxClient.hpp; path = src/InfluxClient.hpp; sourceTree = "<group>"; };
+		5470C42D2BDAE2FE005223D7 /* InfluxAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InfluxAdapter.cpp; path = src/InfluxAdapter.cpp; sourceTree = "<group>"; };
+		5470C42E2BDAE2FE005223D7 /* CurveFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurveFunction.h; path = src/CurveFunction.h; sourceTree = "<group>"; };
+		5470C42F2BDAE2FE005223D7 /* IntegratorTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntegratorTimeSeries.h; path = src/IntegratorTimeSeries.h; sourceTree = "<group>"; };
+		5470C4302BDAE2FE005223D7 /* OpcAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpcAdapter.h; path = src/OpcAdapter.h; sourceTree = "<group>"; };
+		5470C4312BDAE2FE005223D7 /* InversionTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InversionTimeSeries.cpp; path = src/InversionTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C4322BDAE2FE005223D7 /* Units.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Units.cpp; path = src/Units.cpp; sourceTree = "<group>"; };
+		5470C4332BDAE2FE005223D7 /* Components.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Components.hpp; path = src/Components.hpp; sourceTree = "<group>"; };
+		5470C4342BDAE2FE005223D7 /* Lowess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lowess.h; path = src/Lowess.h; sourceTree = "<group>"; };
+		5470C4352BDAE2FE005223D7 /* TimeRange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimeRange.cpp; path = src/TimeRange.cpp; sourceTree = "<group>"; };
+		5470C4362BDAE2FE005223D7 /* ConstantTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantTimeSeries.h; path = src/ConstantTimeSeries.h; sourceTree = "<group>"; };
+		5470C4372BDAE2FE005223D7 /* TimeSeriesFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimeSeriesFilter.cpp; path = src/TimeSeriesFilter.cpp; sourceTree = "<group>"; };
+		5470C4382BDAE2FE005223D7 /* DbAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DbAdapter.h; path = src/DbAdapter.h; sourceTree = "<group>"; };
+		5470C4392BDAE2FE005223D7 /* tsfExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tsfExceptions.h; path = src/tsfExceptions.h; sourceTree = "<group>"; };
+		5470C43A2BDAE2FE005223D7 /* AutoRunner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AutoRunner.cpp; path = src/AutoRunner.cpp; sourceTree = "<group>"; };
+		5470C43B2BDAE2FE005223D7 /* InversionTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InversionTimeSeries.h; path = src/InversionTimeSeries.h; sourceTree = "<group>"; };
+		5470C43C2BDAE2FE005223D7 /* DbPointRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DbPointRecord.cpp; path = src/DbPointRecord.cpp; sourceTree = "<group>"; };
+		5470C43D2BDAE2FE005223D7 /* OpcPointRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpcPointRecord.cpp; path = src/OpcPointRecord.cpp; sourceTree = "<group>"; };
+		5470C43E2BDAE2FE005223D7 /* ConcreteDbRecords.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConcreteDbRecords.cpp; path = src/ConcreteDbRecords.cpp; sourceTree = "<group>"; };
+		5470C43F2BDAE2FE005223D7 /* TimeSeriesSynthetic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimeSeriesSynthetic.cpp; path = src/TimeSeriesSynthetic.cpp; sourceTree = "<group>"; };
+		5470C4402BDAE2FE005223D7 /* TSF_Visitable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSF_Visitable.h; path = src/TSF_Visitable.h; sourceTree = "<group>"; };
+		5470C4412BDAE2FE005223D7 /* TimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSeries.h; path = src/TimeSeries.h; sourceTree = "<group>"; };
+		5470C4422BDAE2FE005223D7 /* Point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Point.h; path = src/Point.h; sourceTree = "<group>"; };
+		5470C4432BDAE2FE005223D7 /* CurveFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CurveFunction.cpp; path = src/CurveFunction.cpp; sourceTree = "<group>"; };
+		5470C4442BDAE2FE005223D7 /* DbPointRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DbPointRecord.h; path = src/DbPointRecord.h; sourceTree = "<group>"; };
+		5470C4452BDAE2FE005223D7 /* CorrelatorTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CorrelatorTimeSeries.cpp; path = src/CorrelatorTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C4462BDAE2FE005223D7 /* MovingAverage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MovingAverage.cpp; path = src/MovingAverage.cpp; sourceTree = "<group>"; };
+		5470C4472BDAE2FE005223D7 /* PointRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointRecord.h; path = src/PointRecord.h; sourceTree = "<group>"; };
+		5470C4482BDAE2FE005223D7 /* ValidRangeTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidRangeTimeSeries.h; path = src/ValidRangeTimeSeries.h; sourceTree = "<group>"; };
+		5470C4492BDAE2FE005223D7 /* SquareWaveTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SquareWaveTimeSeries.cpp; path = src/SquareWaveTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C44A2BDAE2FE005223D7 /* TimeSeriesSynthetic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSeriesSynthetic.h; path = src/TimeSeriesSynthetic.h; sourceTree = "<group>"; };
+		5470C44B2BDAE2FE005223D7 /* IntegratorTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntegratorTimeSeries.cpp; path = src/IntegratorTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C44C2BDAE2FE005223D7 /* SineTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SineTimeSeries.h; path = src/SineTimeSeries.h; sourceTree = "<group>"; };
+		5470C44D2BDAE2FE005223D7 /* OpcAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpcAdapter.cpp; path = src/OpcAdapter.cpp; sourceTree = "<group>"; };
+		5470C44E2BDAE2FE005223D7 /* MetaTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MetaTimeSeries.cpp; path = src/MetaTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C44F2BDAE2FE005223D7 /* FailoverTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FailoverTimeSeries.h; path = src/FailoverTimeSeries.h; sourceTree = "<group>"; };
+		5470C4502BDAE2FE005223D7 /* FirstDerivative.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FirstDerivative.cpp; path = src/FirstDerivative.cpp; sourceTree = "<group>"; };
+		5470C4512BDAE2FE005223D7 /* tsfMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tsfMacros.h; path = src/tsfMacros.h; sourceTree = "<group>"; };
+		5470C4522BDAE2FE005223D7 /* LogicTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogicTimeSeries.cpp; path = src/LogicTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C4532BDAE2FE005223D7 /* OutlierExclusionTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlierExclusionTimeSeries.h; path = src/OutlierExclusionTimeSeries.h; sourceTree = "<group>"; };
+		5470C4542BDAE2FE005223D7 /* PiAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PiAdapter.cpp; path = src/PiAdapter.cpp; sourceTree = "<group>"; };
+		5470C4552BDAE2FE005223D7 /* OffsetTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OffsetTimeSeries.h; path = src/OffsetTimeSeries.h; sourceTree = "<group>"; };
+		5470C4562BDAE2FE005223D7 /* Clock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clock.h; path = src/Clock.h; sourceTree = "<group>"; };
+		5470C4572BDAE2FE005223D7 /* MetricInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricInfo.h; path = src/MetricInfo.h; sourceTree = "<group>"; };
+		5470C4582BDAE2FE005223D7 /* InfluxAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfluxAdapter.h; path = src/InfluxAdapter.h; sourceTree = "<group>"; };
+		5470C4592BDAE2FE005223D7 /* AggregatorTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AggregatorTimeSeries.cpp; path = src/AggregatorTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C45A2BDAE2FE005223D7 /* PointCollection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointCollection.cpp; path = src/PointCollection.cpp; sourceTree = "<group>"; };
+		5470C45B2BDAE2FE005223D7 /* ThresholdTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThresholdTimeSeries.cpp; path = src/ThresholdTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C45C2BDAE2FE005223D7 /* GainTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GainTimeSeries.h; path = src/GainTimeSeries.h; sourceTree = "<group>"; };
+		5470C45D2BDAE2FE005223D7 /* CorrelatorTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorrelatorTimeSeries.h; path = src/CorrelatorTimeSeries.h; sourceTree = "<group>"; };
+		5470C45E2BDAE2FE005223D7 /* Curve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Curve.h; path = src/Curve.h; sourceTree = "<group>"; };
+		5470C45F2BDAE2FE005223D7 /* TimeSeriesQuery.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimeSeriesQuery.cpp; path = src/TimeSeriesQuery.cpp; sourceTree = "<group>"; };
+		5470C4602BDAE2FE005223D7 /* TimeSeriesFilterSecondary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSeriesFilterSecondary.h; path = src/TimeSeriesFilterSecondary.h; sourceTree = "<group>"; };
+		5470C4612BDAE2FE005223D7 /* Point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Point.cpp; path = src/Point.cpp; sourceTree = "<group>"; };
+		5470C4622BDAE2FE005223D7 /* AggregatorTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AggregatorTimeSeries.h; path = src/AggregatorTimeSeries.h; sourceTree = "<group>"; };
+		5470C4632BDAE2FE005223D7 /* BufferPointRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BufferPointRecord.cpp; path = src/BufferPointRecord.cpp; sourceTree = "<group>"; };
+		5470C4642BDAE2FE005223D7 /* SqliteAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SqliteAdapter.cpp; path = src/SqliteAdapter.cpp; sourceTree = "<group>"; };
+		5470C4652BDAE2FE005223D7 /* TimeSeriesLowess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimeSeriesLowess.cpp; path = src/TimeSeriesLowess.cpp; sourceTree = "<group>"; };
+		5470C4662BDAE2FE005223D7 /* IdentifierUnitsList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IdentifierUnitsList.cpp; path = src/IdentifierUnitsList.cpp; sourceTree = "<group>"; };
+		5470C4672BDAE2FE005223D7 /* MetricInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MetricInfo.cpp; path = src/MetricInfo.cpp; sourceTree = "<group>"; };
+		5470C4682BDAE2FE005223D7 /* StatsTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsTimeSeries.h; path = src/StatsTimeSeries.h; sourceTree = "<group>"; };
+		5470C4692BDAE2FE005223D7 /* LagTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LagTimeSeries.cpp; path = src/LagTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C46A2BDAE2FE005223D7 /* TimeSeriesFilterSinglePoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimeSeriesFilterSinglePoint.cpp; path = src/TimeSeriesFilterSinglePoint.cpp; sourceTree = "<group>"; };
+		5470C46B2BDAE2FE005223D7 /* BaseStatsTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseStatsTimeSeries.h; path = src/BaseStatsTimeSeries.h; sourceTree = "<group>"; };
+		5470C46C2BDAE2FE005223D7 /* TimeSeriesFilterSinglePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSeriesFilterSinglePoint.h; path = src/TimeSeriesFilterSinglePoint.h; sourceTree = "<group>"; };
+		5470C46D2BDAE2FE005223D7 /* ValidRangeTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ValidRangeTimeSeries.cpp; path = src/ValidRangeTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C46E2BDAE2FE005223D7 /* OffsetTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OffsetTimeSeries.cpp; path = src/OffsetTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C46F2BDAE2FE005223D7 /* StatsTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatsTimeSeries.cpp; path = src/StatsTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C4702BDAE2FE005223D7 /* MovingAverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovingAverage.h; path = src/MovingAverage.h; sourceTree = "<group>"; };
+		5470C4712BDAE2FE005223D7 /* MetaTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetaTimeSeries.h; path = src/MetaTimeSeries.h; sourceTree = "<group>"; };
+		5470C4722BDAE2FE005223D7 /* Units.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Units.h; path = src/Units.h; sourceTree = "<group>"; };
+		5470C4732BDAE2FE005223D7 /* AutoRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoRunner.h; path = src/AutoRunner.h; sourceTree = "<group>"; };
+		5470C4742BDAE2FE005223D7 /* TimeSeriesQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSeriesQuery.h; path = src/TimeSeriesQuery.h; sourceTree = "<group>"; };
+		5470C4752BDAE2FE005223D7 /* LogicTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogicTimeSeries.h; path = src/LogicTimeSeries.h; sourceTree = "<group>"; };
+		5470C4762BDAE2FE005223D7 /* PiAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiAdapter.h; path = src/PiAdapter.h; sourceTree = "<group>"; };
+		5470C4772BDAE2FE005223D7 /* WhereClause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WhereClause.h; path = src/WhereClause.h; sourceTree = "<group>"; };
+		5470C4782BDAE2FE005223D7 /* ThresholdTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThresholdTimeSeries.h; path = src/ThresholdTimeSeries.h; sourceTree = "<group>"; };
+		5470C4792BDAE2FE005223D7 /* Clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Clock.cpp; path = src/Clock.cpp; sourceTree = "<group>"; };
+		5470C47A2BDAE2FE005223D7 /* BufferPointRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferPointRecord.h; path = src/BufferPointRecord.h; sourceTree = "<group>"; };
+		5470C47B2BDAE2FE005223D7 /* IdentifierUnitsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IdentifierUnitsList.h; path = src/IdentifierUnitsList.h; sourceTree = "<group>"; };
+		5470C47C2BDAE2FE005223D7 /* TimeRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeRange.h; path = src/TimeRange.h; sourceTree = "<group>"; };
+		5470C47D2BDAE2FE005223D7 /* Curve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Curve.cpp; path = src/Curve.cpp; sourceTree = "<group>"; };
+		5470C47E2BDAE2FE005223D7 /* FailoverTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FailoverTimeSeries.cpp; path = src/FailoverTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C47F2BDAE2FE005223D7 /* PointCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointCollection.h; path = src/PointCollection.h; sourceTree = "<group>"; };
+		5470C4802BDAE2FE005223D7 /* MultiplierTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiplierTimeSeries.h; path = src/MultiplierTimeSeries.h; sourceTree = "<group>"; };
+		5470C4812BDAE2FE005223D7 /* MathOpsTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MathOpsTimeSeries.cpp; path = src/MathOpsTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C4822BDAE2FF005223D7 /* GainTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GainTimeSeries.cpp; path = src/GainTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C4832BDAE2FF005223D7 /* BaseStatsTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseStatsTimeSeries.cpp; path = src/BaseStatsTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C4842BDAE2FF005223D7 /* WhereClause.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WhereClause.cpp; path = src/WhereClause.cpp; sourceTree = "<group>"; };
+		5470C4852BDAE2FF005223D7 /* TimeSeriesFilterSecondary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimeSeriesFilterSecondary.cpp; path = src/TimeSeriesFilterSecondary.cpp; sourceTree = "<group>"; };
+		5470C4862BDAE2FF005223D7 /* TimeSeriesFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSeriesFilter.h; path = src/TimeSeriesFilter.h; sourceTree = "<group>"; };
+		5470C4872BDAE2FF005223D7 /* PointRecordTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointRecordTime.cpp; path = src/PointRecordTime.cpp; sourceTree = "<group>"; };
+		5470C4882BDAE2FF005223D7 /* MathOpsTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MathOpsTimeSeries.h; path = src/MathOpsTimeSeries.h; sourceTree = "<group>"; };
+		5470C4892BDAE2FF005223D7 /* OpcPointRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpcPointRecord.h; path = src/OpcPointRecord.h; sourceTree = "<group>"; };
+		5470C48A2BDAE2FF005223D7 /* SquareWaveTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SquareWaveTimeSeries.h; path = src/SquareWaveTimeSeries.h; sourceTree = "<group>"; };
+		5470C48B2BDAE2FF005223D7 /* TimeSeriesLowess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSeriesLowess.h; path = src/TimeSeriesLowess.h; sourceTree = "<group>"; };
+		5470C48C2BDAE2FF005223D7 /* SqliteAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SqliteAdapter.h; path = src/SqliteAdapter.h; sourceTree = "<group>"; };
+		5470C48D2BDAE2FF005223D7 /* LagTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LagTimeSeries.h; path = src/LagTimeSeries.h; sourceTree = "<group>"; };
+		5470C48E2BDAE2FF005223D7 /* MultiplierTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MultiplierTimeSeries.cpp; path = src/MultiplierTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C48F2BDAE2FF005223D7 /* ConcreteDbRecords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcreteDbRecords.h; path = src/ConcreteDbRecords.h; sourceTree = "<group>"; };
+		5470C4902BDAE2FF005223D7 /* TimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimeSeries.cpp; path = src/TimeSeries.cpp; sourceTree = "<group>"; };
+		5470C4912BDAE2FF005223D7 /* FirstDerivative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstDerivative.h; path = src/FirstDerivative.h; sourceTree = "<group>"; };
+		5470C4922BDAE2FF005223D7 /* SineTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SineTimeSeries.cpp; path = src/SineTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C4932BDAE2FF005223D7 /* PointRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointRecord.cpp; path = src/PointRecord.cpp; sourceTree = "<group>"; };
+		5470C4942BDAE2FF005223D7 /* OutlierExclusionTimeSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OutlierExclusionTimeSeries.cpp; path = src/OutlierExclusionTimeSeries.cpp; sourceTree = "<group>"; };
+		5470C5012BDAE382005223D7 /* conan_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = conan_config.xcconfig; path = build/Debug/generators/conan_config.xcconfig; sourceTree = "<group>"; };
+		5470C5062BDAE3AB005223D7 /* tsflib-test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "tsflib-test"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5470C50E2BDAE3FE005223D7 /* test_units.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test_units.cpp; path = test/test_units.cpp; sourceTree = "<group>"; };
+		5470C50F2BDAE3FE005223D7 /* test_influx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test_influx.cpp; path = test/test_influx.cpp; sourceTree = "<group>"; };
+		5470C5102BDAE3FE005223D7 /* test_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = test_main.h; path = test/test_main.h; sourceTree = "<group>"; };
+		5470C5112BDAE3FE005223D7 /* test_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test_main.cpp; path = test/test_main.cpp; sourceTree = "<group>"; };
+		5470C5122BDAE3FE005223D7 /* test_filters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test_filters.cpp; path = test/test_filters.cpp; sourceTree = "<group>"; };
+		5470C5132BDAE3FE005223D7 /* test_record.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test_record.cpp; path = test/test_record.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5470C4192BDAE2CD005223D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5470C5032BDAE3AB005223D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5470C51A2BDAE416005223D7 /* libtsflib.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5470C4122BDAE2CD005223D7 = {
+			isa = PBXGroup;
+			children = (
+				5470C5002BDAE315005223D7 /* conan debug */,
+				5470C4292BDAE2EF005223D7 /* src */,
+				5470C50D2BDAE3B7005223D7 /* test */,
+				5470C41C2BDAE2CD005223D7 /* Products */,
+				5470C5192BDAE416005223D7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5470C41C2BDAE2CD005223D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5470C41B2BDAE2CD005223D7 /* libtsflib.a */,
+				5470C5062BDAE3AB005223D7 /* tsflib-test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5470C4292BDAE2EF005223D7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5470C4592BDAE2FE005223D7 /* AggregatorTimeSeries.cpp */,
+				5470C4622BDAE2FE005223D7 /* AggregatorTimeSeries.h */,
+				5470C43A2BDAE2FE005223D7 /* AutoRunner.cpp */,
+				5470C4732BDAE2FE005223D7 /* AutoRunner.h */,
+				5470C4832BDAE2FF005223D7 /* BaseStatsTimeSeries.cpp */,
+				5470C46B2BDAE2FE005223D7 /* BaseStatsTimeSeries.h */,
+				5470C4632BDAE2FE005223D7 /* BufferPointRecord.cpp */,
+				5470C47A2BDAE2FE005223D7 /* BufferPointRecord.h */,
+				5470C4792BDAE2FE005223D7 /* Clock.cpp */,
+				5470C4562BDAE2FE005223D7 /* Clock.h */,
+				5470C4332BDAE2FE005223D7 /* Components.hpp */,
+				5470C43E2BDAE2FE005223D7 /* ConcreteDbRecords.cpp */,
+				5470C48F2BDAE2FF005223D7 /* ConcreteDbRecords.h */,
+				5470C42B2BDAE2FE005223D7 /* ConstantTimeSeries.cpp */,
+				5470C4362BDAE2FE005223D7 /* ConstantTimeSeries.h */,
+				5470C4452BDAE2FE005223D7 /* CorrelatorTimeSeries.cpp */,
+				5470C45D2BDAE2FE005223D7 /* CorrelatorTimeSeries.h */,
+				5470C47D2BDAE2FE005223D7 /* Curve.cpp */,
+				5470C45E2BDAE2FE005223D7 /* Curve.h */,
+				5470C4432BDAE2FE005223D7 /* CurveFunction.cpp */,
+				5470C42E2BDAE2FE005223D7 /* CurveFunction.h */,
+				5470C4382BDAE2FE005223D7 /* DbAdapter.h */,
+				5470C43C2BDAE2FE005223D7 /* DbPointRecord.cpp */,
+				5470C4442BDAE2FE005223D7 /* DbPointRecord.h */,
+				5470C47E2BDAE2FE005223D7 /* FailoverTimeSeries.cpp */,
+				5470C44F2BDAE2FE005223D7 /* FailoverTimeSeries.h */,
+				5470C4502BDAE2FE005223D7 /* FirstDerivative.cpp */,
+				5470C4912BDAE2FF005223D7 /* FirstDerivative.h */,
+				5470C4822BDAE2FF005223D7 /* GainTimeSeries.cpp */,
+				5470C45C2BDAE2FE005223D7 /* GainTimeSeries.h */,
+				5470C4662BDAE2FE005223D7 /* IdentifierUnitsList.cpp */,
+				5470C47B2BDAE2FE005223D7 /* IdentifierUnitsList.h */,
+				5470C42D2BDAE2FE005223D7 /* InfluxAdapter.cpp */,
+				5470C4582BDAE2FE005223D7 /* InfluxAdapter.h */,
+				5470C42C2BDAE2FE005223D7 /* InfluxClient.hpp */,
+				5470C44B2BDAE2FE005223D7 /* IntegratorTimeSeries.cpp */,
+				5470C42F2BDAE2FE005223D7 /* IntegratorTimeSeries.h */,
+				5470C4312BDAE2FE005223D7 /* InversionTimeSeries.cpp */,
+				5470C43B2BDAE2FE005223D7 /* InversionTimeSeries.h */,
+				5470C4692BDAE2FE005223D7 /* LagTimeSeries.cpp */,
+				5470C48D2BDAE2FF005223D7 /* LagTimeSeries.h */,
+				5470C4522BDAE2FE005223D7 /* LogicTimeSeries.cpp */,
+				5470C4752BDAE2FE005223D7 /* LogicTimeSeries.h */,
+				5470C4342BDAE2FE005223D7 /* Lowess.h */,
+				5470C4812BDAE2FE005223D7 /* MathOpsTimeSeries.cpp */,
+				5470C4882BDAE2FF005223D7 /* MathOpsTimeSeries.h */,
+				5470C44E2BDAE2FE005223D7 /* MetaTimeSeries.cpp */,
+				5470C4712BDAE2FE005223D7 /* MetaTimeSeries.h */,
+				5470C4672BDAE2FE005223D7 /* MetricInfo.cpp */,
+				5470C4572BDAE2FE005223D7 /* MetricInfo.h */,
+				5470C4462BDAE2FE005223D7 /* MovingAverage.cpp */,
+				5470C4702BDAE2FE005223D7 /* MovingAverage.h */,
+				5470C48E2BDAE2FF005223D7 /* MultiplierTimeSeries.cpp */,
+				5470C4802BDAE2FE005223D7 /* MultiplierTimeSeries.h */,
+				5470C46E2BDAE2FE005223D7 /* OffsetTimeSeries.cpp */,
+				5470C4552BDAE2FE005223D7 /* OffsetTimeSeries.h */,
+				5470C44D2BDAE2FE005223D7 /* OpcAdapter.cpp */,
+				5470C4302BDAE2FE005223D7 /* OpcAdapter.h */,
+				5470C43D2BDAE2FE005223D7 /* OpcPointRecord.cpp */,
+				5470C4892BDAE2FF005223D7 /* OpcPointRecord.h */,
+				5470C4942BDAE2FF005223D7 /* OutlierExclusionTimeSeries.cpp */,
+				5470C4532BDAE2FE005223D7 /* OutlierExclusionTimeSeries.h */,
+				5470C4542BDAE2FE005223D7 /* PiAdapter.cpp */,
+				5470C4762BDAE2FE005223D7 /* PiAdapter.h */,
+				5470C4612BDAE2FE005223D7 /* Point.cpp */,
+				5470C4422BDAE2FE005223D7 /* Point.h */,
+				5470C45A2BDAE2FE005223D7 /* PointCollection.cpp */,
+				5470C47F2BDAE2FE005223D7 /* PointCollection.h */,
+				5470C4932BDAE2FF005223D7 /* PointRecord.cpp */,
+				5470C4472BDAE2FE005223D7 /* PointRecord.h */,
+				5470C4872BDAE2FF005223D7 /* PointRecordTime.cpp */,
+				5470C42A2BDAE2FE005223D7 /* PointRecordTime.h */,
+				5470C4922BDAE2FF005223D7 /* SineTimeSeries.cpp */,
+				5470C44C2BDAE2FE005223D7 /* SineTimeSeries.h */,
+				5470C4642BDAE2FE005223D7 /* SqliteAdapter.cpp */,
+				5470C48C2BDAE2FF005223D7 /* SqliteAdapter.h */,
+				5470C4492BDAE2FE005223D7 /* SquareWaveTimeSeries.cpp */,
+				5470C48A2BDAE2FF005223D7 /* SquareWaveTimeSeries.h */,
+				5470C46F2BDAE2FE005223D7 /* StatsTimeSeries.cpp */,
+				5470C4682BDAE2FE005223D7 /* StatsTimeSeries.h */,
+				5470C45B2BDAE2FE005223D7 /* ThresholdTimeSeries.cpp */,
+				5470C4782BDAE2FE005223D7 /* ThresholdTimeSeries.h */,
+				5470C4352BDAE2FE005223D7 /* TimeRange.cpp */,
+				5470C47C2BDAE2FE005223D7 /* TimeRange.h */,
+				5470C4902BDAE2FF005223D7 /* TimeSeries.cpp */,
+				5470C4412BDAE2FE005223D7 /* TimeSeries.h */,
+				5470C4372BDAE2FE005223D7 /* TimeSeriesFilter.cpp */,
+				5470C4862BDAE2FF005223D7 /* TimeSeriesFilter.h */,
+				5470C4852BDAE2FF005223D7 /* TimeSeriesFilterSecondary.cpp */,
+				5470C4602BDAE2FE005223D7 /* TimeSeriesFilterSecondary.h */,
+				5470C46A2BDAE2FE005223D7 /* TimeSeriesFilterSinglePoint.cpp */,
+				5470C46C2BDAE2FE005223D7 /* TimeSeriesFilterSinglePoint.h */,
+				5470C4652BDAE2FE005223D7 /* TimeSeriesLowess.cpp */,
+				5470C48B2BDAE2FF005223D7 /* TimeSeriesLowess.h */,
+				5470C45F2BDAE2FE005223D7 /* TimeSeriesQuery.cpp */,
+				5470C4742BDAE2FE005223D7 /* TimeSeriesQuery.h */,
+				5470C43F2BDAE2FE005223D7 /* TimeSeriesSynthetic.cpp */,
+				5470C44A2BDAE2FE005223D7 /* TimeSeriesSynthetic.h */,
+				5470C4402BDAE2FE005223D7 /* TSF_Visitable.h */,
+				5470C4392BDAE2FE005223D7 /* tsfExceptions.h */,
+				5470C4512BDAE2FE005223D7 /* tsfMacros.h */,
+				5470C4322BDAE2FE005223D7 /* Units.cpp */,
+				5470C4722BDAE2FE005223D7 /* Units.h */,
+				5470C46D2BDAE2FE005223D7 /* ValidRangeTimeSeries.cpp */,
+				5470C4482BDAE2FE005223D7 /* ValidRangeTimeSeries.h */,
+				5470C4842BDAE2FF005223D7 /* WhereClause.cpp */,
+				5470C4772BDAE2FE005223D7 /* WhereClause.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		5470C5002BDAE315005223D7 /* conan debug */ = {
+			isa = PBXGroup;
+			children = (
+				5470C5012BDAE382005223D7 /* conan_config.xcconfig */,
+			);
+			name = "conan debug";
+			sourceTree = "<group>";
+		};
+		5470C50D2BDAE3B7005223D7 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				5470C5122BDAE3FE005223D7 /* test_filters.cpp */,
+				5470C50F2BDAE3FE005223D7 /* test_influx.cpp */,
+				5470C5112BDAE3FE005223D7 /* test_main.cpp */,
+				5470C5102BDAE3FE005223D7 /* test_main.h */,
+				5470C5132BDAE3FE005223D7 /* test_record.cpp */,
+				5470C50E2BDAE3FE005223D7 /* test_units.cpp */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+		5470C5192BDAE416005223D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5470C4172BDAE2CD005223D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5470C4992BDAE2FF005223D7 /* CurveFunction.h in Headers */,
+				5470C49A2BDAE2FF005223D7 /* IntegratorTimeSeries.h in Headers */,
+				5470C4AF2BDAE2FF005223D7 /* DbPointRecord.h in Headers */,
+				5470C4D62BDAE2FF005223D7 /* BaseStatsTimeSeries.h in Headers */,
+				5470C4FC2BDAE2FF005223D7 /* FirstDerivative.h in Headers */,
+				5470C4FA2BDAE2FF005223D7 /* ConcreteDbRecords.h in Headers */,
+				5470C49E2BDAE2FF005223D7 /* Components.hpp in Headers */,
+				5470C4A62BDAE2FF005223D7 /* InversionTimeSeries.h in Headers */,
+				5470C4C72BDAE2FF005223D7 /* GainTimeSeries.h in Headers */,
+				5470C4AB2BDAE2FF005223D7 /* TSF_Visitable.h in Headers */,
+				5470C4C92BDAE2FF005223D7 /* Curve.h in Headers */,
+				5470C4B52BDAE2FF005223D7 /* TimeSeriesSynthetic.h in Headers */,
+				5470C4CD2BDAE2FF005223D7 /* AggregatorTimeSeries.h in Headers */,
+				5470C4F32BDAE2FF005223D7 /* MathOpsTimeSeries.h in Headers */,
+				5470C4E12BDAE2FF005223D7 /* PiAdapter.h in Headers */,
+				5470C4F12BDAE2FF005223D7 /* TimeSeriesFilter.h in Headers */,
+				5470C49B2BDAE2FF005223D7 /* OpcAdapter.h in Headers */,
+				5470C4DD2BDAE2FF005223D7 /* Units.h in Headers */,
+				5470C4BA2BDAE2FF005223D7 /* FailoverTimeSeries.h in Headers */,
+				5470C4DF2BDAE2FF005223D7 /* TimeSeriesQuery.h in Headers */,
+				5470C4C12BDAE2FF005223D7 /* Clock.h in Headers */,
+				5470C4F62BDAE2FF005223D7 /* TimeSeriesLowess.h in Headers */,
+				5470C4BC2BDAE2FF005223D7 /* tsfMacros.h in Headers */,
+				5470C49F2BDAE2FF005223D7 /* Lowess.h in Headers */,
+				5470C4EA2BDAE2FF005223D7 /* PointCollection.h in Headers */,
+				5470C4C32BDAE2FF005223D7 /* InfluxAdapter.h in Headers */,
+				5470C4D32BDAE2FF005223D7 /* StatsTimeSeries.h in Headers */,
+				5470C4E22BDAE2FF005223D7 /* WhereClause.h in Headers */,
+				5470C4AC2BDAE2FF005223D7 /* TimeSeries.h in Headers */,
+				5470C4F72BDAE2FF005223D7 /* SqliteAdapter.h in Headers */,
+				5470C4C82BDAE2FF005223D7 /* CorrelatorTimeSeries.h in Headers */,
+				5470C4952BDAE2FF005223D7 /* PointRecordTime.h in Headers */,
+				5470C4A42BDAE2FF005223D7 /* tsfExceptions.h in Headers */,
+				5470C4F52BDAE2FF005223D7 /* SquareWaveTimeSeries.h in Headers */,
+				5470C4C22BDAE2FF005223D7 /* MetricInfo.h in Headers */,
+				5470C4B72BDAE2FF005223D7 /* SineTimeSeries.h in Headers */,
+				5470C4DB2BDAE2FF005223D7 /* MovingAverage.h in Headers */,
+				5470C4A12BDAE2FF005223D7 /* ConstantTimeSeries.h in Headers */,
+				5470C4E62BDAE2FF005223D7 /* IdentifierUnitsList.h in Headers */,
+				5470C4C02BDAE2FF005223D7 /* OffsetTimeSeries.h in Headers */,
+				5470C4B22BDAE2FF005223D7 /* PointRecord.h in Headers */,
+				5470C4E72BDAE2FF005223D7 /* TimeRange.h in Headers */,
+				5470C4E52BDAE2FF005223D7 /* BufferPointRecord.h in Headers */,
+				5470C4E32BDAE2FF005223D7 /* ThresholdTimeSeries.h in Headers */,
+				5470C4A32BDAE2FF005223D7 /* DbAdapter.h in Headers */,
+				5470C4972BDAE2FF005223D7 /* InfluxClient.hpp in Headers */,
+				5470C4AD2BDAE2FF005223D7 /* Point.h in Headers */,
+				5470C4F82BDAE2FF005223D7 /* LagTimeSeries.h in Headers */,
+				5470C4DC2BDAE2FF005223D7 /* MetaTimeSeries.h in Headers */,
+				5470C4DE2BDAE2FF005223D7 /* AutoRunner.h in Headers */,
+				5470C4BE2BDAE2FF005223D7 /* OutlierExclusionTimeSeries.h in Headers */,
+				5470C4D72BDAE2FF005223D7 /* TimeSeriesFilterSinglePoint.h in Headers */,
+				5470C4B32BDAE2FF005223D7 /* ValidRangeTimeSeries.h in Headers */,
+				5470C4EB2BDAE2FF005223D7 /* MultiplierTimeSeries.h in Headers */,
+				5470C4CB2BDAE2FF005223D7 /* TimeSeriesFilterSecondary.h in Headers */,
+				5470C4E02BDAE2FF005223D7 /* LogicTimeSeries.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5470C41A2BDAE2CD005223D7 /* tsflib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5470C4262BDAE2CD005223D7 /* Build configuration list for PBXNativeTarget "tsflib" */;
+			buildPhases = (
+				5470C4172BDAE2CD005223D7 /* Headers */,
+				5470C4182BDAE2CD005223D7 /* Sources */,
+				5470C4192BDAE2CD005223D7 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tsflib;
+			productName = tsflib;
+			productReference = 5470C41B2BDAE2CD005223D7 /* libtsflib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5470C5052BDAE3AB005223D7 /* tsflib-test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5470C50A2BDAE3AB005223D7 /* Build configuration list for PBXNativeTarget "tsflib-test" */;
+			buildPhases = (
+				5470C5022BDAE3AB005223D7 /* Sources */,
+				5470C5032BDAE3AB005223D7 /* Frameworks */,
+				5470C5042BDAE3AB005223D7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tsflib-test";
+			productName = "tsflib-test";
+			productReference = 5470C5062BDAE3AB005223D7 /* tsflib-test */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5470C4132BDAE2CD005223D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					5470C41A2BDAE2CD005223D7 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					5470C5052BDAE3AB005223D7 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 5470C4162BDAE2CD005223D7 /* Build configuration list for PBXProject "tsflib" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5470C4122BDAE2CD005223D7;
+			productRefGroup = 5470C41C2BDAE2CD005223D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5470C41A2BDAE2CD005223D7 /* tsflib */,
+				5470C5052BDAE3AB005223D7 /* tsflib-test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5470C4182BDAE2CD005223D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5470C4D22BDAE2FF005223D7 /* MetricInfo.cpp in Sources */,
+				5470C4E92BDAE2FF005223D7 /* FailoverTimeSeries.cpp in Sources */,
+				5470C4962BDAE2FF005223D7 /* ConstantTimeSeries.cpp in Sources */,
+				5470C4EC2BDAE2FF005223D7 /* MathOpsTimeSeries.cpp in Sources */,
+				5470C4B12BDAE2FF005223D7 /* MovingAverage.cpp in Sources */,
+				5470C4FB2BDAE2FF005223D7 /* TimeSeries.cpp in Sources */,
+				5470C4B62BDAE2FF005223D7 /* IntegratorTimeSeries.cpp in Sources */,
+				5470C4A72BDAE2FF005223D7 /* DbPointRecord.cpp in Sources */,
+				5470C4CF2BDAE2FF005223D7 /* SqliteAdapter.cpp in Sources */,
+				5470C4B02BDAE2FF005223D7 /* CorrelatorTimeSeries.cpp in Sources */,
+				5470C4AA2BDAE2FF005223D7 /* TimeSeriesSynthetic.cpp in Sources */,
+				5470C4C62BDAE2FF005223D7 /* ThresholdTimeSeries.cpp in Sources */,
+				5470C4A22BDAE2FF005223D7 /* TimeSeriesFilter.cpp in Sources */,
+				5470C4C52BDAE2FF005223D7 /* PointCollection.cpp in Sources */,
+				5470C4D82BDAE2FF005223D7 /* ValidRangeTimeSeries.cpp in Sources */,
+				5470C4B92BDAE2FF005223D7 /* MetaTimeSeries.cpp in Sources */,
+				5470C49D2BDAE2FF005223D7 /* Units.cpp in Sources */,
+				5470C4D52BDAE2FF005223D7 /* TimeSeriesFilterSinglePoint.cpp in Sources */,
+				5470C4D12BDAE2FF005223D7 /* IdentifierUnitsList.cpp in Sources */,
+				5470C4EE2BDAE2FF005223D7 /* BaseStatsTimeSeries.cpp in Sources */,
+				5470C4EF2BDAE2FF005223D7 /* WhereClause.cpp in Sources */,
+				5470C4D42BDAE2FF005223D7 /* LagTimeSeries.cpp in Sources */,
+				5470C4AE2BDAE2FF005223D7 /* CurveFunction.cpp in Sources */,
+				5470C4CE2BDAE2FF005223D7 /* BufferPointRecord.cpp in Sources */,
+				5470C4DA2BDAE2FF005223D7 /* StatsTimeSeries.cpp in Sources */,
+				5470C4F92BDAE2FF005223D7 /* MultiplierTimeSeries.cpp in Sources */,
+				5470C4FD2BDAE2FF005223D7 /* SineTimeSeries.cpp in Sources */,
+				5470C4F02BDAE2FF005223D7 /* TimeSeriesFilterSecondary.cpp in Sources */,
+				5470C4A02BDAE2FF005223D7 /* TimeRange.cpp in Sources */,
+				5470C49C2BDAE2FF005223D7 /* InversionTimeSeries.cpp in Sources */,
+				5470C4F22BDAE2FF005223D7 /* PointRecordTime.cpp in Sources */,
+				5470C4D02BDAE2FF005223D7 /* TimeSeriesLowess.cpp in Sources */,
+				5470C4B42BDAE2FF005223D7 /* SquareWaveTimeSeries.cpp in Sources */,
+				5470C4FE2BDAE2FF005223D7 /* PointRecord.cpp in Sources */,
+				5470C4CA2BDAE2FF005223D7 /* TimeSeriesQuery.cpp in Sources */,
+				5470C4982BDAE2FF005223D7 /* InfluxAdapter.cpp in Sources */,
+				5470C4BD2BDAE2FF005223D7 /* LogicTimeSeries.cpp in Sources */,
+				5470C4E42BDAE2FF005223D7 /* Clock.cpp in Sources */,
+				5470C4D92BDAE2FF005223D7 /* OffsetTimeSeries.cpp in Sources */,
+				5470C4C42BDAE2FF005223D7 /* AggregatorTimeSeries.cpp in Sources */,
+				5470C4A52BDAE2FF005223D7 /* AutoRunner.cpp in Sources */,
+				5470C4A92BDAE2FF005223D7 /* ConcreteDbRecords.cpp in Sources */,
+				5470C4CC2BDAE2FF005223D7 /* Point.cpp in Sources */,
+				5470C4ED2BDAE2FF005223D7 /* GainTimeSeries.cpp in Sources */,
+				5470C4BB2BDAE2FF005223D7 /* FirstDerivative.cpp in Sources */,
+				5470C4E82BDAE2FF005223D7 /* Curve.cpp in Sources */,
+				5470C4FF2BDAE2FF005223D7 /* OutlierExclusionTimeSeries.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5470C5022BDAE3AB005223D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5470C5142BDAE3FE005223D7 /* test_units.cpp in Sources */,
+				5470C5182BDAE3FE005223D7 /* test_record.cpp in Sources */,
+				5470C5172BDAE3FE005223D7 /* test_filters.cpp in Sources */,
+				5470C5152BDAE3FE005223D7 /* test_influx.cpp in Sources */,
+				5470C5162BDAE3FE005223D7 /* test_main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5470C4242BDAE2CD005223D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5470C5012BDAE382005223D7 /* conan_config.xcconfig */;
+			buildSettings = {
+				ARCHS = x86_64;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5470C4252BDAE2CD005223D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5470C4272BDAE2CD005223D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5470C4282BDAE2CD005223D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5470C50B2BDAE3AB005223D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5470C50C2BDAE3AB005223D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5470C4162BDAE2CD005223D7 /* Build configuration list for PBXProject "tsflib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5470C4242BDAE2CD005223D7 /* Debug */,
+				5470C4252BDAE2CD005223D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5470C4262BDAE2CD005223D7 /* Build configuration list for PBXNativeTarget "tsflib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5470C4272BDAE2CD005223D7 /* Debug */,
+				5470C4282BDAE2CD005223D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5470C50A2BDAE3AB005223D7 /* Build configuration list for PBXNativeTarget "tsflib-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5470C50B2BDAE3AB005223D7 /* Debug */,
+				5470C50C2BDAE3AB005223D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5470C4132BDAE2CD005223D7 /* Project object */;
+}
