@@ -736,18 +736,19 @@ void EpanetModel::setPipeStatus(const string& pipe, Pipe::status_t status) {
 void EpanetModel::setPipeStatusControl(const std::string& pipe, Pipe::status_t status, enableControl_t enableStatus) {
   int linkIndex = _linkIndex[pipe];
   int enEnableStatus = (enableStatus == enable) ? 1 : 0;
+  double en_status = (status == Pipe::status_t::CLOSED) ? EN_SET_CLOSED : EN_SET_OPEN;
 
   if (_statusControlIndex.count(pipe) == 0) {
     // if this element doesn't have a control, add one
     int cindex;
-    EN_API_CHECK(EN_addcontrol(_enModel, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)status, 0, (EN_API_FLOAT_TYPE)0.0, &cindex), "EN_addcontrol");
+    EN_API_CHECK(EN_addcontrol(_enModel, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)en_status, 0, (EN_API_FLOAT_TYPE)0.0, &cindex), "EN_addcontrol");
     _statusControlIndex[pipe] = cindex;
     EN_API_CHECK(EN_setcontrolenabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
   }
   else {
     // set the control
     int cindex = _statusControlIndex[pipe];
-    EN_API_CHECK(EN_setcontrol(_enModel, cindex, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)status, 0, (EN_API_FLOAT_TYPE)0.0), "EN_setcontrol");
+    EN_API_CHECK(EN_setcontrol(_enModel, cindex, EN_TIMER, linkIndex, (EN_API_FLOAT_TYPE)en_status, 0, (EN_API_FLOAT_TYPE)0.0), "EN_setcontrol");
     EN_API_CHECK(EN_setcontrolenabled(_enModel, cindex, enEnableStatus), "EN_setControlEnabled");
   }
 }
