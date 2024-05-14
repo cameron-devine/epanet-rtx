@@ -148,6 +148,10 @@ void EpanetModel::useEpanetModel(EN_Project model, string path) {
     long enTimeStep;
     EN_API_CHECK(EN_gettimeparam(_enModel, EN_HYDSTEP, &enTimeStep), "EN_gettimeparam EN_HYDSTEP");
     this->setHydraulicTimeStep((int)enTimeStep);
+
+    long enQStep;
+    EN_API_CHECK(EN_gettimeparam(_enModel, EN_QUALSTEP, &enQStep), "EN_gettimeparam EN_QUALSTEP");
+    this->setQualityTimeStep((int)enQStep);
   }
   
   {
