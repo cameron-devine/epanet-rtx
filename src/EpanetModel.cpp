@@ -835,11 +835,18 @@ double EpanetModel::tankInletQuality(const string& tank) {
     auto p = dynamic_pointer_cast<Pipe>(l);
     auto flow = p->state_flow;
     
+    // if flow is into the tank from this link.
+    // create a flow-weighted sum of qualities into the tank.
+
+    // flow towards the tank
     if (p->to() == t && flow > 0) {
-      // flow is into the tank from this link.
-      // create a flow-weighted sum of qualities into the tank.
-      qualityIn += p->state_quality() * flow;
+      qualityIn += dynamic_pointer_cast<Junction>(p->from())->state_quality * flow;
       totalFlowIn += flow;
+    }
+    // also flow towards the tank
+    else if (p->from() == t && flow < 0) {
+      qualityIn += dynamic_pointer_cast<Junction>(p->to())->state_quality * flow;
+      totalFlowIn += (-flow);
     }
   }
   // complete the flow-weighted averaging.
