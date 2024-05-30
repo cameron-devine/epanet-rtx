@@ -99,6 +99,7 @@ namespace TSF {
     Point selectNext(const std::string& id, time_t time, WhereClause q = WhereClause());
     Point selectPrevious(const std::string& id, time_t time, WhereClause q = WhereClause());
     std::vector<Point> selectWithQuery(const std::string& query, TimeRange range);
+    std::shared_ptr<InfluxClient> _restClient;
 
     
     // PREFETCH
@@ -127,7 +128,6 @@ namespace TSF {
     std::shared_ptr<ITaskWrapper> _sendTask;
     constexpr static const char* TAG = "InfluxTCPAdapter";
     std::shared_ptr<oatpp::data::mapping::ObjectMapper> _objectMapper;
-    std::shared_ptr<InfluxClient> _restClient;
     std::shared_ptr<oatpp::web::client::RequestExecutor> createExecutor();
     std::future<void> sendPointsFuture;
 
