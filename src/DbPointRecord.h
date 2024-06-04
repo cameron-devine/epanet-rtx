@@ -65,6 +65,7 @@ namespace TSF {
     virtual bool readonly();
     virtual void setReadonly(bool readOnly);
     virtual void truncate(); 
+    DbAdapter *_adapter;
     
     void beginBulkOperation();
     void endBulkOperation();
@@ -108,7 +109,6 @@ namespace TSF {
     
   protected:
     
-    DbAdapter *_adapter;
     DbAdapter::errCallback_t _errCB;
     
     Point searchPreviousIteratively(const string& id, time_t time);
