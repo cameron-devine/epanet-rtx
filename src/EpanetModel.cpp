@@ -845,7 +845,7 @@ double EpanetModel::tankInletQuality(const string& tank) {
     }
     // also flow towards the tank
     else if (p->from() == t && flow < 0) {
-      qualityIn += dynamic_pointer_cast<Junction>(p->to())->state_quality * flow;
+      qualityIn += dynamic_pointer_cast<Junction>(p->to())->state_quality * (-flow);
       totalFlowIn += (-flow);
     }
   }
