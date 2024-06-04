@@ -32,6 +32,17 @@ namespace TSF {
     virtual ~InfluxAdapter();
         
     void setConnectionString(const std::string& con);
+
+    class connectionInfo {
+    public:
+      connectionInfo();
+      std::string proto, host, user, pass, db;
+      int port;
+      int msec_ratelimit;
+      bool validate;
+      std::string getAuthString(){ return user + ":" + pass; }
+    };
+    connectionInfo conn;
     
     // TRANSACTIONS
     void beginTransaction();
@@ -56,17 +67,6 @@ namespace TSF {
     virtual size_t maxTransactionLines() = 0;
     
     // sub types
-    class connectionInfo {
-    public:
-      connectionInfo();
-      std::string proto, host, user, pass, db;
-      int port;
-      int msec_ratelimit;
-      bool validate;
-      std::string getAuthString(){ return user + ":" + pass; }
-    };
-    connectionInfo conn;
-    
     std::vector<std::string> insertionLinesFromPoints(const std::string& tsName, std::vector<Point> points);
     std::string influxIdForTsId(const std::string& id);
     

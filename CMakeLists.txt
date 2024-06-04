@@ -136,4 +136,5 @@ add_test(tsflib_test tsflib_test)
 
 
 install(DIRECTORY ./src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
+install(DIRECTORY ./src/ DESTINATION include FILES_MATCHING PATTERN "*.hpp")
 install(TARGETS tsflib DESTINATION lib)
