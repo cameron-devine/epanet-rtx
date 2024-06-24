@@ -251,13 +251,13 @@ void EpanetModel::initEngine() {
   try {
     EN_API_CHECK(EN_openH(_enModel), "EN_openH");
     EN_API_CHECK(EN_initH(_enModel, 10), "EN_initH");
+    this->applyInitialQuality();
     EN_API_CHECK(EN_openQ(_enModel), "EN_openQ");
     EN_API_CHECK(EN_initQ(_enModel, EN_NOSAVE), "EN_initQ");
   } catch (...) {
     cerr << "warning: epanet opened improperly" << endl;
   }
   _enOpened = true;
-  this->applyInitialQuality();
 }
 
 void EpanetModel::closeEngine() {
@@ -707,6 +707,11 @@ void EpanetModel::setReservoirQuality(const string& reservoir, double quality) {
   setNodeValue(EN_INITQUAL, reservoir, quality); // set initquality in case setpoint is lower than old value
   setNodeValue(EN_SOURCETYPE, reservoir, CONCEN);
   setNodeValue(EN_SOURCEQUAL, reservoir, quality);
+
+  // if this is a tank, we must override the tank's concentration using private EPANET internals.
+  
+
+  
 }
 
 void EpanetModel::setTankLevel(const string& tank, double level) {
@@ -946,7 +951,8 @@ bool EpanetModel::solveSimulation(time_t time) {
   if (errorCode == 110) {
     // ill conditioning can be helped by resetting some things
     this->applyInitialTankLevels();
-    this->applyInitialQuality();
+    this->closeEngine();
+    this->initEngine();
     errorCode = EN_runH(_enModel, &timestep);
     if (errorCode > 0) {
       char errorMsg[256];
@@ -1128,8 +1134,6 @@ void EpanetModel::applyInitialQuality() {
     DebugLog << "Could not apply initial quality conditions; engine not opened" << EOL;
     return;
   }
-  EN_API_CHECK(EN_closeQ(_enModel), "EN_closeQ");
-  EN_API_CHECK(EN_openQ(_enModel), "EN_openQ");
 
   // Junctions
   for(Junction::_sp junc : this->junctions()) {
@@ -1152,7 +1156,6 @@ void EpanetModel::applyInitialQuality() {
     EN_API_CHECK(EN_setnodevalue(_enModel, iNode, EN_INITQUAL, q), "EN_setnodevalue - EN_INITIALQUAL");
   }
   
-  EN_API_CHECK(EN_initQ(_enModel, EN_NOSAVE), "ENinitQ");
 }
 
 void EpanetModel::applyInitialTankLevels() {
@@ -1266,7 +1269,12 @@ void EpanetModel::cleanupModelAfterSimulation() {
   _settingControlIndex.clear();
   _statusControlIndex.clear();
   
-  // TODO - revert base demands (and patterns!) back to their previous values
+  
+  for (auto j : this->junctions()) {
+    EN_API_CHECK(EN_setnodevalue(_enModel, this->enIndexForJunction(j), EN_BASEDEMAND, j->baseDemand()), "EN_setnodevalue");
+  }
+
+  // TODO - revert patterns? back to their previous values
   
   // TODO - other things: initial tank levels? Anything else that creates confusion with diffs?
   

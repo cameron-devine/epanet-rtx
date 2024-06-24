@@ -52,7 +52,7 @@ if you are developing RTX as a dependent package locally, do this instead:
 ```
 conan editable add .
 conan install . --profile=x86 -s build_type=Release --build=missing && \
-conan install . --profile=x86 -s '&:build_type=Debug' -s 'tsflib*:build_type=Debug' -s build_type=Release --build=missing && \
+conan install . --profile=x86 -s '&:build_type=Debug' -s 'tsflib*:build_type=Debug' -s 'epanet*:build_type=Debug' -s build_type=Release --build=missing && \
 conan build . --profile=x86 -s build_type=Debug && \
 conan export-pkg . --profile=x86 -s build_type=Debug
 

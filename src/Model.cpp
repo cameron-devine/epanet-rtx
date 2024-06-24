@@ -753,7 +753,7 @@ bool Model::solveAndSaveOutputAtTime(time_t simulationTime) {
   
   auto filterDuration = time(NULL) - t1;
   
-  _filterWallTime->insert(Point(simulationTime, (double)filterDuration));
+  // _filterWallTime->insert(Point(simulationTime, (double)filterDuration));
   
   t1 = time(NULL);
   // simulate this period, find the next timestep boundary.
@@ -992,34 +992,6 @@ int Model::qualityTimeStep() {
 
 double Model::initialUniformQuality() {
   return _initialQuality;
-}
-
-void Model::setInitialQualityConditionsFromHotStart(time_t time) {
-  // assumes that any junction worth considering has a record with simulated results.
-  
-  auto r = this->junctions().front()->quality()->record();
-  auto dbRec = dynamic_pointer_cast<DbPointRecord>(r);
-  if (dbRec) {
-    dbRec->willQuery(TimeRange(time - 1, time + 1));
-  }
-  
-  for (auto &j : this->junctions()) {
-    Point p = j->quality()->pointAtOrBefore(time);
-    if (p.isValid) {
-      j->state_quality = p.value;
-    }
-    else {
-      cerr << "invalid point for junction: " << j->name() << endl;
-    }
-  }
-  for(auto t : this->tanks()) {
-    t->state_quality = t->quality()->pointAtOrBefore(time).value;
-  }
-  for(auto r : this->reservoirs()) {
-    r->state_quality = r->quality()->pointAtOrBefore(time).value;
-  }
-  
-  this->applyInitialQuality();
 }
 
 void Model::setInitialJunctionUniformQuality(double qual) {
@@ -1590,10 +1562,10 @@ void Model::saveNetworkStates(time_t simtime, std::set<PointRecord::_sp> bulkRec
   
   
   auto saveWallDuration = time(NULL) - t1;
-  _saveWallTime->insert(Point(simtime, (double)saveWallDuration));
+  // _saveWallTime->insert(Point(simtime, (double)saveWallDuration));
   
   // beating heart just after everything else is done.
-  _heartbeat->insert(Point(simtime,1.0));
+  // _heartbeat->insert(Point(simtime,1.0));
   OATPP_LOGD("Model", "finished saving states");
 //  cout << "*** finished saving states ****" << EOL << flush;
 }

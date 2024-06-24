@@ -155,7 +155,6 @@ namespace RTX {
     virtual void setQualityTimeStep(int seconds);
     int qualityTimeStep();
     
-    void setInitialQualityConditionsFromHotStart(time_t time);
     void setInitialJunctionUniformQuality(double qual);
     double initialUniformQuality();
     void setInitialJunctionQualityFromMeasurements(time_t time);
