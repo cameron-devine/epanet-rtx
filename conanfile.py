@@ -7,7 +7,6 @@ class TSFlib(ConanFile):
     version = "1.0"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = {"shared": False, "fPIC": True}
     generators = "CMakeToolchain", "CMakeDeps", "XcodeDeps", "XcodeToolchain"
 
     exports_sources = "CMakeLists.txt", "src/*", "test/*"
@@ -52,7 +51,7 @@ class TSFlib(ConanFile):
         self.requires("boost/1.83.0")
         self.requires("nlohmann_json/3.10.5")
         self.requires("libcurl/7.80.0")
-        self.requires("sqlite3/3.45.3")
+        #self.requires("sqlite3/3.45.3")
         self.requires("sqlite_modern_cpp/3.2")
 
 
