@@ -721,14 +721,20 @@ void EpanetModel::setTankLevel(const string& tank, double level) {
 
 void EpanetModel::setJunctionDemand(const string& junction, double demand) {
   int nodeIndex = _nodeIndex[junction];
-  // Junction demand is total demand - so deal with multiple categories
+  // Junction demand is total demand - so deal with multiple categories by clearing them out.
   int numDemands = 0;
   EN_API_CHECK( EN_getnumdemands(_enModel, nodeIndex, &numDemands), "EN_getnumdemands()");
-  for (int demandIdx = 1; demandIdx < numDemands; demandIdx++) {
+  if (numDemands == 0) {
+    cerr << "epanet offers no base demand for this junction: " << junction << endl;
+    return;
+  }
+  // First demand category is the default one... per EPANET convention... and the one RTX wants to manipulate.
+  EN_API_CHECK( EN_setbasedemand(_enModel, nodeIndex, 1, demand), "EN_setbasedemand()" );
+  // and then set all other demand category multipliers to zero
+  for (int demandIdx = 2; demandIdx <= numDemands; demandIdx++) {
     EN_API_CHECK( EN_setbasedemand(_enModel, nodeIndex, demandIdx, 0.0), "EN_setbasedemand()" );
   }
-  // Last demand category is the one... per EPANET convention
-  EN_API_CHECK( EN_setbasedemand(_enModel, nodeIndex, numDemands, demand), "EN_setbasedemand()" );
+  
 }
 
 void EpanetModel::setJunctionQuality(const std::string& junction, double quality) {
@@ -969,6 +975,28 @@ bool EpanetModel::solveSimulation(time_t time) {
     EN_API_CHECK(EN_runQ(_enModel, &timestep), "EN_runQ");
   }
   
+
+  if (false) {
+    // log some info like DMA demands
+    for (auto dma : this->dmas()) {
+      double entotal = 0, rtxtotal = 0;
+      auto dmaName = dma->name();
+      for (auto j : dma->junctions()) {
+        if (j->type() != Element::JUNCTION) {
+          continue;
+        }
+        auto rtxDemand = j->state_demand;
+        double enDemand = 0;
+        int nodeIndex = enIndexForJunction(j);
+        EN_API_CHECK(EN_getnodevalue(_enModel, nodeIndex, EN_DEMAND, &enDemand), "EN_getnodevalue EN_DEMAND");
+        cout << "junction " << j->name() << " -- " << rtxDemand << " :: " << enDemand << endl;
+        entotal += enDemand;
+        rtxtotal += rtxDemand;
+      }
+      cout << endl << endl << "DMA: " << dma->name() << " -- " << rtxtotal << " :: " << entotal << endl << endl;
+    }
+  }
+
   return success;
 }
 
