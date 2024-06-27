@@ -186,7 +186,9 @@ void EpanetModelExporter::exportModel(EpanetModel::_sp model, TimeRange range, c
           s << ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" << BR;
           s << "; Junction " << j->name() << " pressure measure" << BR;
           s << j->name() << " ";
-          auto series = j->pressureMeasure()->points(range);
+          auto pc = j->pressureMeasure()->pointCollection(range);
+          pc.convertToUnits(model->pressureUnits());
+          auto series = pc.points();
           for (auto &p : series) {
             s << (p.time - range.start)/3600.0 << "  " << p.value << BR;
           }
@@ -214,7 +216,9 @@ void EpanetModelExporter::exportModel(EpanetModel::_sp model, TimeRange range, c
           s << ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" << BR;
           s << "; Tank " << t->name() << " head measure" << BR;
           s << t->name() << " ";
-          auto series = t->headMeasure()->points(range);
+          auto pc = t->headMeasure()->pointCollection(range);
+          pc.convertToUnits(model->headUnits());
+          auto series = pc.points();
           for (auto &p : series) {
             s << (p.time - range.start)/3600.0 << "  " << p.value << BR;
           }
@@ -242,7 +246,9 @@ void EpanetModelExporter::exportModel(EpanetModel::_sp model, TimeRange range, c
           s << ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" << BR;
           s << "; Junction " << j->name() << " demand boundary" << BR;
           s << j->name() << " ";
-          auto series = j->boundaryFlow()->points(range);
+          auto pc = j->boundaryFlow()->pointCollection(range);
+          pc.convertToUnits(model->flowUnits());
+          auto series = pc.points();
           for (auto &p : series) {
             s << (p.time - range.start)/3600.0 << "  " << p.value << BR;
           }
@@ -276,7 +282,9 @@ void EpanetModelExporter::exportModel(EpanetModel::_sp model, TimeRange range, c
           s << ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" << BR;
           s << "; Pipe " << p->name() << " flow measure" << BR;
           s << p->name() << " ";
-          auto series = p->flowMeasure()->points(range);
+          auto pc = p->flowMeasure()->pointCollection(range);
+          pc.convertToUnits(model->flowUnits());
+          auto series = pc.points();
           for (auto &p : series) {
             s << (p.time - range.start)/3600.0 << "  " << p.value << BR;
           }
@@ -320,9 +328,14 @@ ostream& EpanetModelExporter::to_stream(ostream &stream) {
     // Junction demand is total demand - so deal with multiple categories
     int numDemands = 0;
     EN_getnumdemands(ow_project, jIdx, &numDemands);
-    for (int demandIdx = 1; demandIdx < numDemands; demandIdx++) {
-      EN_setbasedemand(ow_project, jIdx, demandIdx, 0.0);
+
+    // the first category is the default.
+    if (numDemands > 1) {
+      for (int demandIdx = 2; demandIdx <= numDemands; demandIdx++) {
+        EN_setbasedemand(ow_project, jIdx, demandIdx, 0.0);
+      }
     }
+    
   }
   
   
@@ -351,7 +364,7 @@ ostream& EpanetModelExporter::to_stream(ostream &stream) {
       else if (totalBase != 0) {
         thisBase = (junction->baseDemand() / totalBase);
       }
-      // setnodevalue will set the last category's base demand.
+      // setnodevalue will set the FIRST category's base demand.
       EN_setnodevalue(ow_project,
                       _model->enIndexForJunction(junction),
                       EN_BASEDEMAND,
