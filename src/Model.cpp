@@ -142,7 +142,7 @@ std::string Model::modelHash() {
   
   std::stringstream ss;
   for(int i=0; i<SHA256_DIGEST_LENGTH; ++i)
-      ss << std::hex << (int)hash[i];
+        ss << std::hex << std::setfill('0') << std::setw(2) << (int)hash[i];
   return ss.str();
 }
 
