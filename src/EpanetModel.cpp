@@ -709,8 +709,13 @@ void EpanetModel::setReservoirQuality(const string& reservoir, double quality) {
   setNodeValue(EN_SOURCEQUAL, reservoir, quality);
 
   // if this is a tank, we must override the tank's concentration using private EPANET internals.
-  
-
+  const int nJuncs = _enModel->network.Njuncs;
+  const int nodeIndex = _nodeIndex[reservoir];
+  if (nodeIndex > nJuncs) {
+    Stank *tanks = _enModel->network.Tank;
+    tanks[nodeIndex - nJuncs].C = quality;
+    _enModel->quality.NodeQual[nodeIndex] = quality / _enModel->Ucf[QUALITY];
+  }
   
 }
 
