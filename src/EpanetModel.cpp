@@ -251,12 +251,12 @@ void EpanetModel::initEngine() {
   try {
     EN_API_CHECK(EN_openH(_enModel), "EN_openH");
     EN_API_CHECK(EN_initH(_enModel, 10), "EN_initH");
-    this->applyInitialQuality();
     EN_API_CHECK(EN_openQ(_enModel), "EN_openQ");
     EN_API_CHECK(EN_initQ(_enModel, EN_NOSAVE), "EN_initQ");
   } catch (...) {
     cerr << "warning: epanet opened improperly" << endl;
   }
+  this->applyInitialQuality();
   _enOpened = true;
 }
 
@@ -1167,7 +1167,9 @@ void EpanetModel::applyInitialQuality() {
     DebugLog << "Could not apply initial quality conditions; engine not opened" << EOL;
     return;
   }
-
+  EN_API_CHECK(EN_closeQ(_enModel), "EN_closeQ");
+  EN_API_CHECK(EN_openQ(_enModel), "EN_openQ");
+  
   // Junctions
   for(Junction::_sp junc : this->junctions()) {
     double qual = junc->state_quality;
@@ -1189,6 +1191,7 @@ void EpanetModel::applyInitialQuality() {
     EN_API_CHECK(EN_setnodevalue(_enModel, iNode, EN_INITQUAL, q), "EN_setnodevalue - EN_INITIALQUAL");
   }
   
+  EN_API_CHECK(EN_initQ(_enModel, EN_NOSAVE), "ENinitQ");
 }
 
 void EpanetModel::applyInitialTankLevels() {
