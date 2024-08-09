@@ -851,6 +851,11 @@ double EpanetModel::tankInletQuality(const string& tank) {
     auto p = dynamic_pointer_cast<Pipe>(l);
     auto flow = p->state_flow;
     
+    // ignore very small flows.
+    if (flow < SMALL) {
+      continue;
+    }
+    
     // if flow is into the tank from this link.
     // create a flow-weighted sum of qualities into the tank.
 
