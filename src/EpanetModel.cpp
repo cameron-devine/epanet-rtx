@@ -852,7 +852,7 @@ double EpanetModel::tankInletQuality(const string& tank) {
     auto flow = p->state_flow;
     
     // ignore very small flows.
-    if (flow < SMALL) {
+    if (fabs(flow) < SMALL) {
       continue;
     }
     
