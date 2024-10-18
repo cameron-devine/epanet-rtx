@@ -436,11 +436,9 @@ void InfluxTcpAdapter::doConnect() {
   _connected = false;
   _errCallback("Connecting...");
   
-  if(!_restClient){
-    auto requestExecutor = createExecutor();
-    auto objectMapper = oatpp::parser::json::mapping::ObjectMapper::createShared();
-    _restClient = InfluxClient::createShared(requestExecutor, objectMapper);
-  }
+  auto requestExecutor = createExecutor();
+  auto objectMapper = oatpp::parser::json::mapping::ObjectMapper::createShared();
+  _restClient = InfluxClient::createShared(requestExecutor, objectMapper);
   
   // see if the database needs to be created
   bool dbExists = false;
