@@ -519,14 +519,12 @@ BOOST_AUTO_TEST_CASE(complex_resampler) {
 BOOST_AUTO_TEST_CASE(simple_resample) {
 
   // time ranges
-  time_t origin(1643616000);
   time_t ONE_DAY(60*60*24);
 
   // data set
   DbPointRecord::_sp db(new SqlitePointRecord());
   db->setConnectionString("sample_dataset_2.db");
   Clock::_sp c5m(new Clock(60*5, 0));
-
   TimeSeries::_sp raw(new TimeSeries("raw", TSF_FOOT));
   raw->setRecord(db);
   raw->insertPoints({ Point(1643616049,14.703218460083008),
@@ -573,6 +571,65 @@ BOOST_AUTO_TEST_CASE(simple_resample) {
   BOOST_CHECK_EQUAL(stepRs2.isValid, true);
   BOOST_CHECK_EQUAL(stepRs2.time, rs->clock()->timeBefore(1643617189) );
   BOOST_CHECK_EQUAL(stepRs2.value, raw->pointAtOrBefore(rs->clock()->timeBefore(1643617189)).value);
+}
+
+BOOST_AUTO_TEST_CASE(matched_clock) {
+
+  // data set
+  DbPointRecord::_sp db(new SqlitePointRecord());
+  db->setConnectionString("sample_dataset_3.db");
+  Clock::_sp c(new Clock(100, 0));
+  TimeSeries::_sp raw(new TimeSeries("raw", TSF_FOOT));
+  raw->setRecord(db);
+  raw->insertPoints({ Point(0,0),
+    Point(100,1),
+    Point(200,2),
+    Point(300,3),
+    Point(400,4),
+    Point(500,5)
+  });
+
+  TimeSeriesFilter::_sp rs(new TimeSeriesFilter());
+  rs->resample(ResampleModeLinear)->source(raw)->c(c)->units(TSF_FOOT)->name("resample");
+
+  auto point = rs->pointAtOrBefore(600);
+
+  BOOST_CHECK_EQUAL(point.isValid, true);
+  BOOST_CHECK_EQUAL(point.time, 500);
+  BOOST_CHECK_EQUAL(point.value, 5);
+
+  point = rs->pointAtOrBefore(550);
+  BOOST_CHECK_EQUAL(point.isValid, true);
+  BOOST_CHECK_EQUAL(point.time, 500);
+  BOOST_CHECK_EQUAL(point.value, 5);
+
+  point = rs->pointAtOrBefore(500);
+  BOOST_CHECK_EQUAL(point.isValid, true);
+  BOOST_CHECK_EQUAL(point.time, 500);
+
+  point = rs->pointAfter(600);
+  BOOST_CHECK_EQUAL(point.isValid, false);
+
+  point = rs->pointBefore(600);
+  BOOST_CHECK_EQUAL(point.isValid, true);
+
+  TimeSeriesFilter::_sp step(new TimeSeriesFilter());
+  step->resample(ResampleModeStep)->source(raw)->c(c)->units(TSF_FOOT)->name("step");
+
+  auto stepRs = step->pointAtOrBefore(600);
+  BOOST_CHECK_EQUAL(stepRs.isValid, true);
+  BOOST_CHECK_EQUAL(stepRs.time, 600);
+  BOOST_CHECK_EQUAL(stepRs.value, 5);
+  
+  stepRs = step->pointAtOrBefore(550);
+  BOOST_CHECK_EQUAL(stepRs.isValid, true);
+  BOOST_CHECK_EQUAL(stepRs.time, 500);
+  BOOST_CHECK_EQUAL(stepRs.value, 5);
+
+  auto stepRs2 = step->pointAtOrBefore(500);
+  BOOST_CHECK_EQUAL(stepRs2.isValid, true);
+  BOOST_CHECK_EQUAL(stepRs2.time, 500 );
+  BOOST_CHECK_EQUAL(stepRs2.value, 5);
 }
 
 
